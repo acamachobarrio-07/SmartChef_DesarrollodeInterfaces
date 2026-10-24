@@ -1,12 +1,124 @@
-bienvenida {
-  height: 100%;
+
+ion-content {
+  --background: #ffffff;
+}
+
+.bienvenida {
+  max-width: 430px;
+  min-height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+
   display: flex;
-  flex-direction: column; // uno debajo de otro
-  align-items: center; // centrado horizontal
-  justify-content: center; // centrado vertical
+  flex-direction: column;
+}
+
+/* PARTE SUPERIOR */
+
+.parte-superior {
+  height: 265px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 65px;
+  left: 14%;
+  width: 125px;
+  height: auto;
+}
+
+.pizza {
+  position: absolute;
+  top: 28px;
+  right: -115px;
+
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+}
+
+.eslogan {
+  position: absolute;
+  top: 165px;
+  left: 11%;
+  width: 175px;
+
+  margin: 0;
+  color: #078865;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
   text-align: center;
 }
-ion-icon {
-  font-size: 64px; // los iconos se agrandan con font-size
-  color: var(--ion-color-primary);
+
+/* PARTE CENTRAL */
+
+.parte-central {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 12px 36px 48px;
+}
+
+h1 {
+  margin: 0;
+  color: #008766;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.ilustracion {
+  width: 175px;
+  height: 185px;
+  object-fit: contain;
+  margin-top: 35px;
+}
+
+.descripcion {
+  margin: 25px 0 18px;
+
+  color: #999999;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* BOTONES */
+
+.botones {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+ion-button {
+  --background: #29c58b;
+  --color: white;
+  --border-radius: 12px;
+  --box-shadow: none;
+
+  height: 35px;
+  min-height: 0;
+  margin: 0;
+
+  text-transform: none;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.ver-recetas {
+  width: 100%;
+}
+
+.soy-chef {
+  width: 125px;
 }

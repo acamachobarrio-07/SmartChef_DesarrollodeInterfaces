@@ -1,10 +1,64 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>AquaPedia</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content class="ion-padding">
-  <h1>¡Hola, AquaPedia!</h1>
-  <p>Mi primera app con Ionic</p>
-  <ion-button>Empezar</ion-button>
+
+<ion-content [fullscreen]="true">
+
+  <div class="bienvenida">
+
+    <!-- Parte superior -->
+    <div class="parte-superior">
+
+      <img
+        src="assets/fotos/logo-smartchef.png"
+        alt="SmartChef"
+        class="logo">
+
+      <img
+        src="assets/fotos/pizza-bienvenida.png"
+        alt=""
+        class="pizza">
+
+      <p class="eslogan">
+        Sabor que aprovecha<br>
+        cada ingrediente.
+      </p>
+
+    </div>
+
+    <!-- Parte central -->
+    <div class="parte-central">
+
+      <h1>¡BIENVENIDO A TU COCINA INTELIGENTE!</h1>
+
+      <img
+        src="assets/fotos/lista-bienvenida.svg"
+        alt="Lista de recetas"
+        class="ilustracion">
+
+      <p class="descripcion">
+        Mira todas las recetas disponibles y fíltralas a tu gusto.
+      </p>
+
+      <!-- Botones -->
+      <div class="botones">
+
+        <ion-button
+          expand="block"
+          routerLink="/app/recetas"
+          routerDirection="root"
+          class="ver-recetas">
+          Ver recetas
+        </ion-button>
+
+        <ion-button
+          routerLink="/login"
+          routerDirection="root"
+          class="soy-chef">
+          Soy chef
+        </ion-button>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </ion-content>

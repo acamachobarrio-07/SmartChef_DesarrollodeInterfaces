@@ -1,2 +1,14 @@
 // For information on how to create your own theme, please refer to:
 // https://ionicframework.com/docs/theming/
+
+:root {
+
+  /* Color principal de SmartChef */
+  --ion-color-primary: #16bd7f;
+  --ion-color-primary-rgb: 22, 189, 127;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #13a76f;
+  --ion-color-primary-tint: #2dc48c;
+
+}

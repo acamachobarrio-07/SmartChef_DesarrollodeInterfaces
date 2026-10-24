@@ -1,0 +1,28 @@
+/* Barra inferior */
+ion-tab-bar {
+  --background: white;
+  --border: 1px solid #e5e5e5;
+}
+
+/* Botones del menú */
+ion-tab-button {
+  --color: #16bd7f;
+  --color-selected: #16bd7f;
+
+  --padding-start: 0;
+  --padding-end: 0;
+
+  min-width: 0;
+}
+
+/* Iconos */
+ion-icon {
+  font-size: 30px;
+}
+
+/* Textos */
+ion-label {
+  font-size: 11px;
+  margin-top: 5px;
+}
+
