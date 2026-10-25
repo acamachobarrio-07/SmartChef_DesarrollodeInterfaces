@@ -10,7 +10,8 @@ import {
   nutritionOutline,
   clipboardOutline,
   calendarOutline,
-  bookmarkOutline
+  bookmarkOutline, personCircleOutline, timeOutline, checkmarkCircle, chevronForwardCircle, mailOutline,
+  lockClosedOutline, eyeOffOutline, leaf
 } from 'ionicons/icons';
 
 @Component({
@@ -26,7 +27,16 @@ export class AppComponent {
       nutritionOutline,
       clipboardOutline,
       calendarOutline,
-      bookmarkOutline
+      bookmarkOutline,
+      personCircleOutline,
+      timeOutline,
+      checkmarkCircle,
+      chevronForwardCircle,
+      mailOutline,
+      lockClosedOutline,
+      eyeOffOutline,
+      leaf
+
     });
   }
 

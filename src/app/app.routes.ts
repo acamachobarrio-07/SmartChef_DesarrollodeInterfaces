@@ -58,4 +58,12 @@ export const routes: Routes = [
     path: 'principal',
     loadComponent: () => import('./paginas/principal/principal.page').then( m => m.PrincipalPage)
   },
+  {
+    path: 'registro',
+    loadComponent: () => import('./paginas/registro/registro.page').then( m => m.RegistroPage)
+  },
+  {
+    path: 'contrasena-olvidada',
+    loadComponent: () => import('./paginas/contrasena-olvidada/contrasena-olvidada.page').then( m => m.ContrasenaOlvidadaPage)
+  },
 ];

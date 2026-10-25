@@ -21,36 +21,40 @@ ion-content {
   position: relative;
 }
 
+
+/* Logo de SmartChef */
 .logo {
   position: absolute;
   top: 65px;
-  left: 14%;
+  left: 18%;
   width: 125px;
   height: auto;
 }
 
-.pizza {
-  position: absolute;
-  top: 28px;
-  right: -115px;
-
-  width: 240px;
-  height: 240px;
-  object-fit: contain;
-}
-
+/* Texto debajo del logo */
 .eslogan {
   position: absolute;
   top: 165px;
-  left: 11%;
+  left: 12%;
   width: 175px;
 
   margin: 0;
+
   color: #078865;
   font-size: 15px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   text-align: center;
+}
+
+
+.ensalada {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  height: 275px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* PARTE CENTRAL */
@@ -65,11 +69,17 @@ ion-content {
   padding: 12px 36px 48px;
 }
 
+
+/* Mensaje de bienvenida */
 h1 {
+  max-width: 350px;
   margin: 0;
+
   color: #008766;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.1px;
   text-align: center;
 }
 
