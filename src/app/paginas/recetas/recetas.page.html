@@ -1,0 +1,294 @@
+
+<ion-content [fullscreen]="true">
+
+  <div class="pantalla-recetas">
+
+    <!-- CABECERA -->
+    <div class="cabecera">
+
+      <img
+        src="assets/fotos/logo-smartchef.png"
+        alt="SmartChef"
+        class="logo">
+
+      <a routerLink="/app/perfil" class="usuario">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </a>
+
+    </div>
+
+    <!-- BUSCADOR Y FILTROS -->
+    <div class="zona-busqueda">
+
+      <div class="barra-busqueda">
+
+        <ion-icon name="search-outline"></ion-icon>
+
+        <input
+          type="text"
+          [(ngModel)]="busqueda"
+          placeholder="Buscar ingrediente o receta..."
+          aria-label="Buscar ingrediente o receta">
+
+        <button
+          type="button"
+          class="boton-filtros"
+          aria-label="Abrir filtros"
+          [attr.aria-expanded]="panelFiltrosAbierto"
+          (click)="panelFiltrosAbierto = !panelFiltrosAbierto">
+
+          <ion-icon name="menu-outline"></ion-icon>
+
+        </button>
+
+      </div>
+
+      <!-- PANEL DE FILTROS -->
+      @if (panelFiltrosAbierto) {
+
+        <div class="panel-filtros">
+
+          <!-- VEGETARIANO -->
+          <button
+            type="button"
+            class="opcion-filtro"
+            (click)="alternarFiltro('vegetariano')">
+
+            vegetariano
+
+            @if (filtros.vegetariano) {
+              <span>✓</span>
+            }
+
+          </button>
+
+          <!-- SIN GLUTEN -->
+          <button
+            type="button"
+            class="opcion-filtro"
+            (click)="alternarFiltro('sinGluten')">
+
+            sin gluten
+
+            @if (filtros.sinGluten) {
+              <span>✓</span>
+            }
+
+          </button>
+
+          <!-- RÁPIDO -->
+          <button
+            type="button"
+            class="opcion-filtro"
+            (click)="alternarFiltro('rapido')">
+
+            rápido
+
+            @if (filtros.rapido) {
+              <span>✓</span>
+            }
+
+          </button>
+
+          <!-- ECONÓMICO -->
+          <button
+            type="button"
+            class="opcion-filtro"
+            (click)="alternarFiltro('economico')">
+
+            económico
+
+            @if (filtros.economico) {
+              <span>✓</span>
+            }
+
+          </button>
+
+          <!-- DIFICULTAD -->
+          <button
+            type="button"
+            class="opcion-filtro"
+            (click)="mostrarDificultad = !mostrarDificultad">
+
+            dificultad
+
+          </button>
+
+          @if (mostrarDificultad) {
+
+            <select
+              [(ngModel)]="dificultad"
+              aria-label="Dificultad">
+
+              <option value="Todas">Todas</option>
+              <option value="Fácil">Fácil</option>
+              <option value="Media">Media</option>
+              <option value="Difícil">Difícil</option>
+
+            </select>
+
+          }
+
+          <!-- TIEMPO MÁXIMO -->
+          <button
+            type="button"
+            class="opcion-filtro"
+            (click)="mostrarTiempo = !mostrarTiempo">
+
+            tiempo máximo
+
+          </button>
+
+          @if (mostrarTiempo) {
+
+            <select
+              [(ngModel)]="tiempoMaximo"
+              aria-label="Tiempo máximo">
+
+              <option [ngValue]="null">Sin límite</option>
+              <option [ngValue]="5">5 minutos</option>
+              <option [ngValue]="10">10 minutos</option>
+              <option [ngValue]="20">20 minutos</option>
+              <option [ngValue]="30">30 minutos</option>
+              <option [ngValue]="60">60 minutos</option>
+
+            </select>
+
+          }
+
+          <!-- LIMPIAR FILTROS -->
+          <button
+            type="button"
+            class="limpiar"
+            (click)="limpiarFiltros()">
+
+            Limpiar filtros
+
+          </button>
+
+        </div>
+
+      }
+
+    </div>
+
+    <!-- FILTROS ACTIVOS -->
+    @if (filtrosActivos.length > 0) {
+
+      <div class="filtros-activos">
+
+        @for (filtro of filtrosActivos; track filtro) {
+
+          <span>{{ filtro }}</span>
+
+        }
+
+      </div>
+
+    }
+
+    <!-- LISTADO DE RECETAS -->
+    <section class="listado-recetas">
+
+      <h1>Recetas</h1>
+
+      @for (receta of recetasFiltradas; track receta.id) {
+
+        <article class="tarjeta-receta">
+
+          <!-- IMAGEN -->
+          <img
+            [src]="receta.imagen"
+            [alt]="receta.nombre"
+            class="foto-receta">
+
+          <!-- INFORMACIÓN -->
+          <div class="informacion">
+
+            <!-- NOMBRE -->
+            <h2>{{ receta.nombre }}</h2>
+
+            <!-- TIEMPO Y DIFICULTAD -->
+            <div class="datos">
+
+              <span>
+                <ion-icon name="time-outline"></ion-icon>
+                {{ receta.tiempo }} min
+              </span>
+
+              <span>
+                <ion-icon name="checkmark-circle"></ion-icon>
+                {{ receta.dificultad }}
+              </span>
+
+            </div>
+
+            <!-- INGREDIENTES -->
+            <p class="ingredientes">
+              {{ receta.disponibles }} ingredientes disponibles
+            </p>
+
+            <!-- ETIQUETAS -->
+            <div class="etiquetas">
+
+              @if (receta.rapido) {
+                <span class="rapido">Rápido</span>
+              }
+
+              @if (receta.sinGluten) {
+                <span class="sin-gluten">Sin gluten</span>
+              } @else if (receta.economico) {
+                <span class="economico">Económico</span>
+              }
+
+            </div>
+
+            <!-- NAVEGACIÓN AL DETALLE -->
+            @if (receta.id === 1) {
+
+              <!-- TORTILLA: DETALLE DISPONIBLE -->
+              <a
+                [routerLink]="['/app', 'detalle-receta']"
+                class="ir-receta">
+
+                Ir a la receta
+
+                <ion-icon
+                  name="chevron-forward-circle">
+                </ion-icon>
+
+              </a>
+
+            } @else {
+
+              <!-- RESTO: DETALLES PENDIENTES -->
+              <div class="ir-receta">
+
+                Ir a la receta
+
+                <ion-icon
+                  name="chevron-forward-circle">
+                </ion-icon>
+
+              </div>
+
+            }
+
+          </div>
+
+        </article>
+
+      } @empty {
+
+        <p class="sin-resultados">
+          No se encontraron recetas con los filtros seleccionados.
+        </p>
+
+      }
+
+    </section>
+
+  </div>
+
+</ion-content>
+

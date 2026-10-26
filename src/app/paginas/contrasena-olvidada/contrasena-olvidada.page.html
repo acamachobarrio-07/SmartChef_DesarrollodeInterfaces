@@ -1,0 +1,74 @@
+
+<ion-content [fullscreen]="true">
+
+  <div class="pantalla-recuperacion">
+
+    <!-- CABECERA -->
+    <div class="cabecera-recuperacion">
+
+      <img
+        src="assets/fotos/logo-smartchef.png"
+        alt="SmartChef"
+        class="logo">
+
+      <img
+        src="assets/fotos/ensalada-bienvenida.png"
+        alt=""
+        class="ensalada">
+
+    </div>
+
+    <!-- RECUPERAR CONTRASEÑA -->
+    <div class="formulario-recuperacion">
+
+      <h1>
+        ¿Olvidaste tu<br>
+        contraseña?
+      </h1>
+
+      <p class="descripcion">
+        Ingresa tu correo electrónico y te enviaremos
+        un enlace para restablecerla.
+      </p>
+
+      <!-- Correo electrónico -->
+      <div class="campo">
+
+        <ion-icon name="mail-outline"></ion-icon>
+
+        <ion-input
+          type="email"
+          placeholder="Correo electrónico"
+          aria-label="Correo electrónico">
+        </ion-input>
+
+      </div>
+
+      <!-- Botón -->
+
+      <ion-button
+        expand="block"
+        routerLink="/contrasena-olvidada-confirmacion"
+        class="enviar-correo">
+        Enviar correo
+      </ion-button>
+
+
+      <!-- Volver al login -->
+      <a routerLink="/login" class="volver-login">
+        Volver al inicio de sesión
+      </a>
+
+    </div>
+
+    <!-- PIE INFERIOR -->
+    <div class="pie-recuperacion">
+
+      <ion-icon name="leaf" class="hojas"></ion-icon>
+
+    </div>
+
+  </div>
+
+</ion-content>
+

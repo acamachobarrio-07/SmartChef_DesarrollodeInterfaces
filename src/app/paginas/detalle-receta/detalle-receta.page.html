@@ -1,0 +1,177 @@
+
+<ion-content [fullscreen]="true">
+
+  <div class="pantalla-detalle">
+
+    <!-- CABECERA -->
+    <div class="cabecera">
+
+      <img
+        src="assets/fotos/logo-smartchef.png"
+        alt="SmartChef"
+        class="logo">
+
+    </div>
+
+    <!-- BUSCADOR -->
+    <a
+      routerLink="/app/recetas"
+      class="barra-busqueda"
+      aria-label="Volver al listado de recetas">
+
+      <ion-icon name="search-outline"></ion-icon>
+
+      <span>Buscar ingrediente o receta...</span>
+
+    </a>
+
+    <!-- TARJETA DEL DETALLE -->
+    <section class="tarjeta-detalle">
+
+      <!-- INFORMACIÓN SUPERIOR -->
+      <div class="encabezado-receta">
+
+        <!-- FOTO -->
+        <img
+          src="assets/fotos/tortilla.png"
+          alt="Tortilla de espinacas y queso"
+          class="foto-receta">
+
+        <div class="informacion">
+
+          <!-- NOMBRE -->
+          <h1>Tortilla de espinacas y queso</h1>
+
+          <!-- DATOS -->
+          <div class="datos">
+
+            <span>
+              <ion-icon name="nutrition-outline"></ion-icon>
+              1 porción
+            </span>
+
+            <span>
+              <span class="icono-euro">€</span>
+              5 €
+            </span>
+
+            <span>
+              <ion-icon name="time-outline"></ion-icon>
+              10 min
+            </span>
+
+            <span>
+              <ion-icon name="checkmark-circle"></ion-icon>
+              Fácil
+            </span>
+
+          </div>
+
+          <!-- ETIQUETAS -->
+          <div class="etiquetas">
+
+            <span class="rapido">Rápido</span>
+
+            <span class="economico">Económico</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- INGREDIENTES Y PASOS -->
+      <div class="contenido-preparacion">
+
+        <!-- INGREDIENTES -->
+        <div class="bloque-ingredientes">
+
+          <h2>Ingredientes</h2>
+
+          <ul>
+            @for (ingrediente of ingredientes; track ingrediente) {
+              <li>{{ ingrediente }}</li>
+            }
+          </ul>
+
+        </div>
+
+        <!-- PASO A PASO -->
+        <div class="columna-pasos">
+
+          <div class="bloque-pasos">
+
+            <h2>Paso a paso</h2>
+
+            <ul aria-live="polite">
+              <li>{{ pasos[pasoActual] }}</li>
+            </ul>
+
+          </div>
+
+          <!-- SIGUIENTE PASO -->
+          <button
+            type="button"
+            class="boton-paso"
+            (click)="avanzarPaso()">
+
+            @if (pasoActual === pasos.length - 1) {
+              Inicio de la receta
+            } @else {
+              Siguiente paso
+            }
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- ACCIONES RESTRINGIDAS -->
+      <div class="acciones-receta">
+
+        <!-- GUARDAR LISTA -->
+        <a
+          routerLink="/login"
+          class="boton-lista"
+          aria-label="Iniciar sesión para guardar la lista">
+
+          Guardar lista
+
+        </a>
+
+        <div class="acciones-derecha">
+
+          <!-- ME GUSTA -->
+          <a
+            routerLink="/login"
+            class="accion"
+            aria-label="Iniciar sesión para dar me gusta">
+
+            <span>Me gusta</span>
+
+            <ion-icon name="heart-outline"></ion-icon>
+
+          </a>
+
+          <!-- GUARDAR RECETA -->
+          <a
+            routerLink="/login"
+            class="accion"
+            aria-label="Iniciar sesión para guardar la receta">
+
+            <span>Guardar</span>
+
+            <ion-icon name="bookmark-outline"></ion-icon>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</ion-content>

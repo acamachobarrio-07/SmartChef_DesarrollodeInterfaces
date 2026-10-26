@@ -1,0 +1,74 @@
+
+<ion-content [fullscreen]="true">
+
+  <div class="pantalla-confirmacion">
+
+    <!-- Cabecera -->
+    <div class="cabecera-confirmacion">
+
+      <img
+        src="assets/fotos/logo-smartchef.png"
+        alt="SmartChef"
+        class="logo">
+
+      <img
+        src="assets/fotos/ensalada-bienvenida.png"
+        alt=""
+        class="ensalada">
+
+    </div>
+
+    <!-- Confirmación -->
+    <div class="contenido-confirmacion">
+
+      <ion-icon
+        name="checkmark-circle"
+        class="icono-confirmacion">
+      </ion-icon>
+
+      <h1>¡Correo enviado!</h1>
+
+      <p class="descripcion">
+        Hemos enviado un enlace para restablecer tu
+        contraseña a la dirección:
+      </p>
+
+      <!-- Correo de ejemplo -->
+      <div class="campo">
+
+        <ion-icon name="mail-outline"></ion-icon>
+
+        <ion-input
+          type="email"
+          value="smartchefpruebausuario@gmail.com"
+          readonly
+          aria-label="Correo electrónico">
+        </ion-input>
+
+      </div>
+
+      <!-- Volver al login -->
+      <ion-button
+        expand="block"
+        routerLink="/login"
+        routerDirection="root"
+        class="volver-login">
+        Volver al inicio de sesión
+      </ion-button>
+
+      <!-- Reenviar correo -->
+      <p class="reenviar">
+        Reenviar correo (en 1:00)
+      </p>
+
+    </div>
+
+    <!-- Pie inferior -->
+    <div class="pie-confirmacion">
+      <ion-icon name="leaf" class="hojas"></ion-icon>
+    </div>
+
+  </div>
+
+</ion-content>
+

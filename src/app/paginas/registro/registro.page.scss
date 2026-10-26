@@ -1,0 +1,194 @@
+
+/* FONDO DE LA PÁGINA */
+ion-content {
+  --background: #ffffff;
+}
+
+/* PANTALLA COMPLETA */
+.pantalla-login {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0 36px 18px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: white;
+}
+
+/* CABECERA */
+.cabecera-login {
+  position: relative;
+  height: 250px;
+  flex-shrink: 0;
+}
+
+/* LOGO SMARTCHEF */
+.logo {
+  position: absolute;
+  top: 65px;
+  left: 4%;
+
+  width: 140px;
+  height: auto;
+}
+
+/* ENSALADA */
+.ensalada {
+  position: absolute;
+  top: 38px;
+  right: -35px;
+
+  height: 245px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ESLOGAN */
+.eslogan {
+  position: absolute;
+  top: 162px;
+  left: 0;
+
+  width: 185px;
+  margin: 0;
+
+  color: #078865;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
+/* FORMULARIO */
+.formulario-login {
+  width: 100%;
+}
+
+/* TEXTO CREAR CUENTA */
+.aviso {
+  margin: 0 0 26px;
+
+  color: #999999;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+/* CAMPOS DEL FORMULARIO */
+.campo {
+  width: 100%;
+  height: 39px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 10px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 13px;
+
+  background: white;
+}
+
+/* ICONOS DE LOS CAMPOS */
+.campo ion-icon {
+  flex-shrink: 0;
+
+  color: var(--ion-color-primary);
+  font-size: 19px;
+}
+
+/* INPUTS */
+.campo ion-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+
+  --color: #222222;
+  --placeholder-color: #999999;
+  --placeholder-opacity: 1;
+
+  font-size: 12px;
+}
+
+/* CONTENEDOR DEL BOTÓN */
+.botones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  margin-top: 40px;
+}
+
+/* ESTILO GENERAL DEL BOTÓN */
+ion-button {
+  --background: #29c58b;
+  --color: white;
+  --border-radius: 11px;
+  --box-shadow: none;
+
+  margin: 0;
+  min-height: 0;
+
+  text-transform: none;
+  font-weight: 400;
+}
+
+/* BOTÓN CREAR CUENTA */
+.iniciar-sesion {
+  width: 100%;
+  height: 38px;
+  font-size: 16px;
+}
+
+/* PIE DE LA PÁGINA */
+.pie-login {
+  margin-top: auto;
+  padding-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* TEXTO INFERIOR */
+.pie-login p {
+  margin: 0;
+
+  color: #999999;
+  font-size: 10px;
+}
+
+/* ENLACE INICIAR SESIÓN */
+.crear-cuenta {
+  color: var(--ion-color-primary);
+  font-size: 11px;
+  text-decoration: none;
+}
+
+/* VOLVER AL MODO INVITADO */
+.invitado {
+  color: #999999;
+  font-size: 10px;
+  text-decoration: none;
+}
+
+/* HOJAS INFERIORES */
+.hojas {
+  color: var(--ion-color-primary);
+  font-size: 26px;
+}

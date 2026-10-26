@@ -1,0 +1,89 @@
+
+<ion-content [fullscreen]="true">
+
+  <div class="principal">
+
+    <!-- Cabecera -->
+    <div class="cabecera">
+
+      <img
+        src="assets/fotos/logo-smartchef.png"
+        alt="SmartChef"
+        class="logo">
+
+      <ion-icon
+        name="person-circle-outline"
+        class="usuario">
+      </ion-icon>
+
+    </div>
+
+    <!-- Buscador -->
+    <ion-searchbar
+      placeholder="Buscar ingrediente o receta...">
+    </ion-searchbar>
+
+    <!-- Recomendaciones -->
+    <section class="recomendaciones">
+
+      <h1>Recomendaciones de recetas</h1>
+
+      <a routerLink="/app/recetas" class="ver-todas">
+        Ver todas
+        <ion-icon name="chevron-forward-circle"></ion-icon>
+      </a>
+
+      <!-- Tarjetas -->
+      @for (receta of recetas; track receta.id) {
+
+        <div class="tarjeta-receta">
+
+          <img
+            class="foto-receta"
+            [src]="receta.foto"
+            [alt]="receta.nombre"
+            loading="lazy">
+
+          <div class="informacion">
+
+            <h2>{{ receta.nombre }}</h2>
+
+            <div class="datos">
+
+              <span>
+                <ion-icon name="time-outline"></ion-icon>
+                {{ receta.tiempo }} min
+              </span>
+
+              <span>
+                <ion-icon name="checkmark-circle"></ion-icon>
+                {{ receta.dificultad }}
+              </span>
+
+            </div>
+
+            <p class="ingredientes">
+              {{ receta.ingredientes }} ingredientes disponibles
+            </p>
+
+            <div class="etiquetas">
+              <span class="rapido">Rápido</span>
+              <span class="economico">Económico</span>
+            </div>
+
+            <div class="ir-receta">
+              Ir a la receta
+              <ion-icon name="chevron-forward-circle"></ion-icon>
+            </div>
+
+          </div>
+
+        </div>
+
+      }
+
+    </section>
+
+  </div>
+
+</ion-content>

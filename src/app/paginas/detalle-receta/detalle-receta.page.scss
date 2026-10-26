@@ -1,0 +1,460 @@
+
+/* FONDO */
+ion-content {
+  --background: #ffffff;
+}
+
+/* PANTALLA PRINCIPAL */
+.pantalla-detalle {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100%;
+
+  margin: 0 auto;
+  padding: 25px 25px 24px;
+  box-sizing: border-box;
+
+  background: white;
+}
+
+/* CABECERA */
+.cabecera {
+  height: 85px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* LOGO */
+.logo {
+  width: 75px;
+  height: 55px;
+  object-fit: contain;
+}
+
+/* BUSCADOR */
+.barra-busqueda {
+  width: 100%;
+  height: 39px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+
+  color: #999999;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+/* ICONO DEL BUSCADOR */
+.barra-busqueda ion-icon {
+  color: #999999;
+  font-size: 19px;
+  flex-shrink: 0;
+}
+
+/* TARJETA PRINCIPAL */
+.tarjeta-detalle {
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px 10px;
+  box-sizing: border-box;
+
+  background: white;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+/* ENCABEZADO DE LA RECETA */
+.encabezado-receta {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+/* FOTO DE LA RECETA */
+.foto-receta {
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+/* INFORMACIÓN GENERAL */
+.informacion {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+/* NOMBRE */
+.informacion h1 {
+  margin: 0;
+
+  color: #222222;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+}
+
+/* DATOS DE LA RECETA */
+.datos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+
+  gap: 8px 5px;
+
+  color: #222222;
+  font-size: 11px;
+}
+
+/* CADA DATO */
+.datos > span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  min-width: 0;
+  white-space: nowrap;
+}
+
+/* ICONOS DE LOS DATOS */
+.datos ion-icon {
+  color: var(--ion-color-primary);
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+/* PRECIO */
+.icono-euro {
+  width: 17px;
+  height: 17px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 50%;
+
+  color: var(--ion-color-primary);
+  font-size: 11px;
+}
+
+/* ETIQUETAS */
+.etiquetas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.etiquetas span {
+  display: block;
+  width: 100%;
+
+  padding: 2px 4px;
+  box-sizing: border-box;
+
+  border-radius: 4px;
+
+  color: white;
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* RÁPIDO */
+.rapido {
+  background: #3671bf;
+}
+
+/* ECONÓMICO */
+.economico {
+  background: var(--ion-color-primary);
+}
+
+/* INGREDIENTES Y PASOS */
+.contenido-preparacion {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: 10px;
+
+  margin-top: 16px;
+}
+
+/* INGREDIENTES */
+.bloque-ingredientes {
+  min-width: 0;
+  min-height: 175px;
+
+  padding: 10px 8px;
+  box-sizing: border-box;
+
+  background: white;
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 4px;
+}
+
+/* TÍTULOS */
+.bloque-ingredientes h2,
+.bloque-pasos h2 {
+  margin: 0 0 9px;
+
+  color: #222222;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* LISTA DE INGREDIENTES */
+.bloque-ingredientes ul {
+  margin: 0;
+  padding-left: 13px;
+
+  color: #222222;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.bloque-ingredientes li {
+  overflow-wrap: break-word;
+  margin-bottom: 2px;
+}
+
+/* COLUMNA DE PASOS */
+.columna-pasos {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+}
+
+/* CUADRO PASO A PASO */
+.bloque-pasos {
+  width: 100%;
+  min-height: 105px;
+
+  padding: 10px 8px;
+  box-sizing: border-box;
+
+  background: white;
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 4px;
+}
+
+/* TEXTO DEL PASO */
+.bloque-pasos ul {
+  margin: 0;
+  padding-left: 13px;
+
+  color: #222222;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.bloque-pasos li {
+  overflow-wrap: break-word;
+}
+
+/* BOTÓN SIGUIENTE PASO */
+.boton-paso {
+  min-width: 110px;
+  min-height: 28px;
+
+  padding: 5px 9px;
+  box-sizing: border-box;
+
+  background: var(--ion-color-primary);
+  border: none;
+  border-radius: 4px;
+
+  color: white;
+  font-size: 11px;
+  font-weight: 400;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+/* ACCIONES INFERIORES */
+.acciones-receta {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 16px;
+}
+
+/* BOTÓN GUARDAR LISTA */
+.boton-lista {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 108px;
+  min-height: 28px;
+
+  padding: 5px;
+  box-sizing: border-box;
+
+  background: var(--ion-color-primary);
+  border-radius: 4px;
+
+  color: white;
+  font-size: 11px;
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+/* ACCIONES DERECHA */
+.acciones-derecha {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 0;
+}
+
+/* ENLACES ME GUSTA Y GUARDAR */
+.accion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  padding: 0;
+
+  color: #222222;
+  font-size: 10px;
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+/* ICONOS */
+.accion ion-icon {
+  color: var(--ion-color-primary);
+  font-size: 21px;
+  flex-shrink: 0;
+}
+
+/* EFECTO AL PULSAR */
+.boton-lista:active,
+.boton-paso:active {
+  opacity: 0.85;
+}
+
+.accion:active {
+  opacity: 0.7;
+}
+
+/* ACCESIBILIDAD CON TECLADO */
+.accion:focus-visible,
+.boton-lista:focus-visible,
+.boton-paso:focus-visible {
+  outline: 2px solid var(--ion-color-primary);
+  outline-offset: 3px;
+}
+
+/* PANTALLAS PEQUEÑAS */
+@media (max-width: 380px) {
+
+  .pantalla-detalle {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .encabezado-receta {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .foto-receta {
+    width: 88px;
+    height: 88px;
+  }
+
+  .informacion h1 {
+    font-size: 12px;
+  }
+
+  .datos {
+    gap: 7px 3px;
+    font-size: 10px;
+  }
+
+  .datos ion-icon {
+    font-size: 16px;
+  }
+
+  .etiquetas {
+    gap: 5px;
+  }
+
+  .etiquetas span {
+    font-size: 10px;
+  }
+
+  .contenido-preparacion {
+    gap: 8px;
+  }
+
+  .bloque-ingredientes,
+  .bloque-pasos {
+    padding: 8px 6px;
+  }
+
+  .bloque-ingredientes ul,
+  .bloque-pasos ul {
+    font-size: 10px;
+  }
+
+  .acciones-receta {
+    grid-template-columns: 94px minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .boton-lista {
+    width: 94px;
+    font-size: 10px;
+  }
+
+  .acciones-derecha {
+    gap: 6px;
+  }
+
+  .accion {
+    gap: 3px;
+    font-size: 9px;
+  }
+
+  .accion ion-icon {
+    font-size: 18px;
+  }
+}

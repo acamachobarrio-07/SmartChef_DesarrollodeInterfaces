@@ -1,0 +1,89 @@
+
+<ion-content [fullscreen]="true">
+
+  <div class="pantalla-login">
+
+    <!-- Cabecera -->
+    <div class="cabecera-login">
+
+      <img
+        src="assets/fotos/logo-smartchef.png"
+        alt="SmartChef"
+        class="logo">
+
+      <img
+        src="assets/fotos/ensalada-bienvenida.png"
+        alt=""
+        class="ensalada">
+
+      <p class="eslogan">
+        Sabor que aprovecha<br>
+        cada ingrediente.
+      </p>
+
+    </div>
+
+    <!-- Formulario de registro -->
+    <div class="formulario-login">
+
+      <p class="aviso">Crear cuenta</p>
+
+      <!-- Correo electrónico -->
+      <div class="campo">
+        <ion-icon name="mail-outline"></ion-icon>
+
+        <ion-input
+          type="email"
+          placeholder="Correo electrónico"
+          aria-label="Correo electrónico">
+        </ion-input>
+      </div>
+
+      <!-- Contraseña -->
+      <div class="campo">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+
+        <ion-input
+          type="password"
+          placeholder="Contraseña"
+          aria-label="Contraseña">
+        </ion-input>
+
+        <ion-icon name="eye-off-outline"></ion-icon>
+      </div>
+
+      <!-- Botón crear cuenta -->
+      <div class="botones">
+
+        <ion-button
+          expand="block"
+          routerLink="/registro-confirmacion"
+          class="iniciar-sesion">
+          Crear cuenta
+        </ion-button>
+
+      </div>
+
+    </div>
+
+    <!-- Parte inferior -->
+    <div class="pie-login">
+
+      <p>¿Ya tienes una cuenta?</p>
+
+      <a routerLink="/login" class="crear-cuenta">
+        Iniciar sesión
+      </a>
+
+      <a routerLink="/app/inicio" class="invitado">
+        Volver al modo invitado
+      </a>
+
+      <ion-icon name="leaf" class="hojas"></ion-icon>
+
+    </div>
+
+  </div>
+
+</ion-content>
+

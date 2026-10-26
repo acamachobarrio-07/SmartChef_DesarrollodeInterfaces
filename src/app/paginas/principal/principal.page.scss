@@ -1,0 +1,193 @@
+
+ion-content {
+  --background: white;
+}
+
+/* Contenido principal */
+.principal {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 25px 28px 24px;
+}
+
+/* Cabecera */
+.cabecera {
+  position: relative;
+  height: 85px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 75px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.usuario {
+  position: absolute;
+  right: 0;
+  top: 10px;
+
+  color: var(--ion-color-primary);
+  font-size: 38px;
+}
+
+/* Buscador */
+ion-searchbar {
+  --background: white;
+  --border-radius: 14px;
+  --box-shadow: 0 0 0 1px #e5e5e5;
+  --placeholder-color: #999999;
+  --icon-color: #999999;
+
+  padding: 0;
+  margin-bottom: 23px;
+}
+
+/* Título */
+.recomendaciones h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: #222222;
+}
+
+/* Ver todas */
+.ver-todas {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+
+  margin: 5px 0 14px;
+
+  color: #222222;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.ver-todas ion-icon {
+  font-size: 16px;
+  color: var(--ion-color-primary);
+}
+
+/* Tarjetas de recetas */
+.tarjeta-receta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-height: 156px;
+  padding: 8px;
+  margin-bottom: 12px;
+
+  background: white;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+}
+
+/* Fotografía */
+.foto-receta {
+  width: 105px;
+  height: 105px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+/* Información de la receta */
+.informacion {
+  flex: 1;
+  min-width: 0;
+  min-height: 138px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Nombre de la receta */
+.informacion h2 {
+  margin: 0;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #222222;
+}
+
+/* Tiempo y dificultad */
+.datos {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  align-items: center;
+
+  font-size: 12px;
+  color: #222222;
+}
+
+.datos span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.datos ion-icon {
+  color: var(--ion-color-primary);
+  font-size: 20px;
+}
+
+/* Ingredientes disponibles */
+.ingredientes {
+  margin: 0;
+  font-size: 12px;
+  color: #222222;
+}
+
+/* Etiquetas Rápido y Económico */
+.etiquetas {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  align-items: center;
+}
+
+.etiquetas span {
+  justify-self: start;
+  min-width: 80px;
+  padding: 1px 6px;
+  border-radius: 4px;
+
+  color: white;
+  font-size: 12px;
+  text-align: center;
+}
+
+.rapido {
+  background: #3671bf;
+}
+
+.economico {
+  background: var(--ion-color-primary);
+}
+
+/* Ir a la receta */
+.ir-receta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+
+  margin: 0;
+
+  color: var(--ion-color-primary);
+  font-size: 13px;
+}
+
+.ir-receta ion-icon {
+  font-size: 20px;
+}

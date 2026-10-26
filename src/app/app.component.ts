@@ -11,7 +11,7 @@ import {
   clipboardOutline,
   calendarOutline,
   bookmarkOutline, personCircleOutline, timeOutline, checkmarkCircle, chevronForwardCircle, mailOutline,
-  lockClosedOutline, eyeOffOutline, leaf
+  lockClosedOutline, eyeOffOutline, leaf, menuOutline, searchOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -35,7 +35,9 @@ export class AppComponent {
       mailOutline,
       lockClosedOutline,
       eyeOffOutline,
-      leaf
+      leaf,
+      searchOutline,
+      menuOutline
 
     });
   }

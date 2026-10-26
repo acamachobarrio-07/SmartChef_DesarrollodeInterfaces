@@ -1,0 +1,124 @@
+
+/* FONDO DE LA PÁGINA */
+ion-content {
+  --background: #ffffff;
+}
+
+/* PANTALLA COMPLETA */
+.pantalla-confirmacion {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0 36px 18px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: white;
+}
+
+/* CABECERA */
+.cabecera-confirmacion {
+  position: relative;
+  height: 260px;
+  flex-shrink: 0;
+}
+
+/* LOGO SMARTCHEF */
+.logo {
+  position: absolute;
+  top: 100px;
+  left: 5%;
+
+  width: 125px;
+  height: auto;
+}
+
+/* ENSALADA */
+.ensalada {
+  position: absolute;
+  top: 38px;
+  right: -35px;
+
+  height: 245px;
+  width: auto;
+
+  object-fit: contain;
+}
+
+/* CONTENIDO CENTRAL */
+.contenido-confirmacion {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ICONO DE CONFIRMACIÓN */
+.icono-confirmacion {
+  color: var(--ion-color-primary);
+  font-size: 95px;
+
+  margin-bottom: 22px;
+}
+
+/* TÍTULO */
+.contenido-confirmacion h1 {
+  margin: 0;
+
+  color: #29c58b;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* MENSAJE DE CONFIRMACIÓN */
+.descripcion {
+  width: 100%;
+  max-width: 290px;
+
+  margin: 30px 0 30px;
+
+  color: #999999;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* BOTÓN VOLVER AL LOGIN */
+.volver-login {
+  width: 100%;
+  height: 38px;
+
+  --background: #29c58b;
+  --color: white;
+  --border-radius: 11px;
+  --box-shadow: none;
+
+  margin: 0;
+  min-height: 0;
+
+  text-transform: none;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* PIE INFERIOR */
+.pie-confirmacion {
+  margin-top: auto;
+  padding-top: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* HOJA INFERIOR */
+.hojas {
+  color: var(--ion-color-primary);
+  font-size: 26px;
+}
