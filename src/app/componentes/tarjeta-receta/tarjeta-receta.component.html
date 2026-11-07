@@ -1,0 +1,73 @@
+<article class="tarjeta-receta">
+
+  <!-- IMAGEN DE LA RECETA -->
+  <img
+    [src]="receta().imagen"
+    [alt]="receta().nombre"
+    class="foto-receta">
+
+  <!-- INFORMACIÓN -->
+  <div class="informacion">
+
+    <!-- NOMBRE -->
+    <h2>{{ receta().nombre }}</h2>
+
+    <!-- TIEMPO Y DIFICULTAD -->
+    <div class="datos">
+
+      <span>
+        <ion-icon name="time-outline"></ion-icon>
+        {{ receta().tiempo }} min
+      </span>
+
+      <span>
+        <ion-icon name="checkmark-circle"></ion-icon>
+        {{ receta().dificultad }}
+      </span>
+
+    </div>
+
+    <!-- INGREDIENTES DISPONIBLES -->
+    <p class="ingredientes">
+      {{ receta().disponibles }} ingredientes disponibles
+    </p>
+
+    <!-- ETIQUETAS -->
+    <div class="etiquetas">
+
+      @if (receta().rapido) {
+        <span class="rapido">Rápido</span>
+      }
+
+      @if (receta().sinGluten) {
+        <span class="sin-gluten">Sin gluten</span>
+      } @else if (receta().economico) {
+        <span class="economico">Económico</span>
+      }
+
+    </div>
+
+    <!-- NAVEGACIÓN AL DETALLE -->
+    @if (receta().id === 1) {
+
+      <a
+        [routerLink]="['/app', 'detalle-receta']"
+        class="ir-receta">
+
+        Ir a la receta
+        <ion-icon name="chevron-forward-circle"></ion-icon>
+
+      </a>
+
+    } @else {
+
+      <div class="ir-receta">
+        Ir a la receta
+        <ion-icon name="chevron-forward-circle"></ion-icon>
+      </div>
+
+    }
+
+  </div>
+
+</article>

@@ -1,0 +1,163 @@
+/* COMPONENTE TARJETA RECETA */
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* TARJETA */
+.tarjeta-receta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  min-height: 156px;
+  padding: 8px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+
+  background: white;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+}
+
+/* FOTOGRAFÍA CIRCULAR */
+.foto-receta {
+  width: 105px;
+  height: 105px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+/* INFORMACIÓN */
+.informacion {
+  flex: 1;
+  min-width: 0;
+  min-height: 138px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* NOMBRE */
+.informacion h2 {
+  margin: 0;
+
+  color: #222222;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+/* TIEMPO Y DIFICULTAD */
+.datos {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  align-items: center;
+
+  color: #222222;
+  font-size: 12px;
+}
+
+.datos span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  white-space: nowrap;
+}
+
+.datos ion-icon {
+  flex-shrink: 0;
+
+  color: var(--ion-color-primary);
+  font-size: 20px;
+}
+
+/* INGREDIENTES DISPONIBLES */
+.ingredientes {
+  margin: 0;
+
+  color: #222222;
+  font-size: 12px;
+}
+
+/* ETIQUETAS */
+.etiquetas {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  align-items: center;
+}
+
+.etiquetas span {
+  justify-self: start;
+
+  min-width: 80px;
+  padding: 1px 6px;
+  box-sizing: border-box;
+
+  border-radius: 4px;
+
+  color: white;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* ETIQUETA RÁPIDO */
+.rapido {
+  background: #3671bf;
+}
+
+/* ETIQUETAS VERDES */
+.economico,
+.sin-gluten {
+  background: var(--ion-color-primary);
+}
+
+/* ENLACE AL DETALLE */
+.ir-receta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+
+  margin: 0;
+
+  color: var(--ion-color-primary);
+  font-size: 13px;
+  white-space: nowrap;
+
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ir-receta ion-icon {
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+/* PANTALLAS PEQUEÑAS */
+@media (max-width: 380px) {
+
+  .foto-receta {
+    width: 88px;
+    height: 88px;
+  }
+
+  .datos,
+  .etiquetas {
+    grid-template-columns: 80px minmax(0, 1fr);
+  }
+
+  .etiquetas span {
+    min-width: 68px;
+    font-size: 11px;
+  }
+
+  .informacion h2 {
+    font-size: 12px;
+  }
+}
