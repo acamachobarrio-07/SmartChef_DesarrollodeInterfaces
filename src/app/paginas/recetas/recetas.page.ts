@@ -1,8 +1,8 @@
-
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { IonContent, IonIcon } from '@ionic/angular';
+import { TarjetaRecetaComponent } from '../../componentes/tarjeta-receta/tarjeta-receta.component';
 
 interface Receta {
   id: number;
@@ -26,7 +26,8 @@ interface Receta {
     IonContent,
     IonIcon,
     FormsModule,
-    RouterLink
+    RouterLink,
+    TarjetaRecetaComponent
   ]
 })
 export class RecetasPage {

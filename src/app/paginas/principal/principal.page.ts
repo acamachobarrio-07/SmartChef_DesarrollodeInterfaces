@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
@@ -6,6 +5,9 @@ import {
   IonIcon,
   IonSearchbar
 } from '@ionic/angular';
+
+import { Receta } from '../../modelos/receta';
+import {TarjetaRecetaComponent} from "../../componentes/tarjeta-receta/tarjeta-receta.component";
 
 @Component({
   selector: 'app-principal',
@@ -15,36 +17,52 @@ import {
     IonContent,
     IonIcon,
     IonSearchbar,
-    RouterLink
+    RouterLink,
+    TarjetaRecetaComponent
   ]
 })
 export class PrincipalPage {
 
-  // Recetas de ejemplo para el diseño de la página
-  recetas = [
+  // Recetas ficticias para mostrar en Inicio
+  recetas: Receta[] = [
     {
       id: 1,
       nombre: 'Tortilla de espinacas y queso',
+      imagen: 'assets/fotos/tortilla.png',
       tiempo: 10,
       dificultad: 'Fácil',
-      ingredientes: 4,
-      foto: 'assets/fotos/tortilla.png'
+      disponibles: 4,
+      ingredientes: ['huevo', 'espinacas', 'queso', 'aceite'],
+      vegetariano: true,
+      sinGluten: false,
+      rapido: true,
+      economico: true
     },
     {
       id: 2,
       nombre: 'Ensalada de garbanzos y aguacate',
+      imagen: 'assets/fotos/ensalada-garbanzos.png',
       tiempo: 5,
       dificultad: 'Fácil',
-      ingredientes: 4,
-      foto: 'assets/fotos/ensalada-garbanzos.png'
+      disponibles: 4,
+      ingredientes: ['garbanzos', 'aguacate', 'tomate', 'lechuga'],
+      vegetariano: true,
+      sinGluten: false,
+      rapido: true,
+      economico: true
     },
     {
-      id: 3,
-      nombre: 'Salteado de Garbanzos con Espinacas y Tomate',
+      id: 4,
+      nombre: 'Salteado de garbanzos con espinacas y tomate',
+      imagen: 'assets/fotos/salteado-garbanzos.png',
       tiempo: 5,
       dificultad: 'Fácil',
-      ingredientes: 4,
-      foto: 'assets/fotos/salteado-garbanzos.png'
+      disponibles: 4,
+      ingredientes: ['garbanzos', 'espinacas', 'tomate', 'cebolla'],
+      vegetariano: true,
+      sinGluten: false,
+      rapido: true,
+      economico: true
     }
   ];
 
