@@ -1,0 +1,97 @@
+<ion-content [fullscreen]="true">
+
+  <div class="pantalla-login-chef">
+
+    <!-- LOGO DE SMARTCHEF -->
+    <div class="cabecera-login">
+
+      <img
+        src="assets/fotos/logo-smartchef.png"
+        alt="SmartChef"
+        class="logo">
+
+      <span class="etiqueta-chef">
+        Modo Chef
+      </span>
+
+    </div>
+
+    <!-- PRESENTACIÓN -->
+    <div class="presentacion">
+
+      <h1>Acceso del Chef</h1>
+
+      <p>
+        Gestiona tus recetas de forma
+        fácil y rápida.
+      </p>
+
+    </div>
+
+    <!-- FORMULARIO DE INICIO DE SESIÓN -->
+    <div class="formulario-login">
+
+      <!-- CORREO ELECTRÓNICO -->
+      <div class="campo">
+
+        <label for="correo-chef">
+          Correo electrónico
+        </label>
+
+        <input
+          id="correo-chef"
+          type="email"
+          placeholder="Introduce tu correo"
+          autocomplete="email">
+
+      </div>
+
+      <!-- CONTRASEÑA -->
+      <div class="campo">
+
+        <label for="contrasena-chef">
+          Contraseña
+        </label>
+
+        <input
+          id="contrasena-chef"
+          type="password"
+          placeholder="Introduce tu contraseña"
+          autocomplete="current-password">
+
+      </div>
+
+      <!-- RECUPERAR CONTRASEÑA -->
+      <a
+        routerLink="/contrasena-olvidada-chef"
+        class="olvidar-contrasena">
+
+        ¿Olvidaste tu contraseña?
+
+      </a>
+
+      <!-- ACCESO AL MODO CHEF -->
+      <button
+        type="button"
+        class="boton-iniciar"
+        disabled>
+
+        Iniciar sesión
+
+      </button>
+
+      <!-- VOLVER AL CLIENTE -->
+      <a
+        routerLink="/home"
+        class="volver-cliente">
+
+        Volver al modo cliente
+
+      </a>
+
+    </div>
+
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,209 @@
+/* FONDO */
+ion-content {
+  --background: #ffffff;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.pantalla-login-chef {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 35px 28px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+}
+
+/* CABECERA */
+.cabecera-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+/* LOGO */
+.logo {
+  width: 145px;
+  height: 95px;
+  object-fit: contain;
+}
+
+/* ETIQUETA MODO CHEF */
+.etiqueta-chef {
+  padding: 7px 18px;
+
+  background: #e5f8ef;
+  border-radius: 20px;
+
+  color: #078d58;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* PRESENTACIÓN */
+.presentacion {
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.presentacion h1 {
+  margin: 0 0 10px;
+
+  color: #222222;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.presentacion p {
+  margin: 0;
+
+  color: #777777;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* FORMULARIO */
+.formulario-login {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+
+  width: 100%;
+}
+
+/* CAMPOS */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.campo label {
+  color: #333333;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.campo input {
+  width: 100%;
+  height: 48px;
+  padding: 0 15px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border: 1px solid #dedede;
+  border-radius: 12px;
+  outline: none;
+
+  color: #222222;
+  font-size: 14px;
+
+  transition: border-color 0.2s;
+}
+
+.campo input::placeholder {
+  color: #aaaaaa;
+}
+
+.campo input:focus {
+  border-color: var(--ion-color-primary);
+}
+
+/* RECUPERAR CONTRASEÑA */
+.olvidar-contrasena {
+  align-self: flex-end;
+
+  color: var(--ion-color-primary);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+/* BOTÓN INICIAR SESIÓN */
+.boton-iniciar {
+  width: 100%;
+  height: 48px;
+  margin-top: 8px;
+
+  background: var(--ion-color-primary);
+  border: none;
+  border-radius: 12px;
+
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+
+  box-shadow: 0 4px 10px #16bd7f25;
+}
+
+/* ESTADO TEMPORAL: BOTÓN DESACTIVADO */
+.boton-iniciar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* VOLVER AL MODO CLIENTE */
+.volver-cliente {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 45px;
+  box-sizing: border-box;
+
+  background: #f3f8f5;
+  border: 1px solid #dcece3;
+  border-radius: 12px;
+
+  color: #078d58;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* PANTALLAS PEQUEÑAS */
+@media (max-width: 380px) {
+
+  .pantalla-login-chef {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .cabecera-login {
+    margin-bottom: 18px;
+  }
+
+  .presentacion {
+    margin-bottom: 22px;
+  }
+
+  .presentacion h1 {
+    font-size: 22px;
+  }
+
+  .formulario-login {
+    gap: 13px;
+  }
+
+  .decoracion-inferior {
+    height: 140px;
+    min-height: 140px;
+  }
+
+  .imagen-comida {
+    width: 185px;
+    height: 145px;
+  }
+
+}

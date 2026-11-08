@@ -1,0 +1,164 @@
+/* FONDO */
+ion-content {
+  --background: #ffffff;
+}
+
+/* PANTALLA COMPLETA */
+.pantalla-recuperacion {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0 36px 18px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: white;
+}
+
+/* CABECERA */
+.cabecera-recuperacion {
+  position: relative;
+  height: 235px;
+  flex-shrink: 0;
+}
+
+/* LOGO */
+.logo {
+  position: absolute;
+  top: 100px;
+  left: 5%;
+
+  width: 125px;
+  height: auto;
+}
+
+/* ENSALADA */
+.ensalada {
+  position: absolute;
+  top: 38px;
+  right: -35px;
+
+  height: 245px;
+  width: auto;
+
+  object-fit: contain;
+}
+
+/* FORMULARIO */
+.formulario-recuperacion {
+  width: 100%;
+}
+
+/* TÍTULO */
+.formulario-recuperacion h1 {
+  margin: 0;
+
+  color: #29c58b;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* DESCRIPCIÓN */
+.descripcion {
+  max-width: 290px;
+  margin: 22px 0 24px;
+
+  color: #999999;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* CAMPO DEL CORREO */
+.campo {
+  width: 100%;
+  height: 39px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 10px;
+  margin-bottom: 27px;
+  box-sizing: border-box;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 13px;
+  background: white;
+}
+
+/* ICONO DEL CORREO */
+.campo ion-icon {
+  flex-shrink: 0;
+
+  color: var(--ion-color-primary);
+  font-size: 19px;
+}
+
+/* INPUT */
+.campo ion-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+
+  --color: #222222;
+  --placeholder-color: #999999;
+  --placeholder-opacity: 1;
+
+  font-size: 12px;
+}
+
+/* BOTÓN ENVIAR CORREO */
+.enviar-correo {
+  width: 100%;
+  height: 38px;
+
+  --background: #29c58b;
+  --color: white;
+  --border-radius: 11px;
+  --box-shadow: none;
+
+  margin: 0;
+  min-height: 0;
+
+  text-transform: none;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* VOLVER AL LOGIN */
+.volver-login {
+  display: block;
+
+  margin-top: 35px;
+
+  color: var(--ion-color-primary);
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* PIE INFERIOR */
+.pie-recuperacion {
+  margin-top: auto;
+  padding-top: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* HOJAS */
+.hojas {
+  color: var(--ion-color-primary);
+  font-size: 26px;
+}
