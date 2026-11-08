@@ -122,6 +122,14 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./paginas/registro-confirmacion/registro-confirmacion.page')
         .then(m => m.RegistroConfirmacionPage)
+  },
+  {
+    path: 'login-chef',
+    loadComponent: () => import('./paginas/login-chef/login-chef.page').then( m => m.LoginChefPage)
+  },
+  {
+    path: 'contrasena-olvidada-chef',
+    loadComponent: () => import('./paginas/contrasena-olvidada-chef/contrasena-olvidada-chef.page').then( m => m.ContrasenaOlvidadaChefPage)
   }
 
 ];
