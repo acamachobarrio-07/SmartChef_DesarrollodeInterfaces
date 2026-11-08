@@ -3,20 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { IonContent, IonIcon } from '@ionic/angular';
 import { TarjetaRecetaComponent } from '../../componentes/tarjeta-receta/tarjeta-receta.component';
-
-interface Receta {
-  id: number;
-  nombre: string;
-  imagen: string;
-  tiempo: number;
-  dificultad: 'Fácil' | 'Media' | 'Difícil';
-  disponibles: number;
-  ingredientes: string[];
-  vegetariano: boolean;
-  sinGluten: boolean;
-  rapido: boolean;
-  economico: boolean;
-}
+import { CabeceraComponent } from '../../componentes/cabecera/cabecera.component';
+import { Receta } from '../../modelos/receta';
 
 @Component({
   selector: 'app-recetas',
@@ -27,7 +15,8 @@ interface Receta {
     IonIcon,
     FormsModule,
     RouterLink,
-    TarjetaRecetaComponent
+    TarjetaRecetaComponent,
+    CabeceraComponent,
   ]
 })
 export class RecetasPage {

@@ -1,4 +1,3 @@
-
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IonCard, IonIcon } from '@ionic/angular';

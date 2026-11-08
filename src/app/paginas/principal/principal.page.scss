@@ -10,31 +10,6 @@ ion-content {
   padding: 25px 28px 24px;
 }
 
-/* CABECERA */
-.cabecera {
-  position: relative;
-  height: 85px;
-
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.logo {
-  width: 75px;
-  height: 55px;
-  object-fit: contain;
-}
-
-.usuario {
-  position: absolute;
-  right: 0;
-  top: 10px;
-
-  color: var(--ion-color-primary);
-  font-size: 38px;
-}
-
 /* BUSCADOR */
 ion-searchbar {
   --background: white;

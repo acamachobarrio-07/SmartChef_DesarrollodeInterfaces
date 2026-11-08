@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CabeceraComponent } from '../../componentes/cabecera/cabecera.component';
 import {
   IonContent,
   IonIcon,
@@ -18,7 +19,8 @@ import {TarjetaRecetaComponent} from "../../componentes/tarjeta-receta/tarjeta-r
     IonIcon,
     IonSearchbar,
     RouterLink,
-    TarjetaRecetaComponent
+    TarjetaRecetaComponent,
+    CabeceraComponent
   ]
 })
 export class PrincipalPage {
