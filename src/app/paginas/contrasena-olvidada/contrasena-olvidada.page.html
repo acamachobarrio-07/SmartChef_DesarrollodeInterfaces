@@ -1,3 +1,4 @@
+
 <ion-content [fullscreen]="true">
 
   <div class="pantalla-recuperacion">
@@ -30,7 +31,7 @@
         un enlace para restablecerla.
       </p>
 
-      <!-- Correo electrónico -->
+      <!-- CORREO ELECTRÓNICO -->
       <div class="campo">
 
         <ion-icon name="mail-outline"></ion-icon>
@@ -43,19 +44,23 @@
 
       </div>
 
-      <!-- Botón -->
-
+      <!-- ENVIAR CORREO -->
       <ion-button
         expand="block"
-        routerLink="/contrasena-olvidada-confirmacion"
+        routerLink="/contrasena-olvidada-confirmacion-chef"
         class="enviar-correo">
+
         Enviar correo
+
       </ion-button>
 
+      <!-- VOLVER AL LOGIN DEL CHEF -->
+      <a
+        routerLink="/login-chef"
+        class="volver-login">
 
-      <!-- Volver al login -->
-      <a routerLink="/login" class="volver-login">
         Volver al inicio de sesión
+
       </a>
 
     </div>
@@ -63,11 +68,13 @@
     <!-- PIE INFERIOR -->
     <div class="pie-recuperacion">
 
-      <ion-icon name="leaf" class="hojas"></ion-icon>
+      <ion-icon
+        name="leaf"
+        class="hojas">
+      </ion-icon>
 
     </div>
 
   </div>
 
 </ion-content>
-
