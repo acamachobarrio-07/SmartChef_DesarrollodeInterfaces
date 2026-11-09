@@ -11,4 +11,3 @@ import { IonContent } from '@ionic/angular';
 export class LoginChefPage {
 
 }
-

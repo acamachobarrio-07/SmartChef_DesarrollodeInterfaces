@@ -1,0 +1,23 @@
+<!-- CONFIRMACIÓN DE RECETA -->
+<section class="confirmacion">
+
+  <!-- ICONO DE CONFIRMACIÓN -->
+  <div class="icono-confirmacion">
+    <span aria-hidden="true">✓</span>
+  </div>
+
+  <!-- TÍTULO -->
+  <h2>¡Operación realizada!</h2>
+
+  <!-- MENSAJE RECIBIDO DEL PADRE -->
+  <p>{{ mensaje() }}</p>
+
+  <!-- BOTÓN ACEPTAR -->
+  <button
+    type="button"
+    class="boton-aceptar"
+    (click)="aceptar.emit()">
+    Aceptar
+  </button>
+
+</section>

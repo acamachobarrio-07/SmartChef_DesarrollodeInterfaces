@@ -1,0 +1,412 @@
+<!-- PÁGINA PRINCIPAL DEL CHEF -->
+<ion-content [fullscreen]="true">
+
+  <div class="pantalla-chef">
+
+    <!-- CABECERA -->
+    <header class="cabecera-chef">
+
+      <img
+        src="assets/fotos/logo-smartchef.png"
+        alt="SmartChef"
+        class="logo">
+
+      <!-- AVATAR PREDETERMINADO -->
+      <div class="avatar" aria-label="Perfil de Ana">
+        A
+      </div>
+
+    </header>
+
+    <!-- BIENVENIDA -->
+    <section class="bienvenida">
+
+      <h1>Hola Ana</h1>
+
+      <h2>Estás en el modo chef.</h2>
+
+      <p>
+        Gestiona y mantén actualizadas
+        tus recetas.
+      </p>
+
+    </section>
+
+    <!-- OPCIONES DEL CHEF -->
+    <section class="opciones-chef">
+
+      <!-- AÑADIR RECETA -->
+      <button
+        type="button"
+        class="opcion opcion-anadir"
+        (click)="modalAnadirAbierto = true">
+
+        <div class="icono-opcion">
+          <ion-icon name="add-outline"></ion-icon>
+        </div>
+
+        <div class="texto-opcion">
+          <h3>Añadir receta</h3>
+          <p>Crea una nueva receta</p>
+        </div>
+
+        <ion-icon
+          name="chevron-forward-outline"
+          class="flecha">
+        </ion-icon>
+
+      </button>
+
+      <!-- MODIFICAR RECETA -->
+      <article class="opcion opcion-modificar">
+
+        <div class="icono-opcion">
+          <ion-icon name="create-outline"></ion-icon>
+        </div>
+
+        <div class="texto-opcion">
+          <h3>Modificar receta</h3>
+          <p>Edita una receta existente</p>
+        </div>
+
+        <ion-icon
+          name="chevron-forward-outline"
+          class="flecha">
+        </ion-icon>
+
+      </article>
+
+      <!-- ELIMINAR RECETA -->
+      <article class="opcion opcion-eliminar">
+
+        <div class="icono-opcion">
+          <ion-icon name="trash-outline"></ion-icon>
+        </div>
+
+        <div class="texto-opcion">
+          <h3>Eliminar receta</h3>
+          <p>Elimina recetas del catálogo</p>
+        </div>
+
+        <ion-icon
+          name="chevron-forward-outline"
+          class="flecha">
+        </ion-icon>
+
+      </article>
+
+    </section>
+
+  </div>
+
+</ion-content>
+
+
+<!-- MODAL PARA AÑADIR RECETAS -->
+<ion-modal
+  [isOpen]="modalAnadirAbierto"
+  [initialBreakpoint]="0.85"
+  [breakpoints]="[0, 0.85, 1]"
+  (didDismiss)="alCerrarModalAnadir()">
+
+  <ng-template>
+
+    <ion-content class="ion-padding">
+
+      <div class="formulario-receta">
+
+        <!-- CABECERA DEL FORMULARIO -->
+        <div class="cabecera-formulario">
+
+          <h2>Añadir receta</h2>
+
+          <button
+            type="button"
+            class="cerrar-modal"
+            aria-label="Cerrar formulario"
+            (click)="modalAnadirAbierto = false">
+            ✕
+          </button>
+
+        </div>
+
+        <p class="descripcion-formulario">
+          Completa los datos de tu nueva receta.
+        </p>
+
+        <!-- TÍTULO -->
+        <div class="campo-receta">
+
+          <label for="titulo-receta">
+            Título de la receta
+          </label>
+
+          <input
+            id="titulo-receta"
+            type="text"
+            placeholder="Ej. Ensalada César">
+
+        </div>
+
+        <!-- TIEMPO Y RACIONES -->
+        <div class="fila-campos">
+
+          <div class="campo-receta">
+
+            <label for="tiempo-receta">
+              Tiempo (min)
+            </label>
+
+            <input
+              id="tiempo-receta"
+              type="number"
+              min="1"
+              placeholder="30">
+
+          </div>
+
+          <div class="campo-receta">
+
+            <label for="raciones-receta">
+              N.º de raciones
+            </label>
+
+            <input
+              id="raciones-receta"
+              type="number"
+              min="1"
+              placeholder="4">
+
+          </div>
+
+        </div>
+
+        <!-- DIFICULTAD -->
+        <div class="campo-receta">
+
+          <label for="dificultad-receta">
+            Dificultad
+          </label>
+
+          <select id="dificultad-receta">
+
+            <option value="" selected disabled>
+              Selecciona una dificultad
+            </option>
+
+            <option value="facil">Fácil</option>
+            <option value="media">Media</option>
+            <option value="dificil">Difícil</option>
+
+          </select>
+
+        </div>
+
+        <!-- IMAGEN DE LA RECETA -->
+        <div class="campo-receta">
+
+          <label for="imagen-receta">
+            Imagen de la receta
+          </label>
+
+          <input
+            id="imagen-receta"
+            type="file"
+            accept="image/*">
+
+          <small>
+            Selecciona una imagen de tu dispositivo.
+          </small>
+
+        </div>
+
+        <!-- INGREDIENTES -->
+        <div class="campo-receta">
+
+          <label>Ingredientes</label>
+
+          <!-- INGREDIENTES AÑADIDOS -->
+          @for (ingrediente of ingredientesReceta; track ingrediente; let i = $index) {
+
+            <div class="ingrediente-item">
+
+              <!-- CABECERA DEL INGREDIENTE -->
+              <div class="ingrediente-cabecera">
+
+                <span>Ingrediente {{ i + 1 }}</span>
+
+                <button
+                  type="button"
+                  class="eliminar-ingrediente"
+                  (click)="eliminarIngrediente(i)">
+                  Eliminar
+                </button>
+
+              </div>
+
+              <!-- NOMBRE Y BUSCADOR -->
+              <div class="campo-receta">
+
+                <label [for]="'ingrediente-nombre-' + i">
+                  Nombre del ingrediente
+                </label>
+
+                <div class="buscador-ingrediente">
+
+                  <input
+                    [id]="'ingrediente-nombre-' + i"
+                    type="text"
+                    [(ngModel)]="ingrediente.nombre"
+                    placeholder="Ej. Tomate">
+
+                  <!-- BUSCADOR PENDIENTE DE IMPLEMENTAR -->
+                  <button
+                    type="button"
+                    class="boton-buscar-ingrediente"
+                    disabled>
+                    Buscar
+                  </button>
+
+                </div>
+
+              </div>
+
+              <!-- CANTIDAD Y UNIDAD -->
+              <div class="fila-ingrediente">
+
+                <!-- CANTIDAD -->
+                <div class="campo-receta">
+
+                  <label [for]="'ingrediente-cantidad-' + i">
+                    Cantidad
+                  </label>
+
+                  <input
+                    [id]="'ingrediente-cantidad-' + i"
+                    type="number"
+                    min="0.01"
+                    step="any"
+                    [(ngModel)]="ingrediente.cantidad"
+                    placeholder="Ej. 200">
+
+                </div>
+
+                <!-- UNIDAD DE MEDIDA -->
+                <div class="campo-receta">
+
+                  <label [for]="'ingrediente-unidad-' + i">
+                    Unidad de medida
+                  </label>
+
+                  <select
+                    [id]="'ingrediente-unidad-' + i"
+                    [(ngModel)]="ingrediente.unidad">
+
+                    <option value="ud">Unidad</option>
+                    <option value="ml">Mililitros</option>
+                    <option value="g">Gramos</option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          }
+
+          <!-- AÑADIR INGREDIENTE -->
+          <button
+            type="button"
+            class="anadir-elemento"
+            (click)="anadirIngrediente()">
+            + Añadir ingrediente
+          </button>
+
+        </div>
+
+        <!-- PASOS DE PREPARACIÓN -->
+        <div class="campo-receta">
+
+          <label>Pasos de preparación</label>
+
+          <!-- PASOS AÑADIDOS -->
+          @for (paso of pasos; track paso; let i = $index) {
+
+            <div class="paso-item">
+
+              <!-- CABECERA DEL PASO -->
+              <div class="paso-cabecera">
+
+                <span>Paso {{ i + 1 }}</span>
+
+                <button
+                  type="button"
+                  class="eliminar-paso"
+                  (click)="eliminarPaso(i)">
+                  Eliminar
+                </button>
+
+              </div>
+
+              <!-- DESCRIPCIÓN DEL PASO -->
+              <textarea
+                [(ngModel)]="paso.descripcion"
+                [attr.aria-label]="'Descripción del paso ' + (i + 1)"
+                rows="3"
+                placeholder="Describe este paso...">
+              </textarea>
+
+            </div>
+
+          }
+
+          <!-- AÑADIR PASO -->
+          <button
+            type="button"
+            class="anadir-elemento"
+            (click)="anadirPaso()">
+            + Añadir paso
+          </button>
+
+        </div>
+
+        <!-- GUARDAR RECETA -->
+        <button
+          type="button"
+          class="guardar-receta"
+          (click)="guardarReceta()">
+          Guardar receta
+        </button>
+
+      </div>
+
+    </ion-content>
+
+  </ng-template>
+
+</ion-modal>
+
+
+<!-- MODAL DE CONFIRMACIÓN REUTILIZABLE -->
+<ion-modal
+  [isOpen]="modalConfirmacionAbierto"
+  [initialBreakpoint]="0.55"
+  [breakpoints]="[0, 0.55, 1]"
+  (didDismiss)="modalConfirmacionAbierto = false">
+
+  <ng-template>
+
+    <ion-content class="ion-padding">
+
+      <app-confirmacion-receta
+        [mensaje]="mensajeConfirmacion"
+        (aceptar)="modalConfirmacionAbierto = false">
+      </app-confirmacion-receta>
+
+    </ion-content>
+
+  </ng-template>
+
+</ion-modal>

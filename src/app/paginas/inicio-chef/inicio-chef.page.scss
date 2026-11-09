@@ -1,0 +1,553 @@
+/* FONDO */
+ion-content {
+  --background: #ffffff;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.pantalla-chef {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 25px 28px 40px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+}
+
+/* CABECERA */
+.cabecera-chef {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 75px;
+  margin-bottom: 35px;
+}
+
+/* LOGO */
+.logo {
+  width: 90px;
+  height: 65px;
+  object-fit: contain;
+}
+
+/* AVATAR PREDETERMINADO */
+.avatar {
+  position: absolute;
+  top: 8px;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+
+  background: #e5f8ef;
+  border: 2px solid var(--ion-color-primary);
+  border-radius: 50%;
+
+  color: #078d58;
+  font-size: 22px;
+  font-weight: 600;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* BIENVENIDA */
+.bienvenida {
+  margin-bottom: 35px;
+}
+
+.bienvenida h1 {
+  margin: 0 0 12px;
+
+  color: #202d27;
+  font-size: 29px;
+  font-weight: 700;
+}
+
+.bienvenida h2 {
+  margin: 0 0 8px;
+
+  color: #283a30;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.bienvenida p {
+  margin: 0;
+
+  color: #818b84;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* OPCIONES DEL CHEF */
+.opciones-chef {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* TARJETAS DE ACCIONES */
+.opcion {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  width: 100%;
+  min-height: 112px;
+  padding: 20px 17px;
+  box-sizing: border-box;
+
+  border: 1px solid transparent;
+  border-radius: 18px;
+
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px #00000008;
+}
+
+/* AÑADIR */
+.opcion-anadir {
+  background: #eaf9f1;
+  border-color: #d0f0df;
+}
+
+/* MODIFICAR */
+.opcion-modificar {
+  background: #fff8e8;
+  border-color: #f8edcf;
+}
+
+/* ELIMINAR */
+.opcion-eliminar {
+  background: #fff0f0;
+  border-color: #f8dede;
+}
+
+/* CONTENEDOR DEL ICONO */
+.icono-opcion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 49px;
+  height: 49px;
+  flex-shrink: 0;
+
+  border-radius: 14px;
+}
+
+.icono-opcion ion-icon {
+  font-size: 27px;
+}
+
+/* ICONO AÑADIR */
+.opcion-anadir .icono-opcion {
+  background: #d4f3e2;
+  color: #139765;
+}
+
+/* ICONO MODIFICAR */
+.opcion-modificar .icono-opcion {
+  background: #ffebba;
+  color: #c78b13;
+}
+
+/* ICONO ELIMINAR */
+.opcion-eliminar .icono-opcion {
+  background: #ffdddd;
+  color: #d65b5b;
+}
+
+/* TEXTOS DE LAS TARJETAS */
+.texto-opcion {
+  flex: 1;
+  min-width: 0;
+}
+
+.texto-opcion h3 {
+  margin: 0 0 6px;
+
+  color: #27362d;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.texto-opcion p {
+  margin: 0;
+
+  color: #778179;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* FLECHA */
+.flecha {
+  flex-shrink: 0;
+
+  color: #89948d;
+  font-size: 20px;
+}
+
+/* MODAL DESLIZANTE */
+ion-modal {
+  --border-radius: 24px 24px 0 0;
+  --background: #ffffff;
+}
+
+/* FORMULARIO */
+.formulario-receta {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 12px 8px 30px;
+  box-sizing: border-box;
+}
+
+/* CABECERA DEL FORMULARIO */
+.cabecera-formulario {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.cabecera-formulario h2 {
+  margin: 0;
+
+  color: #202d27;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+/* CERRAR MODAL */
+.cerrar-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
+  background: #f2f4f3;
+  border: none;
+  border-radius: 50%;
+
+  color: #555555;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+/* DESCRIPCIÓN */
+.descripcion-formulario {
+  margin: -8px 0 4px;
+
+  color: #818b84;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* CAMPOS */
+.campo-receta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  min-width: 0;
+}
+
+.campo-receta label {
+  color: #27362d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* INPUTS, SELECT Y TEXTAREA */
+.campo-receta input,
+.campo-receta select,
+.campo-receta textarea {
+  width: 100%;
+  min-height: 45px;
+  padding: 12px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border: 1px solid #dce5df;
+  border-radius: 12px;
+  outline: none;
+
+  color: #222222;
+  font-family: inherit;
+  font-size: 14px;
+
+  transition: border-color 0.2s;
+}
+
+/* CAMPOS SELECCIONADOS */
+.campo-receta input:focus,
+.campo-receta select:focus,
+.campo-receta textarea:focus {
+  border-color: var(--ion-color-primary);
+}
+
+/* PLACEHOLDER */
+.campo-receta input::placeholder,
+.campo-receta textarea::placeholder {
+  color: #a0a9a3;
+}
+
+/* TIEMPO Y RACIONES */
+.fila-campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* TEXTAREA */
+.campo-receta textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* SUBIR IMAGEN */
+.campo-receta input[type="file"] {
+  height: auto;
+  padding: 15px 12px;
+
+  background: #f4fbf7;
+  border: 1px dashed var(--ion-color-primary);
+
+  font-size: 12px;
+}
+
+/* BOTÓN DEL SELECTOR DE ARCHIVOS */
+.campo-receta input[type="file"]::file-selector-button {
+  padding: 9px 12px;
+  margin-right: 10px;
+
+  background: #dff5e9;
+  border: none;
+  border-radius: 8px;
+
+  color: #078d58;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* AYUDA DE LA IMAGEN */
+.campo-receta small {
+  color: #8a938d;
+  font-size: 11px;
+}
+
+/* TARJETA DE INGREDIENTE */
+.ingrediente-item {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  padding: 14px;
+
+  background: #ffffff;
+  border: 1px solid #dce5df;
+  border-radius: 12px;
+}
+
+/* CABECERA DEL INGREDIENTE */
+.ingrediente-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #27362d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ELIMINAR INGREDIENTE */
+.eliminar-ingrediente {
+  background: transparent;
+  border: none;
+
+  color: #d65b5b;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* BUSCADOR DE INGREDIENTES */
+.buscador-ingrediente {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.buscador-ingrediente input {
+  flex: 1;
+  width: 0;
+  min-width: 0;
+}
+
+/* BOTÓN BUSCAR */
+.boton-buscar-ingrediente {
+  height: 45px;
+  padding: 0 15px;
+  flex-shrink: 0;
+
+  background: var(--ion-color-primary);
+  border: none;
+  border-radius: 12px;
+
+  color: white;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* BUSCADOR DESACTIVADO */
+.boton-buscar-ingrediente:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* CANTIDAD Y UNIDAD */
+.fila-ingrediente {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* TARJETA DE PASO */
+.paso-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 12px;
+
+  background: #ffffff;
+  border: 1px solid #dce5df;
+  border-radius: 12px;
+}
+
+/* CABECERA DEL PASO */
+.paso-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #27362d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ELIMINAR PASO */
+.eliminar-paso {
+  background: transparent;
+  border: none;
+
+  color: #d65b5b;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* BOTÓN AÑADIR INGREDIENTE O PASO */
+.anadir-elemento {
+  width: 100%;
+  padding: 13px;
+
+  background: #e5f8ef;
+  border: 1px dashed var(--ion-color-primary);
+  border-radius: 12px;
+
+  color: #078d58;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* BOTÓN GUARDAR */
+.guardar-receta {
+  width: 100%;
+  min-height: 49px;
+  margin-top: 8px;
+
+  background: var(--ion-color-primary);
+  border: none;
+  border-radius: 12px;
+
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+
+  box-shadow: 0 4px 12px rgba(22, 189, 127, 0.15);
+}
+
+/* GUARDAR DESACTIVADO */
+.guardar-receta:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* PANTALLAS PEQUEÑAS */
+@media (max-width: 380px) {
+
+  .pantalla-chef {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .bienvenida h1 {
+    font-size: 26px;
+  }
+
+  .opcion {
+    gap: 10px;
+    padding: 16px 12px;
+  }
+
+  .texto-opcion h3 {
+    font-size: 14px;
+  }
+
+  .texto-opcion p {
+    font-size: 11px;
+  }
+
+  .formulario-receta {
+    gap: 15px;
+  }
+
+  .fila-campos,
+  .fila-ingrediente {
+    gap: 10px;
+  }
+
+  .cabecera-formulario h2 {
+    font-size: 21px;
+  }
+
+  .boton-buscar-ingrediente {
+    padding: 0 10px;
+  }
+
+}

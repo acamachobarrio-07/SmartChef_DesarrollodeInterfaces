@@ -133,6 +133,10 @@ export const routes: Routes = [
   },  {
     path: 'contrasena-olvidada-confirmacion-chef',
     loadComponent: () => import('./paginas/contrasena-olvidada-confirmacion-chef/contrasena-olvidada-confirmacion-chef.page').then( m => m.ContrasenaOlvidadaConfirmacionChefPage)
+  },
+  {
+    path: 'inicio-chef',
+    loadComponent: () => import('./paginas/inicio-chef/inicio-chef.page').then( m => m.InicioChefPage)
   }
 
 
