@@ -1,0 +1,306 @@
+/* CONTENEDOR DEL FORMULARIO */
+.formulario-receta {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 12px 8px 30px;
+  box-sizing: border-box;
+}
+
+/* CABECERA DEL FORMULARIO */
+.cabecera-formulario {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.cabecera-formulario h2 {
+  margin: 0;
+  color: #202d27;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+/* BOTÓN CERRAR */
+.cerrar-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
+  background: #f2f4f3;
+  border: none;
+  border-radius: 50%;
+
+  color: #555555;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+/* DESCRIPCIÓN DEL FORMULARIO */
+.descripcion-formulario {
+  margin: -8px 0 4px;
+  color: #818b84;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* CAMPOS DEL FORMULARIO */
+.campo-receta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.campo-receta label {
+  color: #27362d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* INPUTS, SELECT Y TEXTAREA */
+.campo-receta input,
+.campo-receta select,
+.campo-receta textarea {
+  width: 100%;
+  min-height: 45px;
+  padding: 12px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border: 1px solid #dce5df;
+  border-radius: 12px;
+  outline: none;
+
+  color: #222222;
+  font-family: inherit;
+  font-size: 14px;
+
+  transition: border-color 0.2s;
+}
+
+/* CAMPOS SELECCIONADOS */
+.campo-receta input:focus,
+.campo-receta select:focus,
+.campo-receta textarea:focus {
+  border-color: var(--ion-color-primary);
+}
+
+/* TEXTO DE AYUDA */
+.campo-receta input::placeholder,
+.campo-receta textarea::placeholder {
+  color: #a0a9a3;
+}
+
+/* TIEMPO Y RACIONES */
+.fila-campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* TEXTAREA DE LOS PASOS */
+.campo-receta textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* SELECTOR DE IMÁGENES */
+.campo-receta input[type="file"] {
+  height: auto;
+  padding: 15px 12px;
+  background: #f4fbf7;
+  border: 1px dashed var(--ion-color-primary);
+  font-size: 12px;
+}
+
+.campo-receta input[type="file"]::file-selector-button {
+  padding: 9px 12px;
+  margin-right: 10px;
+
+  background: #dff5e9;
+  border: none;
+  border-radius: 8px;
+
+  color: #078d58;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.campo-receta small {
+  color: #8a938d;
+  font-size: 11px;
+}
+
+/* TARJETA DE CADA INGREDIENTE */
+.ingrediente-item {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid #dce5df;
+  border-radius: 12px;
+}
+
+/* CABECERA DEL INGREDIENTE */
+.ingrediente-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #27362d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* BOTÓN ELIMINAR INGREDIENTE */
+.eliminar-ingrediente {
+  background: transparent;
+  border: none;
+  color: #d65b5b;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* NOMBRE Y BOTÓN BUSCAR */
+.buscador-ingrediente {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.buscador-ingrediente input {
+  flex: 1;
+  width: 0;
+  min-width: 0;
+}
+
+/* BOTÓN BUSCAR FICTICIO */
+.boton-buscar-ingrediente {
+  height: 45px;
+  padding: 0 15px;
+  flex-shrink: 0;
+
+  background: var(--ion-color-primary);
+  border: none;
+  border-radius: 12px;
+
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.boton-buscar-ingrediente:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* CANTIDAD Y UNIDAD */
+.fila-ingrediente {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* TARJETA DE CADA PASO */
+.paso-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #dce5df;
+  border-radius: 12px;
+}
+
+/* CABECERA DEL PASO */
+.paso-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #27362d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* BOTÓN ELIMINAR PASO */
+.eliminar-paso {
+  background: transparent;
+  border: none;
+  color: #d65b5b;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* BOTÓN AÑADIR INGREDIENTE O PASO */
+.anadir-elemento {
+  width: 100%;
+  padding: 13px;
+
+  background: #e5f8ef;
+  border: 1px dashed var(--ion-color-primary);
+  border-radius: 12px;
+
+  color: #078d58;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* BOTÓN GUARDAR */
+.guardar-receta {
+  width: 100%;
+  min-height: 49px;
+  margin-top: 8px;
+
+  background: var(--ion-color-primary);
+  border: none;
+  border-radius: 12px;
+
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+
+  box-shadow: 0 4px 12px rgba(22, 189, 127, 0.15);
+  cursor: pointer;
+}
+
+/* PANTALLAS PEQUEÑAS */
+@media (max-width: 380px) {
+
+  .formulario-receta {
+    gap: 15px;
+  }
+
+  .fila-campos,
+  .fila-ingrediente {
+    gap: 10px;
+  }
+
+  .cabecera-formulario h2 {
+    font-size: 21px;
+  }
+
+  .boton-buscar-ingrediente {
+    padding: 0 10px;
+  }
+
+}
