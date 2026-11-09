@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { IonContent, IonIcon, IonModal } from '@ionic/angular';
-
+import { FormularioRecetaComponent } from '../../componentes/formulario-receta/formulario-receta.component';
 import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-receta/confirmacion-receta.component';
 
 import { addIcons } from 'ionicons';
@@ -20,8 +19,8 @@ import {
     IonContent,
     IonIcon,
     IonModal,
-    FormsModule,
-    ConfirmacionRecetaComponent
+    ConfirmacionRecetaComponent,
+    FormularioRecetaComponent
   ]
 })
 export class InicioChefPage {
@@ -38,17 +37,9 @@ export class InicioChefPage {
   // INDICA SI DEBEMOS MOSTRAR LA CONFIRMACIÓN
   confirmacionPendiente = false;
 
-  // INGREDIENTES DE LA RECETA
-  ingredientesReceta: {
-    nombre: string;
-    cantidad: number | null;
-    unidad: string;
-  }[] = [];
+  // Control del modal para seleccionar una receta
+  modalSeleccionAbierto = false;
 
-  // PASOS DE PREPARACIÓN
-  pasos: {
-    descripcion: string;
-  }[] = [];
 
   constructor() {
     addIcons({
@@ -59,40 +50,12 @@ export class InicioChefPage {
     });
   }
 
-  // AÑADIR INGREDIENTE
-  anadirIngrediente(): void {
-    this.ingredientesReceta.push({
-      nombre: '',
-      cantidad: null,
-      unidad: 'ud'
-    });
-  }
-
-  // ELIMINAR INGREDIENTE
-  eliminarIngrediente(indice: number): void {
-    this.ingredientesReceta.splice(indice, 1);
-  }
-
-  // AÑADIR PASO
-  anadirPaso(): void {
-    this.pasos.push({
-      descripcion: ''
-    });
-  }
-
-  // ELIMINAR PASO
-  eliminarPaso(indice: number): void {
-    this.pasos.splice(indice, 1);
-  }
-
-  // SIMULAR EL GUARDADO DE LA RECETA
   guardarReceta(): void {
     this.mensajeConfirmacion = 'Receta añadida correctamente.';
     this.confirmacionPendiente = true;
     this.modalAnadirAbierto = false;
   }
 
-  // CUANDO TERMINA DE CERRARSE EL FORMULARIO
   alCerrarModalAnadir(): void {
     this.modalAnadirAbierto = false;
 

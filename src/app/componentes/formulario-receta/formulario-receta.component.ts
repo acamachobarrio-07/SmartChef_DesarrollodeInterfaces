@@ -1,5 +1,23 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
+// DATOS QUE UTILIZARÁ EL FORMULARIO
+export interface DatosFormularioReceta {
+  titulo: string;
+  tiempo: number | null;
+  raciones: number | null;
+  dificultad: string;
+
+  ingredientes: {
+    nombre: string;
+    cantidad: number | null;
+    unidad: string;
+  }[];
+
+  pasos: {
+    descripcion: string;
+  }[];
+}
 
 @Component({
   selector: 'app-formulario-receta',
@@ -9,26 +27,51 @@ import { FormsModule } from '@angular/forms';
 })
 export class FormularioRecetaComponent {
 
-  // Indica si el formulario es para añadir o modificar
+  // MODO DEL FORMULARIO
   modo = input<'anadir' | 'modificar'>('anadir');
 
-  // Avisamos a la página padre cuando se pulsa Guardar
-  guardar = output<void>();
+  // RECETA QUE QUEREMOS MODIFICAR
+  receta = input<DatosFormularioReceta | null>(null);
 
-  // Avisamos a la página padre cuando se pulsa Cerrar
+  // EVENTOS PARA COMUNICARNOS CON LA PÁGINA PADRE
+  guardar = output<DatosFormularioReceta>();
   cerrar = output<void>();
 
-  // INGREDIENTES
-  ingredientesReceta: {
-    nombre: string;
-    cantidad: number | null;
-    unidad: string;
-  }[] = [];
+  // CAMPOS GENERALES
+  titulo = '';
+  tiempo: number | null = null;
+  raciones: number | null = null;
+  dificultad = '';
 
-  // PASOS DE PREPARACIÓN
-  pasos: {
-    descripcion: string;
-  }[] = [];
+  // INGREDIENTES
+  ingredientesReceta: DatosFormularioReceta['ingredientes'] = [];
+
+  // PASOS
+  pasos: DatosFormularioReceta['pasos'] = [];
+
+  constructor() {
+
+    // RELLENAR EL FORMULARIO SI RECIBIMOS UNA RECETA
+    effect(() => {
+      const datos = this.receta();
+
+      if (datos) {
+        this.titulo = datos.titulo;
+        this.tiempo = datos.tiempo;
+        this.raciones = datos.raciones;
+        this.dificultad = datos.dificultad;
+
+        this.ingredientesReceta = datos.ingredientes.map(
+          ingrediente => ({ ...ingrediente })
+        );
+
+        this.pasos = datos.pasos.map(
+          paso => ({ ...paso })
+        );
+      }
+    });
+
+  }
 
   // AÑADIR INGREDIENTE
   anadirIngrediente(): void {
@@ -54,6 +97,22 @@ export class FormularioRecetaComponent {
   // ELIMINAR PASO
   eliminarPaso(indice: number): void {
     this.pasos.splice(indice, 1);
+  }
+
+  // ENVIAR LOS DATOS A LA PÁGINA PADRE
+  guardarFormulario(): void {
+    this.guardar.emit({
+      titulo: this.titulo,
+      tiempo: this.tiempo,
+      raciones: this.raciones,
+      dificultad: this.dificultad,
+      ingredientes: this.ingredientesReceta.map(
+        ingrediente => ({ ...ingrediente })
+      ),
+      pasos: this.pasos.map(
+        paso => ({ ...paso })
+      )
+    });
   }
 
 }

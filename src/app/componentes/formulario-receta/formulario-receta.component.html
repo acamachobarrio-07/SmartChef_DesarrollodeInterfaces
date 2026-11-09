@@ -1,3 +1,4 @@
+
 <!-- FORMULARIO REUTILIZABLE DE RECETAS -->
 <div class="formulario-receta">
 
@@ -18,6 +19,7 @@
 
   </div>
 
+  <!-- DESCRIPCIÓN -->
   <p class="descripcion-formulario">
     @if (modo() === 'anadir') {
       Completa los datos de tu nueva receta.
@@ -36,6 +38,7 @@
     <input
       id="titulo-receta"
       type="text"
+      [(ngModel)]="titulo"
       placeholder="Ej. Ensalada César">
 
   </div>
@@ -43,6 +46,7 @@
   <!-- TIEMPO Y RACIONES -->
   <div class="fila-campos">
 
+    <!-- TIEMPO -->
     <div class="campo-receta">
 
       <label for="tiempo-receta">
@@ -53,10 +57,12 @@
         id="tiempo-receta"
         type="number"
         min="1"
+        [(ngModel)]="tiempo"
         placeholder="30">
 
     </div>
 
+    <!-- RACIONES -->
     <div class="campo-receta">
 
       <label for="raciones-receta">
@@ -67,6 +73,7 @@
         id="raciones-receta"
         type="number"
         min="1"
+        [(ngModel)]="raciones"
         placeholder="4">
 
     </div>
@@ -80,9 +87,11 @@
       Dificultad
     </label>
 
-    <select id="dificultad-receta">
+    <select
+      id="dificultad-receta"
+      [(ngModel)]="dificultad">
 
-      <option value="" selected disabled>
+      <option value="" disabled>
         Selecciona una dificultad
       </option>
 
@@ -107,7 +116,11 @@
       accept="image/*">
 
     <small>
-      Selecciona una imagen de tu dispositivo.
+      @if (modo() === 'anadir') {
+        Selecciona una imagen de tu dispositivo.
+      } @else {
+        Selecciona otra imagen si quieres cambiar la actual.
+      }
     </small>
 
   </div>
@@ -117,6 +130,7 @@
 
     <label>Ingredientes</label>
 
+    <!-- INGREDIENTES AÑADIDOS -->
     @for (ingrediente of ingredientesReceta; track ingrediente; let i = $index) {
 
       <div class="ingrediente-item">
@@ -165,6 +179,7 @@
         <!-- CANTIDAD Y UNIDAD -->
         <div class="fila-ingrediente">
 
+          <!-- CANTIDAD -->
           <div class="campo-receta">
 
             <label [for]="'ingrediente-cantidad-' + i">
@@ -181,6 +196,7 @@
 
           </div>
 
+          <!-- UNIDAD DE MEDIDA -->
           <div class="campo-receta">
 
             <label [for]="'ingrediente-unidad-' + i">
@@ -220,6 +236,7 @@
 
     <label>Pasos de preparación</label>
 
+    <!-- PASOS AÑADIDOS -->
     @for (paso of pasos; track paso; let i = $index) {
 
       <div class="paso-item">
@@ -260,14 +277,15 @@
 
   </div>
 
-  <!-- GUARDAR CAMBIOS -->
+  <!-- GUARDAR RECETA O CAMBIOS -->
   <button
     type="button"
     class="guardar-receta"
-    (click)="guardar.emit()">
+    (click)="guardarFormulario()">
 
     {{ modo() === 'anadir' ? 'Guardar receta' : 'Guardar cambios' }}
 
   </button>
 
 </div>
+
