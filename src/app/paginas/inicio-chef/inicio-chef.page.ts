@@ -46,6 +46,8 @@ export class InicioChefPage {
   // Control del modal para seleccionar una receta
   modalSeleccionAbierto = false;
   modalModificarAbierto = false;
+  modalEliminarAbierto = false;
+
 
   // RECETAS FICTICIAS PARA EL CHEF
   recetasChef: Receta[] = RECETAS_EJEMPLO.map(receta => ({
@@ -59,6 +61,15 @@ export class InicioChefPage {
 
   // ESPERAR A QUE SE CIERRE EL LISTADO
   abrirModificarPendiente = false;
+
+  // Indica qué queremos hacer en el listado
+  modoSeleccion: 'modificar' | 'eliminar' = 'modificar';
+
+  // Espera para abrir el aviso de eliminación
+  abrirEliminarPendiente = false;
+
+  // Espera para mostrar el mensaje de éxito
+  confirmacionEliminacionPendiente = false;
 
 
   constructor() {
@@ -82,6 +93,22 @@ export class InicioChefPage {
     if (this.confirmacionPendiente) {
       this.confirmacionPendiente = false;
       this.modalConfirmacionAbierto = true;
+    }
+  }
+
+
+  // Abrir el listado para modificar o eliminar
+  abrirSeleccion(modo: 'modificar' | 'eliminar'): void {
+    this.modoSeleccion = modo;
+    this.modalSeleccionAbierto = true;
+  }
+
+  // Decidir qué hacer con la receta seleccionada
+  manejarSeleccionReceta(receta: Receta): void {
+    if (this.modoSeleccion === 'modificar') {
+      this.seleccionarRecetaParaModificar(receta);
+    } else {
+      this.seleccionarRecetaParaEliminar(receta);
     }
   }
 
@@ -114,15 +141,23 @@ export class InicioChefPage {
     this.modalSeleccionAbierto = false;
   }
 
-  // ABRIR EL FORMULARIO DESPUÉS DE CERRAR EL LISTADO
+
+  // Cuando termina de cerrarse el listado
   alCerrarSeleccion(): void {
     this.modalSeleccionAbierto = false;
 
     if (this.abrirModificarPendiente) {
+      // Abrir el formulario de modificación
       this.abrirModificarPendiente = false;
       this.modalModificarAbierto = true;
+
+    } else if (this.abrirEliminarPendiente) {
+      // Abrir el aviso de eliminación
+      this.abrirEliminarPendiente = false;
+      this.modalEliminarAbierto = true;
     }
   }
+
 
   // SIMULAR LA MODIFICACIÓN
   guardarModificacion(datos: DatosFormularioReceta): void {
@@ -166,5 +201,45 @@ export class InicioChefPage {
       this.modalConfirmacionAbierto = true;
     }
   }
+
+
+  // Seleccionar la receta que queremos eliminar
+  seleccionarRecetaParaEliminar(receta: Receta): void {
+    this.recetaSeleccionada = receta;
+    this.abrirEliminarPendiente = true;
+    this.modalSeleccionAbierto = false;
+  }
+
+  // Confirmar la eliminación
+  confirmarEliminar(): void {
+    if (!this.recetaSeleccionada) {
+      return;
+    }
+
+    // Eliminar la receta del listado ficticio
+    const id = this.recetaSeleccionada.id;
+
+    this.recetasChef = this.recetasChef.filter(
+      receta => receta.id !== id
+    );
+
+    // Preparar el mensaje de éxito
+    this.mensajeConfirmacion = 'Receta eliminada correctamente.';
+    this.confirmacionEliminacionPendiente = true;
+
+    // Cerrar el aviso
+    this.modalEliminarAbierto = false;
+  }
+
+  // Mostrar la confirmación al cerrarse el aviso
+  alCerrarModalEliminar(): void {
+    this.modalEliminarAbierto = false;
+
+    if (this.confirmacionEliminacionPendiente) {
+      this.confirmacionEliminacionPendiente = false;
+      this.modalConfirmacionAbierto = true;
+    }
+  }
+
 
 }

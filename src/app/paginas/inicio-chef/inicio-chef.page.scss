@@ -553,3 +553,113 @@ ion-modal {
 }
 
 
+/* MODAL DE ADVERTENCIA - ELIMINAR */
+
+/* CONTENEDOR DEL AVISO */
+.aviso-eliminar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 25px 15px 30px;
+  box-sizing: border-box;
+
+  text-align: center;
+}
+
+/* CÍRCULO ROJO DEL ICONO */
+.icono-aviso {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 75px;
+  height: 75px;
+
+  background: #fff0f0;
+  border-radius: 50%;
+
+  color: #d65b5b;
+}
+
+/* ICONO DE PAPELERA */
+.icono-aviso ion-icon {
+  font-size: 35px;
+}
+
+/* TÍTULO */
+.aviso-eliminar h2 {
+  margin: 5px 0 0;
+
+  color: #202d27;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* MENSAJES */
+.aviso-eliminar p {
+  margin: 0;
+
+  color: #818b84;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* NOMBRE DE LA RECETA */
+.aviso-eliminar strong {
+  color: #27362d;
+  font-weight: 700;
+}
+
+/* CONTENEDOR DE BOTONES */
+.acciones-eliminar {
+  display: flex;
+  gap: 10px;
+
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* ESTILOS COMPARTIDOS DE BOTONES */
+.acciones-eliminar button {
+  flex: 1;
+  min-height: 48px;
+
+  border: none;
+  border-radius: 12px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* BOTÓN CANCELAR */
+.boton-cancelar {
+  background: #f2f4f3;
+  color: #46564c;
+}
+
+/* BOTÓN ELIMINAR */
+.boton-confirmar-eliminar {
+  background: #d65b5b;
+  color: #ffffff;
+}
+
+/* ADAPTACIÓN A PANTALLAS PEQUEÑAS */
+@media (max-width: 380px) {
+
+  .aviso-eliminar {
+    padding: 20px 10px;
+  }
+
+  .acciones-eliminar button {
+    font-size: 12px;
+  }
+
+}
+

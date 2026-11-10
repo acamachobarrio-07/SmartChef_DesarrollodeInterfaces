@@ -62,7 +62,8 @@
       <button
         type="button"
         class="opcion opcion-modificar"
-        (click)="modalSeleccionAbierto = true">
+        (click)="abrirSeleccion('modificar')"
+      >
 
         <div class="icono-opcion">
           <ion-icon name="create-outline"></ion-icon>
@@ -81,8 +82,12 @@
       </button>
 
 
+
       <!-- ELIMINAR RECETA -->
-      <article class="opcion opcion-eliminar">
+      <button
+        type="button"
+        class="opcion opcion-eliminar"
+        (click)="abrirSeleccion('eliminar')">
 
         <div class="icono-opcion">
           <ion-icon name="trash-outline"></ion-icon>
@@ -98,7 +103,7 @@
           class="flecha">
         </ion-icon>
 
-      </article>
+      </button>
 
     </section>
 
@@ -167,19 +172,36 @@
 
     <ion-content class="ion-padding">
 
+
+      <!-- LISTADO REUTILIZABLE DE RECETAS -->
       <div class="lista-recetas-chef">
 
-        <h2>Selecciona una receta</h2>
+        <!-- TÍTULO SEGÚN EL MODO -->
+        <h2>
+          {{ modoSeleccion === 'modificar'
+          ? 'Modificar receta'
+          : 'Eliminar receta' }}
+        </h2>
 
-        <p>Elige la receta que quieres modificar.</p>
+        <!-- DESCRIPCIÓN SEGÚN EL MODO -->
+        <p>
+          {{ modoSeleccion === 'modificar'
+          ? 'Selecciona la receta que quieres modificar.'
+          : 'Selecciona la receta que quieres eliminar.' }}
+        </p>
 
+        <!-- TARJETAS DE RECETAS -->
         @for (receta of recetasChef; track receta.id) {
 
           <app-tarjeta-receta
             [receta]="receta"
-            modo="modificar"
-            (seleccionar)="seleccionarRecetaParaModificar($event)">
+            [modo]="modoSeleccion"
+            (seleccionar)="manejarSeleccionReceta($event)">
           </app-tarjeta-receta>
+
+        } @empty {
+
+          <p>No hay recetas disponibles.</p>
 
         }
 
@@ -219,5 +241,66 @@
   </ng-template>
 
 </ion-modal>
+
+
+
+<!-- MODAL DE ADVERTENCIA PARA ELIMINAR -->
+<ion-modal
+  [isOpen]="modalEliminarAbierto"
+  [initialBreakpoint]="0.5"
+  [breakpoints]="[0, 0.5, 1]"
+  (didDismiss)="alCerrarModalEliminar()">
+
+  <ng-template>
+
+    <ion-content class="ion-padding">
+
+      <div class="aviso-eliminar">
+
+        <!-- ICONO DE ELIMINAR -->
+        <div class="icono-aviso">
+          <ion-icon name="trash-outline"></ion-icon>
+        </div>
+
+        <!-- TÍTULO -->
+        <h2>¿Eliminar receta?</h2>
+
+        <!-- MENSAJE -->
+        <p>
+          ¿Seguro que quieres eliminar
+          <strong>{{ recetaSeleccionada?.nombre }}</strong>?
+        </p>
+
+        <p>Esta acción no se puede deshacer.</p>
+
+        <!-- BOTONES -->
+        <div class="acciones-eliminar">
+
+          <!-- CANCELAR -->
+          <button
+            type="button"
+            class="boton-cancelar"
+            (click)="modalEliminarAbierto = false">
+            Cancelar
+          </button>
+
+          <!-- CONFIRMAR -->
+          <button
+            type="button"
+            class="boton-confirmar-eliminar"
+            (click)="confirmarEliminar()">
+            Eliminar receta
+          </button>
+
+        </div>
+
+      </div>
+
+    </ion-content>
+
+  </ng-template>
+
+</ion-modal>
+
 
 

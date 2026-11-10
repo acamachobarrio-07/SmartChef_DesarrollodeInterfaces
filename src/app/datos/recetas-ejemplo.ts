@@ -1,4 +1,3 @@
-
 import { Receta } from '../modelos/receta';
 
 // RECETAS FICTICIAS COMPARTIDAS
