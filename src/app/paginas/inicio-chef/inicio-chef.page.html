@@ -155,3 +155,69 @@
 
 </ion-modal>
 
+
+<!-- MODAL PARA SELECCIONAR RECETA -->
+<ion-modal
+  [isOpen]="modalSeleccionAbierto"
+  [initialBreakpoint]="0.9"
+  [breakpoints]="[0, 0.9, 1]"
+  (didDismiss)="alCerrarSeleccion()">
+
+  <ng-template>
+
+    <ion-content class="ion-padding">
+
+      <div class="lista-recetas-chef">
+
+        <h2>Selecciona una receta</h2>
+
+        <p>Elige la receta que quieres modificar.</p>
+
+        @for (receta of recetasChef; track receta.id) {
+
+          <app-tarjeta-receta
+            [receta]="receta"
+            modo="modificar"
+            (seleccionar)="seleccionarRecetaParaModificar($event)">
+          </app-tarjeta-receta>
+
+        }
+
+      </div>
+
+    </ion-content>
+
+  </ng-template>
+
+</ion-modal>
+
+
+<!-- MODAL PARA MODIFICAR RECETA -->
+<ion-modal
+  [isOpen]="modalModificarAbierto"
+  [initialBreakpoint]="0.85"
+  [breakpoints]="[0, 0.85, 1]"
+  (didDismiss)="alCerrarModalModificar()">
+
+  <ng-template>
+
+    <ion-content class="ion-padding">
+
+      @if (datosModificar) {
+
+        <app-formulario-receta
+          modo="modificar"
+          [receta]="datosModificar"
+          (guardar)="guardarModificacion($event)"
+          (cerrar)="modalModificarAbierto = false">
+        </app-formulario-receta>
+
+      }
+
+    </ion-content>
+
+  </ng-template>
+
+</ion-modal>
+
+
