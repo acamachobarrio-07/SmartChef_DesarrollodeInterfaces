@@ -11,10 +11,16 @@
         alt="SmartChef"
         class="logo">
 
-      <!-- AVATAR PREDETERMINADO -->
-      <div class="avatar" aria-label="Perfil de Ana">
+
+      <!-- AVATAR DEL CHEF -->
+      <button
+        type="button"
+        id="boton-perfil-chef"
+        class="avatar"
+        aria-label="Abrir menú de perfil de Ana">
         A
-      </div>
+      </button>
+
 
     </header>
 
@@ -82,7 +88,6 @@
       </button>
 
 
-
       <!-- ELIMINAR RECETA -->
       <button
         type="button"
@@ -110,6 +115,27 @@
   </div>
 
 </ion-content>
+
+<!-- MENÚ DESPLEGABLE DEL PERFIL -->
+<ion-popover
+  #popoverPerfil
+  trigger="boton-perfil-chef"
+  triggerAction="click"
+  side="bottom"
+  alignment="end"
+  (didDismiss)="alCerrarMenuPerfil()">
+
+  <ng-template>
+
+    <app-menu-perfil
+      [nombre]="datosPerfil.nombre"
+      (editarPerfil)="abrirEdicionPerfil(); popoverPerfil.dismiss()">
+    </app-menu-perfil>
+
+  </ng-template>
+
+</ion-popover>
+
 
 
 <!-- MODAL PARA AÑADIR RECETAS -->
@@ -243,7 +269,6 @@
 </ion-modal>
 
 
-
 <!-- MODAL DE ADVERTENCIA PARA ELIMINAR -->
 <ion-modal
   [isOpen]="modalEliminarAbierto"
@@ -301,6 +326,3 @@
   </ng-template>
 
 </ion-modal>
-
-
-

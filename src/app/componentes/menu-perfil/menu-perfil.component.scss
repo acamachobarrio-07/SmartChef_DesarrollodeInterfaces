@@ -1,0 +1,126 @@
+/* CONTENEDOR PRINCIPAL DEL MENÚ */
+.menu-perfil {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+
+  background: var(--ion-background-color, #ffffff);
+  border-radius: 16px;
+
+  color: var(--ion-text-color, #202d27);
+  font-family: inherit;
+}
+
+/* INFORMACIÓN DEL USUARIO */
+.informacion-usuario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 8px 5px 14px;
+}
+
+/* AVATAR CON INICIAL */
+.avatar-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+
+  background: var(--ion-color-primary);
+  border-radius: 50%;
+
+  color: var(--ion-color-primary-contrast);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* DATOS DEL USUARIO */
+.datos-usuario {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.datos-usuario h3 {
+  margin: 0;
+
+  color: var(--ion-text-color);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.datos-usuario p {
+  margin: 0;
+
+  color: var(--ion-color-medium);
+  font-size: 12px;
+}
+
+/* SEPARADOR */
+.separador {
+  height: 1px;
+  margin: 0 0 8px;
+
+  background: var(--ion-color-step-150, #e5e7e6);
+}
+
+/* OPCIONES DEL MENÚ */
+.opcion-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  min-height: 46px;
+  padding: 12px;
+  box-sizing: border-box;
+
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+
+  color: var(--ion-text-color);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+/* EFECTO AL PASAR EL RATÓN */
+.opcion-menu:hover {
+  background: var(--ion-color-step-100, #f2f5f3);
+}
+
+/* ICONOS */
+.icono-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 24px;
+  height: 24px;
+
+  color: var(--ion-color-primary);
+  font-size: 21px;
+}
+
+/* OPCIÓN CERRAR SESIÓN */
+.opcion-salir {
+  color: var(--ion-color-danger);
+}
+
+.opcion-salir .icono-menu {
+  color: var(--ion-color-danger);
+}
+
+/* ACCESIBILIDAD CON TECLADO */
+.opcion-menu:focus-visible {
+  outline: 2px solid var(--ion-color-primary);
+  outline-offset: 2px;
+}

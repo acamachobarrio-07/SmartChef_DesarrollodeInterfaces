@@ -1,0 +1,108 @@
+<!-- FORMULARIO REUTILIZABLE DEL PERFIL -->
+<div class="formulario-perfil">
+
+  <!-- CABECERA -->
+  <div class="cabecera-perfil">
+
+    <h2>Editar perfil</h2>
+
+    <button
+      type="button"
+      class="cerrar-perfil"
+      aria-label="Cerrar formulario"
+      (click)="cerrar.emit()">
+      ✕
+    </button>
+
+  </div>
+
+  <!-- AVATAR DEL USUARIO -->
+  <div class="informacion-perfil">
+
+    <div class="avatar-perfil">
+      {{ nombre.charAt(0).toUpperCase() || 'U' }}
+    </div>
+
+    <h3>{{ nombre || 'Usuario' }}</h3>
+
+    <p>Personaliza tu cuenta de SmartChef</p>
+
+  </div>
+
+  <!-- DATOS PERSONALES -->
+  <section class="seccion-perfil">
+
+    <h3>Datos personales</h3>
+
+    <!-- NOMBRE -->
+    <div class="campo-perfil">
+
+      <label for="nombre-perfil">
+        Nombre
+      </label>
+
+      <input
+        id="nombre-perfil"
+        type="text"
+        name="nombre"
+        [(ngModel)]="nombre"
+        placeholder="Introduce tu nombre">
+
+    </div>
+
+    <!-- CORREO ELECTRÓNICO -->
+    <div class="campo-perfil">
+
+      <label for="correo-perfil">
+        Correo electrónico
+      </label>
+
+      <input
+        id="correo-perfil"
+        type="email"
+        name="correo"
+        [(ngModel)]="correo"
+        placeholder="Introduce tu correo">
+
+    </div>
+
+  </section>
+
+  <!-- PREFERENCIAS -->
+  <section class="seccion-perfil">
+
+    <h3>Preferencias</h3>
+
+    <!-- MODO OSCURO -->
+    <div class="preferencia">
+
+      <div class="texto-preferencia">
+
+        <strong>Modo oscuro</strong>
+
+        <p>
+          Cambia la apariencia de SmartChef
+          a un tema oscuro.
+        </p>
+
+      </div>
+
+      <ion-toggle
+        [checked]="modoOscuro"
+        (ionChange)="alCambiarTema($event)"
+        aria-label="Activar modo oscuro">
+      </ion-toggle>
+
+    </div>
+
+  </section>
+
+  <!-- GUARDAR CAMBIOS -->
+  <button
+    type="button"
+    class="guardar-perfil"
+    (click)="guardarPerfil()">
+    Guardar cambios
+  </button>
+
+</div>

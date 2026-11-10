@@ -137,6 +137,10 @@ export const routes: Routes = [
   {
     path: 'inicio-chef',
     loadComponent: () => import('./paginas/inicio-chef/inicio-chef.page').then( m => m.InicioChefPage)
+  },
+  {
+    path: 'perfil-chef',
+    loadComponent: () => import('./paginas/perfil-chef/perfil-chef.page').then( m => m.PerfilChefPage)
   }
 
 

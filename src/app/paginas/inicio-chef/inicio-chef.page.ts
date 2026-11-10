@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { IonContent, IonIcon, IonModal } from '@ionic/angular';
+import { IonContent, IonIcon, IonModal, IonPopover } from '@ionic/angular';
 import { FormularioRecetaComponent } from '../../componentes/formulario-receta/formulario-receta.component';
 import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-receta/confirmacion-receta.component';
 import { Receta } from '../../modelos/receta';
 import { RECETAS_EJEMPLO } from '../../datos/recetas-ejemplo';
 import { TarjetaRecetaComponent } from '../../componentes/tarjeta-receta/tarjeta-receta.component';
 import { DatosFormularioReceta } from '../../componentes/formulario-receta/formulario-receta.component';
+import { MenuPerfilComponent } from '../../componentes/menu-perfil/menu-perfil.component';
+import {FormularioPerfilComponent, DatosPerfil} from '../../componentes/formulario-perfil/formulario-perfil.component';
 
 
 import { addIcons } from 'ionicons';
@@ -26,10 +28,28 @@ import {
     IonModal,
     ConfirmacionRecetaComponent,
     FormularioRecetaComponent,
-    TarjetaRecetaComponent
+    TarjetaRecetaComponent,
+    IonPopover,
+    MenuPerfilComponent,
+    FormularioPerfilComponent
   ]
 })
 export class InicioChefPage {
+
+
+  // MODAL PARA EDITAR EL PERFIL
+  modalPerfilAbierto = false;
+
+  // ESPERAR A QUE SE CIERRE EL MENÚ
+  abrirPerfilPendiente = false;
+
+  // DATOS FICTICIOS DEL CHEF
+  datosPerfil: DatosPerfil = {
+    nombre: 'Ana',
+    correo: '',
+    modoOscuro: false
+  };
+
 
   // MODAL PARA AÑADIR RECETAS
   modalAnadirAbierto = false;
@@ -240,6 +260,27 @@ export class InicioChefPage {
       this.modalConfirmacionAbierto = true;
     }
   }
+
+
+  // PREPARAR LA APERTURA DEL PERFIL
+  abrirEdicionPerfil(): void {
+    this.abrirPerfilPendiente = true;
+  }
+
+  // ABRIR EL FORMULARIO AL CERRARSE EL MENÚ
+  alCerrarMenuPerfil(): void {
+    if (this.abrirPerfilPendiente) {
+      this.abrirPerfilPendiente = false;
+      this.modalPerfilAbierto = true;
+    }
+  }
+
+  // GUARDAR LOS DATOS FICTICIOS
+  guardarPerfil(datos: DatosPerfil): void {
+    this.datosPerfil = { ...datos };
+    this.modalPerfilAbierto = false;
+  }
+
 
 
 }
