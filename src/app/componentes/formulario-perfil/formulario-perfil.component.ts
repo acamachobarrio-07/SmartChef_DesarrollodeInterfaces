@@ -1,13 +1,7 @@
 import { Component, input, output, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonToggle, ToggleCustomEvent } from '@ionic/angular';
-
-// DATOS DEL PERFIL
-export interface DatosPerfil {
-  nombre: string;
-  correo: string;
-  modoOscuro: boolean;
-}
+import { DatosPerfil } from '../../modelos/perfil';
 
 @Component({
   selector: 'app-formulario-perfil',
@@ -30,6 +24,9 @@ export class FormularioPerfilComponent {
   correo = '';
   modoOscuro = false;
 
+  // Imagen seleccionada para el perfil
+  imagenPerfil: string | null = null;
+
   constructor() {
 
     // Rellenar el formulario con los datos recibidos
@@ -39,6 +36,7 @@ export class FormularioPerfilComponent {
       this.nombre = perfil.nombre;
       this.correo = perfil.correo;
       this.modoOscuro = perfil.modoOscuro;
+      this.imagenPerfil = perfil.imagenPerfil ?? null;
     });
 
   }
@@ -49,14 +47,42 @@ export class FormularioPerfilComponent {
     this.cambiarTema.emit(this.modoOscuro);
   }
 
-  // Enviar los datos modificados al padre
+
+  // Guardar los cambios del perfil
   guardarPerfil(): void {
+
     this.guardar.emit({
       nombre: this.nombre,
       correo: this.correo,
-      modoOscuro: this.modoOscuro
+      modoOscuro: this.modoOscuro,
+      imagenPerfil: this.imagenPerfil
     });
+
   }
+
+
+
+// Seleccionar una nueva imagen de perfil
+  seleccionarImagen(evento: Event): void {
+
+    const input = evento.target as HTMLInputElement;
+    const archivo = input.files?.[0];
+
+    // Comprobar que se ha seleccionado una imagen
+    if (!archivo || !archivo.type.startsWith('image/')) {
+      return;
+    }
+
+    // Leer la imagen seleccionada
+    const lector = new FileReader();
+
+    lector.onload = () => {
+      this.imagenPerfil = lector.result as string;
+    };
+
+    lector.readAsDataURL(archivo);
+  }
+
 
 }
 

@@ -1,13 +1,11 @@
-/* CONTENEDOR PRINCIPAL */
-.formulario-perfil {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 
+/* CONTENEDOR DEL FORMULARIO */
+
+.formulario-perfil {
   width: 100%;
   max-width: 430px;
   margin: 0 auto;
-  padding: 20px 16px 35px;
+  padding: 20px 16px 32px;
   box-sizing: border-box;
 
   background: var(--ion-background-color);
@@ -15,213 +13,236 @@
 }
 
 /* CABECERA */
+
 .cabecera-perfil {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
 }
 
 .cabecera-perfil h2 {
   margin: 0;
-  color: var(--ion-text-color);
   font-size: 23px;
   font-weight: 700;
+  color: var(--ion-text-color);
 }
 
-/* BOTÓN CERRAR */
 .cerrar-perfil {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   width: 36px;
   height: 36px;
 
-  background: var(--ion-color-step-100);
   border: none;
   border-radius: 50%;
 
+  background: var(--app-campo);
   color: var(--ion-text-color);
+
   font-size: 18px;
   cursor: pointer;
 }
 
-/* INFORMACIÓN DEL USUARIO */
+/* INFORMACIÓN DEL PERFIL */
+
 .informacion-perfil {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
 
-  padding: 10px 0;
+  margin-bottom: 28px;
   text-align: center;
 }
 
-/* AVATAR */
 .avatar-perfil {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
-  width: 75px;
-  height: 75px;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 12px;
 
-  background: var(--ion-color-primary);
   border-radius: 50%;
-
+  background: var(--ion-color-primary);
   color: var(--ion-color-primary-contrast);
-  font-size: 30px;
+
+  font-size: 32px;
   font-weight: 700;
+
+  overflow: hidden;
 }
 
-/* NOMBRE */
+.imagen-perfil {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .informacion-perfil h3 {
-  margin: 4px 0 0;
+  margin: 0 0 6px;
 
   color: var(--ion-text-color);
   font-size: 19px;
-  font-weight: 700;
 }
 
-/* DESCRIPCIÓN */
 .informacion-perfil p {
   margin: 0;
 
-  color: var(--ion-color-medium);
   font-size: 13px;
+  color: var(--ion-color-medium);
 }
 
-/* SECCIONES */
+/* CAMBIAR FOTO DE PERFIL */
+
+.cambiar-imagen {
+  margin-top: 12px;
+  padding: 9px 16px;
+
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 10px;
+
+  background: transparent;
+  color: var(--ion-color-primary);
+
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cambiar-imagen:active {
+  opacity: 0.7;
+}
+
+/* SECCIONES DEL FORMULARIO */
+
 .seccion-perfil {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  padding: 20px;
+  margin-bottom: 18px;
 
-  padding: 18px;
-
-  background: var(--ion-color-step-50);
-  border: 1px solid var(--ion-color-step-150);
+  background: var(--app-superficie);
+  border: 1px solid var(--app-borde);
   border-radius: 16px;
 }
 
-/* TÍTULOS DE SECCIÓN */
 .seccion-perfil h3 {
-  margin: 0 0 5px;
+  margin: 0 0 18px;
 
   color: var(--ion-text-color);
   font-size: 16px;
   font-weight: 700;
 }
 
-/* CAMPOS */
+/* CAMPOS DEL FORMULARIO */
+
 .campo-perfil {
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  margin-bottom: 18px;
+}
+
+.campo-perfil:last-child {
+  margin-bottom: 0;
 }
 
 .campo-perfil label {
-  color: var(--ion-text-color);
   font-size: 13px;
   font-weight: 600;
+  color: var(--ion-text-color);
 }
 
-/* INPUTS */
 .campo-perfil input {
   width: 100%;
-  min-height: 46px;
-  padding: 12px;
+  height: 46px;
+  padding: 0 13px;
   box-sizing: border-box;
 
-  background: var(--ion-background-color);
-  border: 1px solid var(--ion-color-step-200);
-  border-radius: 12px;
-  outline: none;
-
+  background: var(--app-campo);
   color: var(--ion-text-color);
+
+  border: 1px solid var(--app-borde);
+  border-radius: 10px;
+
   font-family: inherit;
   font-size: 14px;
+  outline: none;
 }
 
-/* INPUT SELECCIONADO */
 .campo-perfil input:focus {
   border-color: var(--ion-color-primary);
 }
 
-/* PLACEHOLDER */
 .campo-perfil input::placeholder {
   color: var(--ion-color-medium);
 }
 
-/* PREFERENCIA DEL MODO OSCURO */
+/* PREFERENCIAS */
+
 .preferencia {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 15px;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-/* TEXTO DE LA PREFERENCIA */
 .texto-preferencia {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
   flex: 1;
 }
 
 .texto-preferencia strong {
-  color: var(--ion-text-color);
   font-size: 14px;
-  font-weight: 600;
+  color: var(--ion-text-color);
 }
 
 .texto-preferencia p {
-  margin: 0;
+  margin: 6px 0 0;
 
-  color: var(--ion-color-medium);
   font-size: 12px;
   line-height: 1.5;
+  color: var(--ion-color-medium);
 }
 
-/* INTERRUPTOR */
 .preferencia ion-toggle {
   --track-background-checked: var(--ion-color-primary);
   --handle-background-checked: #ffffff;
-
-  flex-shrink: 0;
 }
 
 /* BOTÓN GUARDAR */
+
 .guardar-perfil {
   width: 100%;
-  min-height: 50px;
-  margin-top: 5px;
+  height: 50px;
+  margin-top: 8px;
 
-  background: var(--ion-color-primary);
   border: none;
   border-radius: 12px;
 
+  background: var(--ion-color-primary);
   color: var(--ion-color-primary-contrast);
+
   font-family: inherit;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
 
   cursor: pointer;
 }
 
-/* ADAPTACIÓN A MÓVILES PEQUEÑOS */
+.guardar-perfil:active {
+  opacity: 0.85;
+}
+
+/* MÓVILES PEQUEÑOS */
+
 @media (max-width: 380px) {
 
   .formulario-perfil {
-    padding: 15px 8px 30px;
+    padding: 16px 12px 28px;
   }
 
   .seccion-perfil {
-    padding: 14px;
-  }
-
-  .cabecera-perfil h2 {
-    font-size: 21px;
+    padding: 16px;
   }
 
 }

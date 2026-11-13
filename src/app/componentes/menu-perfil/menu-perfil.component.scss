@@ -1,15 +1,18 @@
-/* CONTENEDOR PRINCIPAL DEL MENÚ */
+
+/* CONTENEDOR DEL MENÚ */
+
 .menu-perfil {
   width: 100%;
   padding: 12px;
   box-sizing: border-box;
 
-  background: var(--ion-background-color, #ffffff);
+  background: var(--app-superficie);
   border-radius: 16px;
 
-  color: var(--ion-text-color, #202d27);
+  color: var(--ion-text-color);
   font-family: inherit;
 }
+
 
 /* INFORMACIÓN DEL USUARIO */
 .informacion-usuario {

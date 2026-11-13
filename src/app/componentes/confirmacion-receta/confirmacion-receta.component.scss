@@ -1,4 +1,6 @@
+
 /* CONTENEDOR DE CONFIRMACIÓN */
+
 .confirmacion {
   display: flex;
   flex-direction: column;
@@ -11,11 +13,14 @@
   padding: 35px 25px 30px;
   box-sizing: border-box;
 
-  background: #ffffff;
+  background: var(--app-superficie);
+  color: var(--ion-text-color);
+
   text-align: center;
 }
 
 /* CÍRCULO VERDE */
+
 .icono-confirmacion {
   display: flex;
   justify-content: center;
@@ -24,33 +29,36 @@
   width: 85px;
   height: 85px;
 
-  background: #e5f8ef;
+  background: rgba(var(--ion-color-primary-rgb), 0.12);
   border-radius: 50%;
 
-  color: #16bd7f;
+  color: var(--ion-color-primary);
   font-size: 48px;
   font-weight: 700;
 }
 
 /* TÍTULO */
+
 .confirmacion h2 {
   margin: 5px 0 0;
 
-  color: #202d27;
+  color: var(--ion-text-color);
   font-size: 22px;
   font-weight: 700;
 }
 
 /* MENSAJE */
+
 .confirmacion p {
   margin: 0 0 10px;
 
-  color: #818b84;
+  color: var(--ion-color-medium);
   font-size: 15px;
   line-height: 1.6;
 }
 
 /* BOTÓN ACEPTAR */
+
 .boton-aceptar {
   width: 100%;
   min-height: 49px;
@@ -59,10 +67,14 @@
   border: none;
   border-radius: 12px;
 
-  color: #ffffff;
+  color: var(--ion-color-primary-contrast);
   font-family: inherit;
   font-size: 15px;
   font-weight: 600;
 
   cursor: pointer;
+}
+
+.boton-aceptar:active {
+  opacity: 0.85;
 }

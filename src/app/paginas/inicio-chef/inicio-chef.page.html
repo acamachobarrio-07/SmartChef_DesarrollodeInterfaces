@@ -11,16 +11,14 @@
         alt="SmartChef"
         class="logo">
 
-
       <!-- AVATAR DEL CHEF -->
       <button
         type="button"
         id="boton-perfil-chef"
         class="avatar"
-        aria-label="Abrir menú de perfil de Ana">
+        aria-label="Abrir menú de perfil">
         A
       </button>
-
 
     </header>
 
@@ -63,13 +61,11 @@
 
       </button>
 
-
       <!-- MODIFICAR RECETA -->
       <button
         type="button"
         class="opcion opcion-modificar"
-        (click)="abrirSeleccion('modificar')"
-      >
+        (click)="abrirSeleccion('modificar')">
 
         <div class="icono-opcion">
           <ion-icon name="create-outline"></ion-icon>
@@ -86,7 +82,6 @@
         </ion-icon>
 
       </button>
-
 
       <!-- ELIMINAR RECETA -->
       <button
@@ -116,6 +111,7 @@
 
 </ion-content>
 
+
 <!-- MENÚ DESPLEGABLE DEL PERFIL -->
 <ion-popover
   #popoverPerfil
@@ -129,13 +125,13 @@
 
     <app-menu-perfil
       [nombre]="datosPerfil.nombre"
-      (editarPerfil)="abrirEdicionPerfil(); popoverPerfil.dismiss()">
+      (editarPerfil)="abrirEdicionPerfil(); popoverPerfil.dismiss()"
+      (cerrarSesion)="cerrarSesion(); popoverPerfil.dismiss()">
     </app-menu-perfil>
 
   </ng-template>
 
 </ion-popover>
-
 
 
 <!-- MODAL PARA AÑADIR RECETAS -->
@@ -149,7 +145,6 @@
 
     <ion-content class="ion-padding">
 
-      <!-- FORMULARIO REUTILIZABLE -->
       <app-formulario-receta
         modo="anadir"
         (guardar)="guardarReceta()"
@@ -174,7 +169,6 @@
 
     <ion-content class="ion-padding">
 
-      <!-- COMPONENTE REUTILIZABLE -->
       <app-confirmacion-receta
         [mensaje]="mensajeConfirmacion"
         (aceptar)="modalConfirmacionAbierto = false">
@@ -198,8 +192,6 @@
 
     <ion-content class="ion-padding">
 
-
-      <!-- LISTADO REUTILIZABLE DE RECETAS -->
       <div class="lista-recetas-chef">
 
         <!-- TÍTULO SEGÚN EL MODO -->

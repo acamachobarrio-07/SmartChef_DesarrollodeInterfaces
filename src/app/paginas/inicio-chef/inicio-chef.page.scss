@@ -1,6 +1,7 @@
+```
 /* FONDO */
 ion-content {
-  --background: #ffffff;
+  --background: var(--ion-background-color);
 }
 
 /* CONTENEDOR PRINCIPAL */
@@ -12,7 +13,8 @@ ion-content {
   padding: 25px 28px 40px;
   box-sizing: border-box;
 
-  background: #ffffff;
+  background: var(--ion-background-color);
+  color: var(--ion-text-color);
 }
 
 /* CABECERA */
@@ -48,11 +50,11 @@ ion-content {
   height: 50px;
   box-sizing: border-box;
 
-  background: #e5f8ef;
+  background: var(--chef-verde-suave);
   border: 2px solid var(--ion-color-primary);
   border-radius: 50%;
 
-  color: #078d58;
+  color: var(--chef-verde-texto);
   font-size: 22px;
   font-weight: 600;
 
@@ -67,7 +69,7 @@ ion-content {
 .bienvenida h1 {
   margin: 0 0 12px;
 
-  color: #202d27;
+  color: var(--ion-text-color);
   font-size: 29px;
   font-weight: 700;
 }
@@ -75,7 +77,7 @@ ion-content {
 .bienvenida h2 {
   margin: 0 0 8px;
 
-  color: #283a30;
+  color: var(--ion-text-color);
   font-size: 17px;
   font-weight: 600;
 }
@@ -83,7 +85,7 @@ ion-content {
 .bienvenida p {
   margin: 0;
 
-  color: #818b84;
+  color: var(--ion-color-medium);
   font-size: 14px;
   line-height: 1.6;
 }
@@ -113,25 +115,25 @@ ion-content {
   font-family: inherit;
   cursor: pointer;
 
-  box-shadow: 0 4px 12px #00000008;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 /* AÑADIR */
 .opcion-anadir {
-  background: #eaf9f1;
-  border-color: #d0f0df;
+  background: var(--chef-anadir-fondo);
+  border-color: var(--chef-anadir-borde);
 }
 
 /* MODIFICAR */
 .opcion-modificar {
-  background: #fff8e8;
-  border-color: #f8edcf;
+  background: var(--chef-modificar-fondo);
+  border-color: var(--chef-modificar-borde);
 }
 
 /* ELIMINAR */
 .opcion-eliminar {
-  background: #fff0f0;
-  border-color: #f8dede;
+  background: var(--chef-eliminar-fondo);
+  border-color: var(--chef-eliminar-borde);
 }
 
 /* CONTENEDOR DEL ICONO */
@@ -153,20 +155,20 @@ ion-content {
 
 /* ICONO AÑADIR */
 .opcion-anadir .icono-opcion {
-  background: #d4f3e2;
-  color: #139765;
+  background: var(--chef-anadir-icono);
+  color: var(--chef-verde-texto);
 }
 
 /* ICONO MODIFICAR */
 .opcion-modificar .icono-opcion {
-  background: #ffebba;
-  color: #c78b13;
+  background: var(--chef-modificar-icono);
+  color: var(--chef-modificar-texto);
 }
 
 /* ICONO ELIMINAR */
 .opcion-eliminar .icono-opcion {
-  background: #ffdddd;
-  color: #d65b5b;
+  background: var(--chef-eliminar-icono);
+  color: var(--chef-eliminar-texto);
 }
 
 /* TEXTOS DE LAS TARJETAS */
@@ -178,7 +180,7 @@ ion-content {
 .texto-opcion h3 {
   margin: 0 0 6px;
 
-  color: #27362d;
+  color: var(--ion-text-color);
   font-size: 16px;
   font-weight: 700;
 }
@@ -186,7 +188,7 @@ ion-content {
 .texto-opcion p {
   margin: 0;
 
-  color: #778179;
+  color: var(--ion-color-medium);
   font-size: 12px;
   line-height: 1.5;
 }
@@ -195,14 +197,15 @@ ion-content {
 .flecha {
   flex-shrink: 0;
 
-  color: #89948d;
+  color: var(--ion-color-medium);
   font-size: 20px;
 }
 
 /* MODAL DESLIZANTE */
 ion-modal {
   --border-radius: 24px 24px 0 0;
-  --background: #ffffff;
+  --background: var(--app-superficie);
+  --color: var(--ion-text-color);
 }
 
 /* FORMULARIO */
@@ -229,7 +232,7 @@ ion-modal {
 .cabecera-formulario h2 {
   margin: 0;
 
-  color: #202d27;
+  color: var(--ion-text-color);
   font-size: 23px;
   font-weight: 700;
 }
@@ -244,11 +247,11 @@ ion-modal {
   height: 34px;
   flex-shrink: 0;
 
-  background: #f2f4f3;
+  background: var(--app-campo);
   border: none;
   border-radius: 50%;
 
-  color: #555555;
+  color: var(--ion-text-color);
   font-size: 17px;
   cursor: pointer;
 }
@@ -257,7 +260,7 @@ ion-modal {
 .descripcion-formulario {
   margin: -8px 0 4px;
 
-  color: #818b84;
+  color: var(--ion-color-medium);
   font-size: 13px;
   line-height: 1.5;
 }
@@ -272,7 +275,7 @@ ion-modal {
 }
 
 .campo-receta label {
-  color: #27362d;
+  color: var(--ion-text-color);
   font-size: 13px;
   font-weight: 600;
 }
@@ -286,12 +289,12 @@ ion-modal {
   padding: 12px;
   box-sizing: border-box;
 
-  background: #ffffff;
-  border: 1px solid #dce5df;
+  background: var(--app-superficie);
+  border: 1px solid var(--app-borde);
   border-radius: 12px;
   outline: none;
 
-  color: #222222;
+  color: var(--ion-text-color);
   font-family: inherit;
   font-size: 14px;
 
@@ -308,7 +311,7 @@ ion-modal {
 /* PLACEHOLDER */
 .campo-receta input::placeholder,
 .campo-receta textarea::placeholder {
-  color: #a0a9a3;
+  color: var(--ion-color-medium);
 }
 
 /* TIEMPO Y RACIONES */
@@ -330,7 +333,7 @@ ion-modal {
   height: auto;
   padding: 15px 12px;
 
-  background: #f4fbf7;
+  background: var(--chef-anadir-fondo);
   border: 1px dashed var(--ion-color-primary);
 
   font-size: 12px;
@@ -341,11 +344,11 @@ ion-modal {
   padding: 9px 12px;
   margin-right: 10px;
 
-  background: #dff5e9;
+  background: var(--chef-verde-suave);
   border: none;
   border-radius: 8px;
 
-  color: #078d58;
+  color: var(--chef-verde-texto);
   font-family: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -353,7 +356,7 @@ ion-modal {
 
 /* AYUDA DE LA IMAGEN */
 .campo-receta small {
-  color: #8a938d;
+  color: var(--ion-color-medium);
   font-size: 11px;
 }
 
@@ -365,8 +368,8 @@ ion-modal {
 
   padding: 14px;
 
-  background: #ffffff;
-  border: 1px solid #dce5df;
+  background: var(--app-superficie);
+  border: 1px solid var(--app-borde);
   border-radius: 12px;
 }
 
@@ -376,7 +379,7 @@ ion-modal {
   justify-content: space-between;
   align-items: center;
 
-  color: #27362d;
+  color: var(--ion-text-color);
   font-size: 13px;
   font-weight: 600;
 }
@@ -386,7 +389,7 @@ ion-modal {
   background: transparent;
   border: none;
 
-  color: #d65b5b;
+  color: var(--chef-eliminar-texto);
   font-size: 12px;
   cursor: pointer;
 }
@@ -441,8 +444,8 @@ ion-modal {
 
   padding: 12px;
 
-  background: #ffffff;
-  border: 1px solid #dce5df;
+  background: var(--app-superficie);
+  border: 1px solid var(--app-borde);
   border-radius: 12px;
 }
 
@@ -452,7 +455,7 @@ ion-modal {
   justify-content: space-between;
   align-items: center;
 
-  color: #27362d;
+  color: var(--ion-text-color);
   font-size: 13px;
   font-weight: 600;
 }
@@ -462,7 +465,7 @@ ion-modal {
   background: transparent;
   border: none;
 
-  color: #d65b5b;
+  color: var(--chef-eliminar-texto);
   font-size: 12px;
   cursor: pointer;
 }
@@ -472,11 +475,11 @@ ion-modal {
   width: 100%;
   padding: 13px;
 
-  background: #e5f8ef;
+  background: var(--chef-verde-suave);
   border: 1px dashed var(--ion-color-primary);
   border-radius: 12px;
 
-  color: #078d58;
+  color: var(--chef-verde-texto);
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
@@ -494,7 +497,7 @@ ion-modal {
   border: none;
   border-radius: 12px;
 
-  color: #ffffff;
+  color: var(--ion-color-primary-contrast);
   font-family: inherit;
   font-size: 15px;
   font-weight: 600;
@@ -580,10 +583,10 @@ ion-modal {
   width: 75px;
   height: 75px;
 
-  background: #fff0f0;
+  background: var(--chef-eliminar-fondo);
   border-radius: 50%;
 
-  color: #d65b5b;
+  color: var(--chef-eliminar-texto);
 }
 
 /* ICONO DE PAPELERA */
@@ -595,7 +598,7 @@ ion-modal {
 .aviso-eliminar h2 {
   margin: 5px 0 0;
 
-  color: #202d27;
+  color: var(--ion-text-color);
   font-size: 22px;
   font-weight: 700;
 }
@@ -604,14 +607,14 @@ ion-modal {
 .aviso-eliminar p {
   margin: 0;
 
-  color: #818b84;
+  color: var(--ion-color-medium);
   font-size: 14px;
   line-height: 1.6;
 }
 
 /* NOMBRE DE LA RECETA */
 .aviso-eliminar strong {
-  color: #27362d;
+  color: var(--ion-text-color);
   font-weight: 700;
 }
 
@@ -640,13 +643,13 @@ ion-modal {
 
 /* BOTÓN CANCELAR */
 .boton-cancelar {
-  background: #f2f4f3;
-  color: #46564c;
+  background: var(--app-campo);
+  color: var(--ion-text-color);
 }
 
 /* BOTÓN ELIMINAR */
 .boton-confirmar-eliminar {
-  background: #d65b5b;
+  background: var(--chef-eliminar-texto);
   color: #ffffff;
 }
 
@@ -662,4 +665,5 @@ ion-modal {
   }
 
 }
+
 

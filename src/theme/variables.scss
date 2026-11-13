@@ -1,9 +1,10 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+
+/* COLORES DE SMARTCHEF */
 
 :root {
 
-  /* Color principal de SmartChef */
+  /* COLOR PRINCIPAL */
+
   --ion-color-primary: #16bd7f;
   --ion-color-primary-rgb: 22, 189, 127;
   --ion-color-primary-contrast: #ffffff;
@@ -11,4 +12,85 @@
   --ion-color-primary-shade: #13a76f;
   --ion-color-primary-tint: #2dc48c;
 
+  /* FONDO Y TEXTO */
+
+  --ion-background-color: #ffffff;
+  --ion-background-color-rgb: 255, 255, 255;
+  --ion-text-color: #202d27;
+  --ion-text-color-rgb: 32, 45, 39;
+
+  /* TARJETAS Y CAMPOS */
+
+  --app-superficie: #ffffff;
+  --app-campo: #f1f5f9;
+  --app-borde: #e2e8f0;
+
+  /* AVATAR */
+
+  --chef-verde-suave: #e5f8ef;
+  --chef-verde-texto: #078d58;
+
+  /* AÑADIR RECETA */
+
+  --chef-anadir-fondo: #eaf9f1;
+  --chef-anadir-borde: #d0f0df;
+  --chef-anadir-icono: #d4f3e2;
+
+  /* MODIFICAR RECETA */
+
+  --chef-modificar-fondo: #fff8e8;
+  --chef-modificar-borde: #f8edcf;
+  --chef-modificar-icono: #ffebba;
+  --chef-modificar-texto: #c78b13;
+
+  /* ELIMINAR RECETA */
+
+  --chef-eliminar-fondo: #fff0f0;
+  --chef-eliminar-borde: #f8dede;
+  --chef-eliminar-icono: #ffdddd;
+  --chef-eliminar-texto: #d65b5b;
+}
+
+
+/* MODO OSCURO DE SMARTCHEF */
+
+:root.ion-palette-dark {
+
+  /* FONDO Y TEXTO */
+
+  --ion-background-color: #121212;
+  --ion-background-color-rgb: 18, 18, 18;
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255, 255, 255;
+
+  /* TARJETAS Y CAMPOS */
+
+  --app-superficie: #242424;
+  --app-campo: #333333;
+  --app-borde: #454545;
+
+  /* AVATAR */
+
+  --chef-verde-suave: #173c30;
+  --chef-verde-texto: #3ddba2;
+
+  /* AÑADIR RECETA */
+
+  --chef-anadir-fondo: #193b30;
+  --chef-anadir-borde: #285b45;
+  --chef-anadir-icono: #245843;
+
+  /* MODIFICAR RECETA */
+
+  --chef-modificar-fondo: #3a3120;
+  --chef-modificar-borde: #665332;
+  --chef-modificar-icono: #594723;
+  --chef-modificar-texto: #f5c765;
+
+  /* ELIMINAR RECETA */
+
+  --chef-eliminar-fondo: #3e2729;
+  --chef-eliminar-borde: #694042;
+  --chef-eliminar-icono: #5b3436;
+  --chef-eliminar-texto: #ff8989;
 }

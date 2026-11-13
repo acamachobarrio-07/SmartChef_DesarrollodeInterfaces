@@ -17,17 +17,45 @@
   </div>
 
   <!-- AVATAR DEL USUARIO -->
+
+  <!-- AVATAR DEL USUARIO -->
   <div class="informacion-perfil">
 
     <div class="avatar-perfil">
-      {{ nombre.charAt(0).toUpperCase() || 'U' }}
+
+      @if (imagenPerfil) {
+
+        <img
+          [src]="imagenPerfil"
+          alt="Imagen de perfil"
+          class="imagen-perfil">
+
+      } @else {
+
+        {{ nombre.charAt(0).toUpperCase() || 'U' }}
+
+      }
+
     </div>
 
     <h3>{{ nombre || 'Usuario' }}</h3>
 
     <p>Personaliza tu cuenta de SmartChef</p>
 
+    <!-- CAMBIAR IMAGEN DE PERFIL -->
+    <input
+      type="file"
+      id="imagen-perfil"
+      accept="image/*"
+      (change)="seleccionarImagen($event)"
+      hidden>
+
+    <label for="imagen-perfil" class="cambiar-imagen">
+      Cambiar foto de perfil
+    </label>
+
   </div>
+
 
   <!-- DATOS PERSONALES -->
   <section class="seccion-perfil">
