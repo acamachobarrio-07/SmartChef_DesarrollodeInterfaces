@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular';
 import { TabsPage } from "./paginas/tabs/tabs.page";
@@ -40,6 +39,13 @@ export class AppComponent {
       menuOutline
 
     });
+
+    const modoOscuro = localStorage.getItem('modoOscuro') === 'true';
+
+    document.documentElement.classList.toggle(
+      'ion-palette-dark',
+      modoOscuro
+    );
   }
 
 }

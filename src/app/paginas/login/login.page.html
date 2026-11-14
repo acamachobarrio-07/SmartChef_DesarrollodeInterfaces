@@ -25,12 +25,6 @@
 
     <!-- Formulario de acceso -->
     <div class="formulario-login">
-
-      <p class="aviso">
-        Página con acceso restringido.<br>
-        Debes iniciar sesión.
-      </p>
-
       <!-- Correo electrónico -->
       <div class="campo">
         <ion-icon name="mail-outline"></ion-icon>
@@ -64,9 +58,8 @@
       <!-- Botones -->
       <div class="botones">
 
-        <ion-button
+        <ion-button (click)="iniciarSesion()"
           expand="block"
-          routerLink="/app/inicio"
           routerDirection="root"
           class="iniciar-sesion">
           Iniciar sesión

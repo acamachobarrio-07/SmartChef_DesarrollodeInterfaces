@@ -1,4 +1,3 @@
-
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -19,14 +18,16 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () =>
-      import('./paginas/login/login.page').then(m => m.LoginPage)
+      import('./paginas/login/login.page')
+        .then(m => m.LoginPage)
   },
 
   // APLICACIÓN PRINCIPAL CON PESTAÑAS
   {
     path: 'app',
     loadComponent: () =>
-      import('./paginas/tabs/tabs.page').then(m => m.TabsPage),
+      import('./paginas/tabs/tabs.page')
+        .then(m => m.TabsPage),
 
     children: [
 
@@ -40,10 +41,10 @@ export const routes: Routes = [
 
       // INICIO CON SESIÓN INICIADA
       {
-        path: 'principal-login',
+        path: 'inicio-login',
         loadComponent: () =>
-          import('./paginas/principal-login/principal-login.page')
-            .then(m => m.PrincipalLoginPage)
+          import('./paginas/inicio-login/inicio-login.page')
+            .then(m => m.InicioLoginPage)
       },
 
       // RECETAS
@@ -65,25 +66,33 @@ export const routes: Routes = [
       // INGREDIENTES
       {
         path: 'ingredientes',
-        redirectTo: '/login'
+        loadComponent: () =>
+          import('./paginas/ingredientes-login/ingredientes.page')
+            .then(m => m.IngredientesPage)
       },
 
       // LISTA DE COMPRA
       {
         path: 'lista-compra',
-        redirectTo: '/login'
+        loadComponent: () =>
+          import('./paginas/lista-compra/lista-compra.page')
+            .then(m => m.ListaCompraPage)
       },
 
       // PLAN SEMANAL
       {
         path: 'plan-semanal',
-        redirectTo: '/login'
+        loadComponent: () =>
+          import('./paginas/plan-semanal/plan-semanal.page')
+            .then(m => m.PlanSemanalPage)
       },
 
       // COLECCIONES
       {
         path: 'colecciones',
-        redirectTo: '/login'
+        loadComponent: () =>
+          import('./paginas/colecciones/colecciones.page')
+            .then(m => m.ColeccionesPage)
       },
 
       // PERFIL
@@ -98,7 +107,6 @@ export const routes: Routes = [
         redirectTo: 'inicio',
         pathMatch: 'full'
       }
-
     ]
   },
 
@@ -180,6 +188,14 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./paginas/perfil-chef/perfil-chef.page')
         .then(m => m.PerfilChefPage)
+  },
+
+  // PERFIL DEL USUARIO
+  {
+    path: 'perfil-usuario',
+    loadComponent: () =>
+      import('./paginas/perfil-usuario/perfil-usuario.page')
+        .then(m => m.PerfilUsuarioPage)
   }
 
 ];

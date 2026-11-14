@@ -1,6 +1,5 @@
-
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 import {
   IonContent,
@@ -9,6 +8,8 @@ import {
   IonIcon,
   IonRouterLink
 } from '@ionic/angular';
+
+import { SesionService } from '../../servicios/sesion.service';
 
 @Component({
   selector: 'app-login',
@@ -24,5 +25,20 @@ import {
   ]
 })
 export class LoginPage {
+
+  // Servicio para controlar la sesión
+  private sesion = inject(SesionService);
+
+  // Navegación entre páginas
+  private router = inject(Router);
+
+  // Simular el inicio de sesión
+  iniciarSesion(): void {
+
+    this.sesion.iniciarSesion();
+
+    this.router.navigate(['/app/inicio-login']);
+
+  }
 
 }

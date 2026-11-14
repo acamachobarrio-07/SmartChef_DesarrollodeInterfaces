@@ -1,0 +1,176 @@
+<ion-content [fullscreen]="true">
+
+  <div class="perfil-usuario">
+
+    <header class="cabecera-perfil">
+      <button class="volver" type="button" (click)="volver()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </button>
+
+      <h1>Mi perfil</h1>
+      <div class="espacio-cabecera"></div>
+    </header>
+
+    <section class="informacion-perfil">
+
+      <input
+        #selectorFoto
+        type="file"
+        accept="image/*"
+        hidden
+        (change)="cambiarFoto($event)">
+
+      <button
+        class="avatar-perfil"
+        type="button"
+        (click)="selectorFoto.click()">
+
+        @if (fotoPerfil) {
+          <img [src]="fotoPerfil" alt="Foto de perfil">
+        } @else {
+          {{ nombre.charAt(0).toUpperCase() || 'A' }}
+        }
+
+        <span class="editar-foto">
+          <ion-icon name="camera-outline"></ion-icon>
+        </span>
+      </button>
+
+      <h2>{{ nombre || 'Mi cuenta' }}</h2>
+      <p>Gestiona tu información personal</p>
+
+    </section>
+
+    <section class="seccion-perfil">
+
+      <h3>Datos personales</h3>
+
+      <div class="campo-perfil">
+        <label>Nombre</label>
+        <input
+          type="text"
+          [(ngModel)]="nombre"
+          placeholder="Tu nombre">
+      </div>
+
+      <div class="campo-perfil">
+        <label>Correo electrónico</label>
+        <input
+          type="email"
+          [(ngModel)]="correo"
+          placeholder="Tu correo electrónico">
+      </div>
+
+    </section>
+
+    <section class="seccion-perfil">
+
+      <h3>Preferencias alimentarias</h3>
+      <p class="descripcion-seccion">
+        Personaliza las recetas que quieres descubrir.
+      </p>
+
+      <div class="preferencia">
+        <div>
+          <strong>Sin gluten</strong>
+          <p>Mostrar recetas sin gluten</p>
+        </div>
+
+        <ion-toggle
+          [checked]="preferencias.sinGluten"
+          (ionChange)="preferencias.sinGluten = $event.detail.checked">
+        </ion-toggle>
+      </div>
+
+      <div class="preferencia">
+        <div>
+          <strong>Vegetariano</strong>
+          <p>Mostrar recetas vegetarianas</p>
+        </div>
+
+        <ion-toggle
+          [checked]="preferencias.vegetariano"
+          (ionChange)="preferencias.vegetariano = $event.detail.checked">
+        </ion-toggle>
+      </div>
+
+      <div class="preferencia">
+        <div>
+          <strong>Económico</strong>
+          <p>Priorizar recetas económicas</p>
+        </div>
+
+        <ion-toggle
+          [checked]="preferencias.economico"
+          (ionChange)="preferencias.economico = $event.detail.checked">
+        </ion-toggle>
+      </div>
+
+      <div class="preferencia">
+        <div>
+          <strong>Recetas rápidas</strong>
+          <p>Recetas de preparación rápida</p>
+        </div>
+
+        <ion-toggle
+          [checked]="preferencias.rapidas"
+          (ionChange)="preferencias.rapidas = $event.detail.checked">
+        </ion-toggle>
+      </div>
+
+    </section>
+
+    <section class="seccion-perfil">
+
+      <h3>Preferencias de la aplicación</h3>
+
+      <div class="preferencia">
+        <div>
+          <strong>Modo oscuro</strong>
+          <p>Activar el tema oscuro de SmartChef</p>
+        </div>
+
+        <ion-toggle
+          [checked]="modoOscuro"
+          (ionChange)="cambiarModoOscuro($event)">
+        </ion-toggle>
+      </div>
+
+    </section>
+
+    <button
+      class="guardar-perfil"
+      type="button"
+      (click)="guardarCambios()">
+
+      Guardar cambios
+
+    </button>
+
+  </div>
+
+</ion-content>
+
+
+<!-- MODAL DE CONFIRMACIÓN -->
+
+<ion-modal
+  [isOpen]="modalConfirmacionAbierto"
+  [initialBreakpoint]="0.55"
+  [breakpoints]="[0, 0.55, 1]"
+  (didDismiss)="alCerrarConfirmacion()">
+
+  <ng-template>
+
+    <ion-content class="ion-padding">
+
+      <app-confirmacion-receta
+        mensaje="Perfil actualizado correctamente."
+        (aceptar)="aceptarConfirmacion()">
+      </app-confirmacion-receta>
+
+    </ion-content>
+
+  </ng-template>
+
+</ion-modal>

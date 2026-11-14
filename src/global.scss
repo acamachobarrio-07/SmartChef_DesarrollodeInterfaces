@@ -43,3 +43,37 @@ ion-popover {
   --background: var(--app-superficie);
   --color: var(--ion-text-color);
 }
+
+ion-popover.menu-perfil-popover {
+  --width: 235px;
+  --background: var(--app-menu-fondo);
+  --color: var(--app-texto);
+}
+
+ion-popover.menu-perfil-popover::part(content) {
+  background: var(--app-menu-fondo);
+  color: var(--app-texto);
+  border: 1px solid var(--app-menu-borde);
+  border-radius: 14px;
+}
+
+.menu-perfil-usuario {
+  background: var(--app-menu-fondo);
+  color: var(--app-texto);
+}
+
+.menu-perfil-usuario .texto-menu span {
+  color: var(--app-texto-secundario);
+}
+
+.menu-perfil-usuario .separador-menu {
+  background: var(--app-menu-borde);
+}
+
+.menu-perfil-usuario .opcion-menu {
+  color: var(--app-texto);
+}
+
+.menu-perfil-usuario .cerrar-sesion {
+  color: #ff4545;
+}
