@@ -15,14 +15,14 @@ export const routes: Routes = [
       import('./home/home.page').then(m => m.HomePage)
   },
 
-  // LOGIN
+  // LOGIN DEL USUARIO
   {
     path: 'login',
     loadComponent: () =>
       import('./paginas/login/login.page').then(m => m.LoginPage)
   },
 
-  // APLICACIÓN PRINCIPAL
+  // APLICACIÓN PRINCIPAL CON PESTAÑAS
   {
     path: 'app',
     loadComponent: () =>
@@ -30,7 +30,7 @@ export const routes: Routes = [
 
     children: [
 
-      // PÁGINAS PÚBLICAS
+      // INICIO PÚBLICO
       {
         path: 'inicio',
         loadComponent: () =>
@@ -38,6 +38,15 @@ export const routes: Routes = [
             .then(m => m.PrincipalPage)
       },
 
+      // INICIO CON SESIÓN INICIADA
+      {
+        path: 'principal-login',
+        loadComponent: () =>
+          import('./paginas/principal-login/principal-login.page')
+            .then(m => m.PrincipalLoginPage)
+      },
+
+      // RECETAS
       {
         path: 'recetas',
         loadComponent: () =>
@@ -45,6 +54,7 @@ export const routes: Routes = [
             .then(m => m.RecetasPage)
       },
 
+      // DETALLE DE RECETAS
       {
         path: 'detalle-receta',
         loadComponent: () =>
@@ -52,27 +62,31 @@ export const routes: Routes = [
             .then(m => m.DetalleRecetaPage)
       },
 
-      // PÁGINAS DE ACCESO RESTRINGIDO
+      // INGREDIENTES
       {
         path: 'ingredientes',
         redirectTo: '/login'
       },
 
+      // LISTA DE COMPRA
       {
         path: 'lista-compra',
         redirectTo: '/login'
       },
 
+      // PLAN SEMANAL
       {
         path: 'plan-semanal',
         redirectTo: '/login'
       },
 
+      // COLECCIONES
       {
         path: 'colecciones',
         redirectTo: '/login'
       },
 
+      // PERFIL
       {
         path: 'perfil',
         redirectTo: '/login'
@@ -88,7 +102,7 @@ export const routes: Routes = [
     ]
   },
 
-  // OTRAS RUTAS DE ACCESO
+  // PÁGINA PRINCIPAL SIN PESTAÑAS
   {
     path: 'principal',
     loadComponent: () =>
@@ -96,6 +110,7 @@ export const routes: Routes = [
         .then(m => m.PrincipalPage)
   },
 
+  // REGISTRO
   {
     path: 'registro',
     loadComponent: () =>
@@ -103,6 +118,7 @@ export const routes: Routes = [
         .then(m => m.RegistroPage)
   },
 
+  // CONTRASEÑA OLVIDADA
   {
     path: 'contrasena-olvidada',
     loadComponent: () =>
@@ -110,6 +126,7 @@ export const routes: Routes = [
         .then(m => m.ContrasenaOlvidadaPage)
   },
 
+  // CONFIRMACIÓN DE CONTRASEÑA
   {
     path: 'contrasena-olvidada-confirmacion',
     loadComponent: () =>
@@ -117,31 +134,52 @@ export const routes: Routes = [
         .then(m => m.ContrasenaOlvidadaConfirmacionPage)
   },
 
+  // CONFIRMACIÓN DE REGISTRO
   {
     path: 'registro-confirmacion',
     loadComponent: () =>
       import('./paginas/registro-confirmacion/registro-confirmacion.page')
         .then(m => m.RegistroConfirmacionPage)
   },
+
+  // LOGIN DEL CHEF
   {
     path: 'login-chef',
-    loadComponent: () => import('./paginas/login-chef/login-chef.page').then( m => m.LoginChefPage)
+    loadComponent: () =>
+      import('./paginas/login-chef/login-chef.page')
+        .then(m => m.LoginChefPage)
   },
+
+  // CONTRASEÑA OLVIDADA DEL CHEF
   {
     path: 'contrasena-olvidada-chef',
-    loadComponent: () => import('./paginas/contrasena-olvidada-chef/contrasena-olvidada-chef.page').then( m => m.ContrasenaOlvidadaChefPage)
-  },  {
-    path: 'contrasena-olvidada-confirmacion-chef',
-    loadComponent: () => import('./paginas/contrasena-olvidada-confirmacion-chef/contrasena-olvidada-confirmacion-chef.page').then( m => m.ContrasenaOlvidadaConfirmacionChefPage)
+    loadComponent: () =>
+      import('./paginas/contrasena-olvidada-chef/contrasena-olvidada-chef.page')
+        .then(m => m.ContrasenaOlvidadaChefPage)
   },
+
+  // CONFIRMACIÓN DE CONTRASEÑA DEL CHEF
+  {
+    path: 'contrasena-olvidada-confirmacion-chef',
+    loadComponent: () =>
+      import('./paginas/contrasena-olvidada-confirmacion-chef/contrasena-olvidada-confirmacion-chef.page')
+        .then(m => m.ContrasenaOlvidadaConfirmacionChefPage)
+  },
+
+  // INICIO DEL CHEF
   {
     path: 'inicio-chef',
-    loadComponent: () => import('./paginas/inicio-chef/inicio-chef.page').then( m => m.InicioChefPage)
+    loadComponent: () =>
+      import('./paginas/inicio-chef/inicio-chef.page')
+        .then(m => m.InicioChefPage)
   },
+
+  // PERFIL DEL CHEF
   {
     path: 'perfil-chef',
-    loadComponent: () => import('./paginas/perfil-chef/perfil-chef.page').then( m => m.PerfilChefPage)
+    loadComponent: () =>
+      import('./paginas/perfil-chef/perfil-chef.page')
+        .then(m => m.PerfilChefPage)
   }
-
 
 ];
