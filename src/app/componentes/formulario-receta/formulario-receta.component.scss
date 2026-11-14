@@ -1,4 +1,5 @@
 /* CONTENEDOR DEL FORMULARIO */
+
 .formulario-receta {
   display: flex;
   flex-direction: column;
@@ -9,9 +10,12 @@
   margin: 0 auto;
   padding: 12px 8px 30px;
   box-sizing: border-box;
+
+  color: var(--ion-text-color);
 }
 
-/* CABECERA DEL FORMULARIO */
+/* CABECERA */
+
 .cabecera-formulario {
   display: flex;
   justify-content: space-between;
@@ -21,12 +25,14 @@
 
 .cabecera-formulario h2 {
   margin: 0;
-  color: #202d27;
+
+  color: var(--ion-text-color);
   font-size: 23px;
   font-weight: 700;
 }
 
 /* BOTÓN CERRAR */
+
 .cerrar-modal {
   display: flex;
   justify-content: center;
@@ -36,38 +42,43 @@
   height: 34px;
   flex-shrink: 0;
 
-  background: #f2f4f3;
+  background: var(--app-campo);
   border: none;
   border-radius: 50%;
 
-  color: #555555;
+  color: var(--ion-text-color);
   font-size: 17px;
   cursor: pointer;
 }
 
-/* DESCRIPCIÓN DEL FORMULARIO */
+/* DESCRIPCIÓN */
+
 .descripcion-formulario {
   margin: -8px 0 4px;
-  color: #818b84;
+
+  color: var(--ion-color-medium);
   font-size: 13px;
   line-height: 1.5;
 }
 
-/* CAMPOS DEL FORMULARIO */
+/* CAMPOS */
+
 .campo-receta {
   display: flex;
   flex-direction: column;
   gap: 7px;
+
   min-width: 0;
 }
 
 .campo-receta label {
-  color: #27362d;
+  color: var(--ion-text-color);
   font-size: 13px;
   font-weight: 600;
 }
 
 /* INPUTS, SELECT Y TEXTAREA */
+
 .campo-receta input,
 .campo-receta select,
 .campo-receta textarea {
@@ -76,32 +87,44 @@
   padding: 12px;
   box-sizing: border-box;
 
-  background: #ffffff;
-  border: 1px solid #dce5df;
+  background: var(--app-campo);
+  border: 1px solid var(--app-borde);
   border-radius: 12px;
   outline: none;
 
-  color: #222222;
+  color: var(--ion-text-color);
   font-family: inherit;
   font-size: 14px;
+}
 
-  transition: border-color 0.2s;
+/* OPCIONES DEL SELECT */
+
+.campo-receta select {
+  color-scheme: light;
+}
+
+.campo-receta select option {
+  background: var(--app-campo);
+  color: var(--ion-text-color);
 }
 
 /* CAMPOS SELECCIONADOS */
+
 .campo-receta input:focus,
 .campo-receta select:focus,
 .campo-receta textarea:focus {
   border-color: var(--ion-color-primary);
 }
 
-/* TEXTO DE AYUDA */
+/* PLACEHOLDER */
+
 .campo-receta input::placeholder,
 .campo-receta textarea::placeholder {
-  color: #a0a9a3;
+  color: var(--ion-color-medium);
 }
 
 /* TIEMPO Y RACIONES */
+
 .fila-campos {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -109,6 +132,7 @@
 }
 
 /* TEXTAREA DE LOS PASOS */
+
 .campo-receta textarea {
   min-height: 110px;
   resize: vertical;
@@ -116,11 +140,15 @@
 }
 
 /* SELECTOR DE IMÁGENES */
+
 .campo-receta input[type="file"] {
   height: auto;
   padding: 15px 12px;
-  background: #f4fbf7;
+
+  background: var(--chef-anadir-fondo);
   border: 1px dashed var(--ion-color-primary);
+
+  color: var(--ion-text-color);
   font-size: 12px;
 }
 
@@ -128,54 +156,62 @@
   padding: 9px 12px;
   margin-right: 10px;
 
-  background: #dff5e9;
+  background: var(--chef-verde-suave);
   border: none;
   border-radius: 8px;
 
-  color: #078d58;
+  color: var(--chef-verde-texto);
   font-family: inherit;
   font-weight: 600;
   cursor: pointer;
 }
 
+/* TEXTO DE AYUDA */
+
 .campo-receta small {
-  color: #8a938d;
+  color: var(--ion-color-medium);
   font-size: 11px;
 }
 
 /* TARJETA DE CADA INGREDIENTE */
+
 .ingrediente-item {
   display: flex;
   flex-direction: column;
   gap: 14px;
 
   padding: 14px;
-  background: #ffffff;
-  border: 1px solid #dce5df;
+
+  background: var(--app-superficie);
+  border: 1px solid var(--app-borde);
   border-radius: 12px;
 }
 
 /* CABECERA DEL INGREDIENTE */
+
 .ingrediente-cabecera {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  color: #27362d;
+  color: var(--ion-text-color);
   font-size: 13px;
   font-weight: 600;
 }
 
-/* BOTÓN ELIMINAR INGREDIENTE */
+/* ELIMINAR INGREDIENTE */
+
 .eliminar-ingrediente {
   background: transparent;
   border: none;
-  color: #d65b5b;
+
+  color: var(--chef-eliminar-texto);
   font-size: 12px;
   cursor: pointer;
 }
 
-/* NOMBRE Y BOTÓN BUSCAR */
+/* BUSCADOR DE INGREDIENTES */
+
 .buscador-ingrediente {
   display: flex;
   align-items: center;
@@ -188,7 +224,8 @@
   min-width: 0;
 }
 
-/* BOTÓN BUSCAR FICTICIO */
+/* BOTÓN BUSCAR */
+
 .boton-buscar-ingrediente {
   height: 45px;
   padding: 0 15px;
@@ -198,7 +235,7 @@
   border: none;
   border-radius: 12px;
 
-  color: #ffffff;
+  color: var(--ion-color-primary-contrast);
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
@@ -210,6 +247,7 @@
 }
 
 /* CANTIDAD Y UNIDAD */
+
 .fila-ingrediente {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -217,47 +255,53 @@
 }
 
 /* TARJETA DE CADA PASO */
+
 .paso-item {
   display: flex;
   flex-direction: column;
   gap: 8px;
 
   padding: 12px;
-  background: #ffffff;
-  border: 1px solid #dce5df;
+
+  background: var(--app-superficie);
+  border: 1px solid var(--app-borde);
   border-radius: 12px;
 }
 
 /* CABECERA DEL PASO */
+
 .paso-cabecera {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  color: #27362d;
+  color: var(--ion-text-color);
   font-size: 13px;
   font-weight: 600;
 }
 
-/* BOTÓN ELIMINAR PASO */
+/* ELIMINAR PASO */
+
 .eliminar-paso {
   background: transparent;
   border: none;
-  color: #d65b5b;
+
+  color: var(--chef-eliminar-texto);
   font-size: 12px;
   cursor: pointer;
 }
 
-/* BOTÓN AÑADIR INGREDIENTE O PASO */
+/* AÑADIR INGREDIENTE O PASO */
+
 .anadir-elemento {
   width: 100%;
   padding: 13px;
 
-  background: #e5f8ef;
+  background: var(--chef-verde-suave);
   border: 1px dashed var(--ion-color-primary);
   border-radius: 12px;
 
-  color: #078d58;
+  color: var(--chef-verde-texto);
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
@@ -265,6 +309,7 @@
 }
 
 /* BOTÓN GUARDAR */
+
 .guardar-receta {
   width: 100%;
   min-height: 49px;
@@ -274,7 +319,7 @@
   border: none;
   border-radius: 12px;
 
-  color: #ffffff;
+  color: var(--ion-color-primary-contrast);
   font-family: inherit;
   font-size: 15px;
   font-weight: 600;
@@ -283,7 +328,104 @@
   cursor: pointer;
 }
 
+/* GUARDAR DESACTIVADO */
+
+.guardar-receta:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* MODO OSCURO */
+
+:host-context(.ion-palette-dark) {
+
+  /* TÍTULOS Y ETIQUETAS */
+
+  .cabecera-formulario h2,
+  .campo-receta label {
+    color: #ffffff;
+  }
+
+  /* DESCRIPCIÓN */
+
+  .descripcion-formulario,
+  .campo-receta small {
+    color: #b5b5b5;
+  }
+
+  /* INPUTS, SELECT Y TEXTAREA */
+
+  .campo-receta input,
+  .campo-receta select,
+  .campo-receta textarea {
+    background: #333333;
+    color: #ffffff;
+    border: 1px solid #555555;
+    color-scheme: dark;
+  }
+
+  /* TEXTO DE AYUDA */
+
+  .campo-receta input::placeholder,
+  .campo-receta textarea::placeholder {
+    color: #b5b5b5;
+  }
+
+  /* SELECTOR DE DIFICULTAD */
+
+  .campo-receta select option {
+    background: #333333;
+    color: #ffffff;
+  }
+
+  /* SELECTOR DE IMÁGENES */
+
+  .campo-receta input[type="file"] {
+    background: #242424;
+    color: #ffffff;
+    border: 1px dashed #16bd7f;
+  }
+
+  .campo-receta input[type="file"]::file-selector-button {
+    background: #245843;
+    color: #ffffff;
+  }
+
+  /* TARJETAS DE INGREDIENTES */
+
+  .ingrediente-item,
+  .paso-item {
+    background: #242424;
+    border-color: #454545;
+  }
+
+  .ingrediente-cabecera,
+  .paso-cabecera {
+    color: #ffffff;
+  }
+
+  /* BOTONES AÑADIR INGREDIENTE Y PASO */
+
+  .anadir-elemento {
+    background: #193b30;
+    color: #3ddba2;
+    border-color: #16bd7f;
+  }
+
+  /* BOTÓN CERRAR */
+
+  .cerrar-modal {
+    background: #333333;
+    color: #ffffff;
+  }
+
+}
+
+
+
 /* PANTALLAS PEQUEÑAS */
+
 @media (max-width: 380px) {
 
   .formulario-receta {
@@ -302,5 +444,4 @@
   .boton-buscar-ingrediente {
     padding: 0 10px;
   }
-
 }
