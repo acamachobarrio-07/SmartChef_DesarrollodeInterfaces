@@ -1,10 +1,20 @@
-
 <ion-content [fullscreen]="true">
 
   <div class="pantalla-detalle">
 
     <!-- CABECERA -->
     <div class="cabecera">
+
+      <!-- VOLVER A LA PANTALLA ANTERIOR -->
+      <button
+        type="button"
+        class="boton-volver"
+        aria-label="Volver"
+        (click)="volver()">
+
+        <ion-icon name="arrow-back-outline"></ion-icon>
+
+      </button>
 
       <img
         src="assets/fotos/logo-smartchef.png"
@@ -17,7 +27,7 @@
     <a
       routerLink="/app/recetas"
       class="barra-busqueda"
-      aria-label="Volver al listado de recetas">
+      aria-label="Ir al listado de recetas">
 
       <ion-icon name="search-outline"></ion-icon>
 
@@ -25,152 +35,265 @@
 
     </a>
 
-    <!-- TARJETA DEL DETALLE -->
-    <section class="tarjeta-detalle">
+    @if (receta; as r) {
 
-      <!-- INFORMACIÓN SUPERIOR -->
-      <div class="encabezado-receta">
+      <!-- TARJETA DEL DETALLE -->
+      <section class="tarjeta-detalle">
 
-        <!-- FOTO -->
-        <img
-          src="assets/fotos/tortilla.png"
-          alt="Tortilla de espinacas y queso"
-          class="foto-receta">
+        <!-- INFORMACIÓN SUPERIOR -->
+        <div class="encabezado-receta">
 
-        <div class="informacion">
+          <!-- FOTO -->
+          <img
+            [src]="r.imagen"
+            [alt]="r.nombre"
+            class="foto-receta">
 
-          <!-- NOMBRE -->
-          <h1>Tortilla de espinacas y queso</h1>
+          <div class="informacion">
 
-          <!-- DATOS -->
-          <div class="datos">
+            <!-- NOMBRE -->
+            <h1>{{ r.nombre }}</h1>
 
-            <span>
-              <ion-icon name="nutrition-outline"></ion-icon>
-              1 porción
-            </span>
+            <!-- DATOS -->
+            <div class="datos">
 
-            <span>
-              <span class="icono-euro">€</span>
-              5 €
-            </span>
+              <span>
+                <ion-icon name="nutrition-outline"></ion-icon>
+                {{ r.raciones ?? 1 }} {{ (r.raciones ?? 1) === 1 ? 'ración' : 'raciones' }}
+              </span>
 
-            <span>
-              <ion-icon name="time-outline"></ion-icon>
-              10 min
-            </span>
+              <span>
+                <span class="icono-euro">€</span>
+                @if (coste !== null) {
+                  {{ formatearEuros(coste) }}
+                } @else {
+                  —
+                }
+              </span>
 
-            <span>
-              <ion-icon name="checkmark-circle"></ion-icon>
-              Fácil
-            </span>
+              <span>
+                <ion-icon name="time-outline"></ion-icon>
+                {{ r.tiempo }} min
+              </span>
 
-          </div>
+              <span>
+                <ion-icon name="checkmark-circle"></ion-icon>
+                {{ r.dificultad }}
+              </span>
 
-          <!-- ETIQUETAS -->
-          <div class="etiquetas">
+              <span class="calorias">
+                <ion-icon name="flame-outline"></ion-icon>
+                @if (calorias !== null) {
+                  {{ calorias }} kcal por ración
+                } @else {
+                  — kcal
+                }
+              </span>
 
-            <span class="rapido">Rápido</span>
+            </div>
 
-            <span class="economico">Económico</span>
+            <!-- ETIQUETAS -->
+            <div class="etiquetas">
+
+              @if (r.rapido) {
+                <span class="rapido">Rápido</span>
+              }
+
+              @if (r.economico) {
+                <span class="economico">Económico</span>
+              }
+
+              @if (r.vegetariano) {
+                <span class="vegetariano">Vegetariano</span>
+              }
+
+              @if (r.sinGluten) {
+                <span class="sin-gluten">Sin gluten</span>
+              }
+
+            </div>
 
           </div>
 
         </div>
 
-      </div>
+        <!-- DESCRIPCIÓN -->
+        @if (r.descripcion) {
+          <p class="descripcion">{{ r.descripcion }}</p>
+        }
 
-      <!-- INGREDIENTES Y PASOS -->
-      <div class="contenido-preparacion">
+        <!-- INGREDIENTES Y PASOS -->
+        <div class="contenido-preparacion">
 
-        <!-- INGREDIENTES -->
-        <div class="bloque-ingredientes">
+          <!-- INGREDIENTES -->
+          <div class="bloque-ingredientes">
 
-          <h2>Ingredientes</h2>
+            <h2>Ingredientes</h2>
 
-          <ul>
-            @for (ingrediente of ingredientes; track ingrediente) {
-              <li>{{ ingrediente }}</li>
-            }
-          </ul>
+            <ul>
+              @if (r.ingredientesReceta) {
 
-        </div>
+                @for (item of r.ingredientesReceta; track item.ingrediente.id) {
+                  <li>
+                    {{ item.ingrediente.nombre }}:
+                    {{ item.cantidad }} {{ unidades[item.ingrediente.unidad] }}
+                  </li>
+                }
 
-        <!-- PASO A PASO -->
-        <div class="columna-pasos">
+              } @else {
 
-          <div class="bloque-pasos">
+                @for (nombre of r.ingredientes; track nombre) {
+                  <li>{{ nombre }}</li>
+                }
 
-            <h2>Paso a paso</h2>
-
-            <ul aria-live="polite">
-              <li>{{ pasos[pasoActual] }}</li>
+              }
             </ul>
 
           </div>
 
-          <!-- SIGUIENTE PASO -->
-          <button
-            type="button"
-            class="boton-paso"
-            (click)="avanzarPaso()">
+          <!-- PASO A PASO -->
+          <div class="columna-pasos">
 
-            @if (pasoActual === pasos.length - 1) {
-              Inicio de la receta
-            } @else {
-              Siguiente paso
-            }
+            <div class="bloque-pasos">
 
-          </button>
+              <h2>
+                Paso a paso
+                <span class="contador-pasos">
+                  {{ pasoActual + 1 }}/{{ pasos.length }}
+                </span>
+              </h2>
+
+              <ul aria-live="polite">
+                <li>{{ pasos[pasoActual] }}</li>
+              </ul>
+
+            </div>
+
+            <!-- SIGUIENTE PASO -->
+            <button
+              type="button"
+              class="boton-paso"
+              (click)="avanzarPaso()">
+
+              @if (pasoActual === pasos.length - 1) {
+                Inicio de la receta
+              } @else {
+                Siguiente paso
+              }
+
+            </button>
+
+          </div>
 
         </div>
 
-      </div>
+        <!-- ACCIONES -->
+        @if (sesion.comprobarSesion()) {
 
-      <!-- ACCIONES RESTRINGIDAS -->
-      <div class="acciones-receta">
+          <!-- CON SESIÓN: LOS BOTONES FUNCIONAN -->
+          <div class="acciones-receta">
 
-        <!-- GUARDAR LISTA -->
-        <a
-          routerLink="/login"
-          class="boton-lista"
-          aria-label="Iniciar sesión para guardar la lista">
+            <button
+              type="button"
+              class="boton-lista"
+              (click)="alternarLista()">
 
-          Guardar lista
+              {{ listaGuardada ? 'En tu lista' : 'Guardar lista' }}
 
+            </button>
+
+            <div class="acciones-derecha">
+
+              <button
+                type="button"
+                class="accion"
+                [attr.aria-pressed]="meGusta"
+                (click)="alternarMeGusta()">
+
+                <span>Me gusta</span>
+
+                <ion-icon [name]="meGusta ? 'heart' : 'heart-outline'"></ion-icon>
+
+              </button>
+
+              <button
+                type="button"
+                class="accion"
+                [attr.aria-pressed]="guardada"
+                (click)="alternarGuardada()">
+
+                <span>{{ guardada ? 'Guardada' : 'Guardar' }}</span>
+
+                <ion-icon [name]="guardada ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+
+              </button>
+
+            </div>
+
+          </div>
+
+        } @else {
+
+          <!-- SIN SESIÓN: LLEVAN AL LOGIN -->
+          <div class="acciones-receta">
+
+            <a
+              routerLink="/login"
+              class="boton-lista"
+              aria-label="Iniciar sesión para guardar la lista">
+
+              Guardar lista
+
+            </a>
+
+            <div class="acciones-derecha">
+
+              <a
+                routerLink="/login"
+                class="accion"
+                aria-label="Iniciar sesión para dar me gusta">
+
+                <span>Me gusta</span>
+
+                <ion-icon name="heart-outline"></ion-icon>
+
+              </a>
+
+              <a
+                routerLink="/login"
+                class="accion"
+                aria-label="Iniciar sesión para guardar la receta">
+
+                <span>Guardar</span>
+
+                <ion-icon name="bookmark-outline"></ion-icon>
+
+              </a>
+
+            </div>
+
+          </div>
+
+        }
+
+      </section>
+
+    } @else {
+
+      <!-- EL ID NO EXISTE -->
+      <section class="tarjeta-detalle receta-no-encontrada">
+
+        <h1>Receta no encontrada</h1>
+
+        <p>Puede que la receta se haya retirado.</p>
+
+        <a routerLink="/app/recetas" class="boton-lista">
+          Ver todas las recetas
         </a>
 
-        <div class="acciones-derecha">
+      </section>
 
-          <!-- ME GUSTA -->
-          <a
-            routerLink="/login"
-            class="accion"
-            aria-label="Iniciar sesión para dar me gusta">
-
-            <span>Me gusta</span>
-
-            <ion-icon name="heart-outline"></ion-icon>
-
-          </a>
-
-          <!-- GUARDAR RECETA -->
-          <a
-            routerLink="/login"
-            class="accion"
-            aria-label="Iniciar sesión para guardar la receta">
-
-            <span>Guardar</span>
-
-            <ion-icon name="bookmark-outline"></ion-icon>
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
+    }
 
   </div>
 

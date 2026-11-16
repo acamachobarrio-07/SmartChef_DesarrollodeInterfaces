@@ -55,9 +55,9 @@ export const routes: Routes = [
             .then(m => m.RecetasPage)
       },
 
-      // DETALLE DE RECETAS
+      // DETALLE DE UNA RECETA (el :id indica qué receta se abre)
       {
-        path: 'detalle-receta',
+        path: 'recetas/:id',
         loadComponent: () =>
           import('./paginas/detalle-receta/detalle-receta.page')
             .then(m => m.DetalleRecetaPage)

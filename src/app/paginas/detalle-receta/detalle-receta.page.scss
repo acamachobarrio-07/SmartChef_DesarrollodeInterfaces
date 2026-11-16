@@ -1,7 +1,6 @@
-
 /* FONDO */
 ion-content {
-  --background: #ffffff;
+  --background: var(--ion-background-color);
 }
 
 /* PANTALLA PRINCIPAL */
@@ -14,16 +13,40 @@ ion-content {
   padding: 25px 25px 24px;
   box-sizing: border-box;
 
-  background: white;
+  background: var(--ion-background-color);
 }
 
 /* CABECERA */
 .cabecera {
+  position: relative;
   height: 85px;
 
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+/* BOTÓN VOLVER */
+.boton-volver {
+  position: absolute;
+  top: 8px;
+  left: 0;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  background: transparent;
+  border: none;
+
+  color: var(--ion-color-primary);
+  font-size: 25px;
+
+  cursor: pointer;
 }
 
 /* LOGO */
@@ -45,18 +68,18 @@ ion-content {
   padding: 0 10px;
   box-sizing: border-box;
 
-  background: white;
-  border: 1px solid #e5e5e5;
+  background: var(--app-superficie);
+  border: 1px solid var(--app-borde);
   border-radius: 12px;
 
-  color: #999999;
+  color: var(--app-texto-secundario);
   font-size: 12px;
   text-decoration: none;
 }
 
 /* ICONO DEL BUSCADOR */
 .barra-busqueda ion-icon {
-  color: #999999;
+  color: var(--app-texto-secundario);
   font-size: 19px;
   flex-shrink: 0;
 }
@@ -68,8 +91,8 @@ ion-content {
   padding: 12px 10px;
   box-sizing: border-box;
 
-  background: white;
-  border: 1px solid #eeeeee;
+  background: var(--app-superficie);
+  border: 1px solid var(--app-borde);
   border-radius: 6px;
   box-shadow: none;
 }
@@ -104,7 +127,7 @@ ion-content {
 .informacion h1 {
   margin: 0;
 
-  color: #222222;
+  color: var(--app-texto);
   font-size: 13px;
   font-weight: 400;
   line-height: 1.25;
@@ -119,7 +142,7 @@ ion-content {
 
   gap: 8px 5px;
 
-  color: #222222;
+  color: var(--app-texto);
   font-size: 11px;
 }
 
@@ -131,6 +154,11 @@ ion-content {
 
   min-width: 0;
   white-space: nowrap;
+}
+
+/* CALORÍAS: OCUPA TODA LA FILA */
+.datos > span.calorias {
+  grid-column: 1 / -1;
 }
 
 /* ICONOS DE LOS DATOS */
@@ -185,9 +213,24 @@ ion-content {
   background: #3671bf;
 }
 
-/* ECONÓMICO */
-.economico {
+/* ECONÓMICO Y SIN GLUTEN */
+.economico,
+.sin-gluten {
   background: var(--ion-color-primary);
+}
+
+/* VEGETARIANO */
+.vegetariano {
+  background: #e08a2e;
+}
+
+/* DESCRIPCIÓN */
+.descripcion {
+  margin: 14px 0 0;
+
+  color: var(--app-texto-secundario);
+  font-size: 11px;
+  line-height: 1.4;
 }
 
 /* INGREDIENTES Y PASOS */
@@ -208,7 +251,7 @@ ion-content {
   padding: 10px 8px;
   box-sizing: border-box;
 
-  background: white;
+  background: var(--app-superficie);
   border: 1px solid var(--ion-color-primary);
   border-radius: 4px;
 }
@@ -218,9 +261,17 @@ ion-content {
 .bloque-pasos h2 {
   margin: 0 0 9px;
 
-  color: #222222;
+  color: var(--app-texto);
   font-size: 12px;
   font-weight: 400;
+}
+
+/* CONTADOR DE PASOS */
+.contador-pasos {
+  float: right;
+
+  color: var(--ion-color-primary);
+  font-size: 11px;
 }
 
 /* LISTA DE INGREDIENTES */
@@ -228,7 +279,7 @@ ion-content {
   margin: 0;
   padding-left: 13px;
 
-  color: #222222;
+  color: var(--app-texto);
   font-size: 11px;
   line-height: 1.35;
 }
@@ -256,7 +307,7 @@ ion-content {
   padding: 10px 8px;
   box-sizing: border-box;
 
-  background: white;
+  background: var(--app-superficie);
   border: 1px solid var(--ion-color-primary);
   border-radius: 4px;
 }
@@ -266,7 +317,7 @@ ion-content {
   margin: 0;
   padding-left: 13px;
 
-  color: #222222;
+  color: var(--app-texto);
   font-size: 11px;
   line-height: 1.35;
 }
@@ -318,9 +369,11 @@ ion-content {
   box-sizing: border-box;
 
   background: var(--ion-color-primary);
+  border: none;
   border-radius: 4px;
 
   color: white;
+  font-family: inherit;
   font-size: 11px;
   font-weight: 400;
   text-decoration: none;
@@ -347,8 +400,11 @@ ion-content {
   gap: 4px;
 
   padding: 0;
+  background: transparent;
+  border: none;
 
-  color: #222222;
+  color: var(--app-texto);
+  font-family: inherit;
   font-size: 10px;
   font-weight: 400;
   text-decoration: none;
@@ -364,6 +420,35 @@ ion-content {
   flex-shrink: 0;
 }
 
+/* RECETA NO ENCONTRADA */
+.receta-no-encontrada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.receta-no-encontrada h1 {
+  margin: 0;
+  color: var(--app-texto);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.receta-no-encontrada p {
+  margin: 0;
+  color: var(--app-texto-secundario);
+  font-size: 12px;
+}
+
+.receta-no-encontrada .boton-lista {
+  width: auto;
+  padding: 6px 14px;
+}
+
 /* EFECTO AL PULSAR */
 .boton-lista:active,
 .boton-paso:active {
@@ -375,6 +460,7 @@ ion-content {
 }
 
 /* ACCESIBILIDAD CON TECLADO */
+.boton-volver:focus-visible,
 .accion:focus-visible,
 .boton-lista:focus-visible,
 .boton-paso:focus-visible {

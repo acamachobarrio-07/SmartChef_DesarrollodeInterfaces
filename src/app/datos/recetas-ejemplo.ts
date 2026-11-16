@@ -1,4 +1,5 @@
 import { Receta } from '../modelos/receta';
+import { INGREDIENTES } from './ingredientes';
 
 // RECETAS FICTICIAS COMPARTIDAS
 export const RECETAS_EJEMPLO: Receta[] = [
@@ -15,7 +16,26 @@ export const RECETAS_EJEMPLO: Receta[] = [
     vegetariano: true,
     sinGluten: false,
     rapido: true,
-    economico: true
+    economico: true,
+
+    // Detalle completo (receta modelo)
+    descripcion: 'Una tortilla jugosa rellena de espinacas frescas y queso. Perfecta para una cena rápida y ligera.',
+    raciones: 1,
+    ingredientesReceta: [
+      { ingrediente: INGREDIENTES[0], cantidad: 2 },    // huevo
+      { ingrediente: INGREDIENTES[1], cantidad: 50 },   // espinacas
+      { ingrediente: INGREDIENTES[2], cantidad: 30 },   // queso fresco
+      { ingrediente: INGREDIENTES[3], cantidad: 10 },   // aceite de oliva
+      { ingrediente: INGREDIENTES[16], cantidad: 2 }    // sal
+    ],
+    pasos: [
+      'Lava las espinacas, sécalas bien y trocéalas.',
+      'Pon las espinacas en un cuenco con el queso fresco desmenuzado y una pizca de sal.',
+      'Bate los dos huevos en otro recipiente con el resto de la sal.',
+      'Calienta el aceite en una sartén a fuego bajo. Vierte los huevos batidos y deja que se cuajen un poco por la base.',
+      'Reparte el relleno de espinacas y queso sobre una mitad de la tortilla.',
+      'Dobla la tortilla por la mitad cubriendo el relleno, cocina 1 minuto más y sírvela recién hecha.'
+    ]
   },
 
   // RECETA 2
@@ -94,4 +114,3 @@ export const RECETAS_EJEMPLO: Receta[] = [
   }
 
 ];
-

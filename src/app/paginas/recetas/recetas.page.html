@@ -1,10 +1,9 @@
-
 <ion-content [fullscreen]="true">
 
   <div class="pantalla-recetas">
 
-    <!-- CABECERA REUTILIZABLE -->
-    <app-cabecera></app-cabecera>
+    <!-- CABECERA REUTILIZABLE (con flecha para volver) -->
+    <app-cabecera [volver]="true"></app-cabecera>
 
     <!-- BUSCADOR Y FILTROS -->
     <div class="zona-busqueda">
@@ -179,7 +178,7 @@
     <!-- LISTADO DE RECETAS -->
     <section class="listado-recetas">
 
-      <h1>Recetas</h1>
+      <h1>Todas las recetas</h1>
 
       <!-- COMPONENTE REUTILIZABLE -->
       @for (receta of recetasFiltradas; track receta.id) {

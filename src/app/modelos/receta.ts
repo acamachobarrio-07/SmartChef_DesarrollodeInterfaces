@@ -1,3 +1,11 @@
+import { Ingrediente } from './ingrediente';
+
+// Ingrediente de una receta con su cantidad (en la unidad del ingrediente)
+export interface IngredienteReceta {
+  ingrediente: Ingrediente;
+  cantidad: number;
+}
+
 export interface Receta {
   id: number;
   nombre: string;
@@ -10,4 +18,10 @@ export interface Receta {
   sinGluten: boolean;
   rapido: boolean;
   economico: boolean;
+
+  // Datos del detalle (opcionales: no todas las recetas los tienen todavía)
+  descripcion?: string;
+  raciones?: number;
+  ingredientesReceta?: IngredienteReceta[];
+  pasos?: string[];
 }

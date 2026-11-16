@@ -1,21 +1,50 @@
 <!-- CABECERA REUTILIZABLE -->
 <div class="cabecera">
 
+  <!-- VOLVER (solo si la página lo pide) -->
+  @if (volver()) {
+
+    <button
+      type="button"
+      class="boton-volver"
+      aria-label="Volver"
+      (click)="irAtras()">
+
+      <ion-icon name="arrow-back-outline"></ion-icon>
+
+    </button>
+
+  }
+
   <!-- LOGO SMARTCHEF -->
   <img
     src="assets/fotos/logo-smartchef.png"
     alt="SmartChef"
     class="logo">
 
-  <!-- ICONO DE USUARIO -->
-  <a
-    routerLink="/app/perfil"
-    class="usuario"
-    aria-label="Ir al perfil">
+  <!-- USUARIO: AVATAR CON SESIÓN, ICONO SIN SESIÓN -->
+  @if (sesion.comprobarSesion()) {
 
-    <ion-icon name="person-circle-outline"></ion-icon>
+    <a
+      routerLink="/perfil-usuario"
+      class="avatar-usuario"
+      aria-label="Ir a mi perfil">
 
-  </a>
+      A
+
+    </a>
+
+  } @else {
+
+    <a
+      routerLink="/login"
+      class="usuario"
+      aria-label="Iniciar sesión">
+
+      <ion-icon name="person-circle-outline"></ion-icon>
+
+    </a>
+
+  }
 
 </div>
-

@@ -1,19 +1,25 @@
-
-import { Component } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
+import { Location } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { IonContent, IonIcon } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
 import {
+  arrowBackOutline,
   searchOutline,
   nutritionOutline,
   timeOutline,
   checkmarkCircle,
+  flameOutline,
   heartOutline,
   heart,
   bookmarkOutline,
   bookmark
 } from 'ionicons/icons';
+
+import { Receta, IngredienteReceta } from '../../modelos/receta';
+import { RECETAS_EJEMPLO } from '../../datos/recetas-ejemplo';
+import { SesionService } from '../../servicios/sesion.service';
 
 @Component({
   selector: 'app-detalle-receta',
@@ -27,41 +33,97 @@ import {
 })
 export class DetalleRecetaPage {
 
+  // Recibe el ":id" de la dirección (/app/recetas/1)
+  id = input<string>();
+
+  sesion = inject(SesionService);
+  location = inject(Location);
+
   pasoActual = 0;
 
   meGusta = false;
   guardada = false;
   listaGuardada = false;
 
-  ingredientes = [
-    '2 huevos.',
-    '50 g de espinacas frescas troceadas.',
-    '2 cucharadas de queso fresco.',
-    '1 cucharada de aceite de oliva.',
-    'Sal al gusto.'
-  ];
-
-  pasos = [
-    'Pon en un cuenco las espinacas troceadas con el queso. Añade sal.',
-
-    'Bate los dos huevos en otro recipiente con una pizca de sal.',
-
-    'Calienta el aceite en una sartén a fuego bajo. Vierte los huevos batidos y deja que se cuajen un poco por la base.',
-
-    'Dobla la tortilla por la mitad cubriendo el relleno, cocina 1 minuto más y sírvela recién hecha.'
-  ];
+  // Textos cortos para cada unidad
+  unidades = {
+    GRAMOS: 'g',
+    MILILITROS: 'ml',
+    UNIDADES: 'ud.'
+  };
 
   constructor() {
     addIcons({
+      arrowBackOutline,
       searchOutline,
       nutritionOutline,
       timeOutline,
       checkmarkCircle,
+      flameOutline,
       heartOutline,
       heart,
       bookmarkOutline,
       bookmark
     });
+  }
+
+  // Busca la receta que corresponde al id de la dirección
+  get receta(): Receta | undefined {
+    return RECETAS_EJEMPLO.find(r => r.id === Number(this.id()));
+  }
+
+  // Pasos de la receta, o un aviso si todavía no tiene
+  get pasos(): string[] {
+    return this.receta?.pasos ?? ['El chef todavía está preparando los pasos de esta receta.'];
+  }
+
+  // Coste por ración a partir del precio de los ingredientes
+  get coste(): number | null {
+    const receta = this.receta;
+
+    if (!receta?.ingredientesReceta) {
+      return null;
+    }
+
+    let total = 0;
+    for (const item of receta.ingredientesReceta) {
+      total += this.cantidadReferencia(item) * item.ingrediente.precio;
+    }
+
+    return total / (receta.raciones ?? 1);
+  }
+
+  // Calorías por ración a partir de las calorías de los ingredientes
+  get calorias(): number | null {
+    const receta = this.receta;
+
+    if (!receta?.ingredientesReceta) {
+      return null;
+    }
+
+    let total = 0;
+    for (const item of receta.ingredientesReceta) {
+      total += this.cantidadReferencia(item) * item.ingrediente.calorias;
+    }
+
+    return Math.round(total / (receta.raciones ?? 1));
+  }
+
+  // El precio y las calorías van por 100 g / 100 ml o por unidad
+  cantidadReferencia(item: IngredienteReceta): number {
+    if (item.ingrediente.unidad === 'UNIDADES') {
+      return item.cantidad;
+    }
+    return item.cantidad / 100;
+  }
+
+  // 1.0625 -> "1,06 €"
+  formatearEuros(valor: number): string {
+    return valor.toFixed(2).replace('.', ',') + ' €';
+  }
+
+  volver(): void {
+    this.location.back();
   }
 
   avanzarPaso(): void {

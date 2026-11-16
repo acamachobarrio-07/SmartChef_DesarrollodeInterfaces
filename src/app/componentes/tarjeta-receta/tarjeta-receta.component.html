@@ -51,26 +51,15 @@
 
     @if (modo() === 'ver') {
 
-      <!-- COMPORTAMIENTO ORIGINAL -->
-      @if (receta().id === 1) {
+      <!-- ABRIR EL DETALLE DE ESTA RECETA -->
+      <a
+        [routerLink]="['/app/recetas', receta().id]"
+        class="ir-receta">
 
-        <a
-          [routerLink]="['/app', 'detalle-receta']"
-          class="ir-receta">
+        Ir a la receta
+        <ion-icon name="chevron-forward-circle"></ion-icon>
 
-          Ir a la receta
-          <ion-icon name="chevron-forward-circle"></ion-icon>
-
-        </a>
-
-      } @else {
-
-        <div class="ir-receta">
-          Ir a la receta
-          <ion-icon name="chevron-forward-circle"></ion-icon>
-        </div>
-
-      }
+      </a>
 
     } @else if (modo() === 'modificar') {
 

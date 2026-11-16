@@ -21,7 +21,30 @@
   object-fit: contain;
 }
 
-/* ICONO DE USUARIO */
+/* BOTÓN VOLVER */
+.boton-volver {
+  position: absolute;
+  top: 12px;
+  left: 0;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  background: transparent;
+  border: none;
+
+  color: var(--ion-color-primary);
+  font-size: 25px;
+
+  cursor: pointer;
+}
+
+/* ICONO DE USUARIO (SIN SESIÓN) */
 .usuario {
   position: absolute;
   top: 10px;
@@ -29,4 +52,36 @@
 
   color: var(--ion-color-primary);
   font-size: 38px;
+}
+
+/* AVATAR DEL USUARIO (CON SESIÓN) */
+.avatar-usuario {
+  position: absolute;
+  top: 8px;
+  right: 0;
+
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  border: 2px solid var(--ion-color-primary);
+  border-radius: 50%;
+  background: var(--chef-verde-suave);
+
+  color: var(--chef-verde-texto);
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ACCESIBILIDAD CON TECLADO */
+.boton-volver:focus-visible,
+.usuario:focus-visible,
+.avatar-usuario:focus-visible {
+  outline: 2px solid var(--ion-color-primary);
+  outline-offset: 3px;
 }

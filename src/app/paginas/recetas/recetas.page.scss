@@ -1,6 +1,6 @@
 /* FONDO */
 ion-content {
-  --background: #ffffff;
+  --background: var(--ion-background-color);
 }
 
 /* CONTENEDOR PRINCIPAL */
@@ -12,7 +12,7 @@ ion-content {
   padding: 25px 28px 24px;
   box-sizing: border-box;
 
-  background: white;
+  background: var(--ion-background-color);
 }
 
 
@@ -33,13 +33,13 @@ ion-content {
   padding: 0 10px;
   box-sizing: border-box;
 
-  background: white;
-  border: 1px solid #e5e5e5;
+  background: var(--app-superficie);
+  border: 1px solid var(--app-borde);
   border-radius: 12px;
 }
 
 .barra-busqueda > ion-icon {
-  color: #999999;
+  color: var(--app-texto-secundario);
   font-size: 19px;
   flex-shrink: 0;
 }
@@ -52,12 +52,12 @@ ion-content {
   outline: none;
   background: transparent;
 
-  color: #222222;
+  color: var(--app-texto);
   font-size: 12px;
 }
 
 .barra-busqueda input::placeholder {
-  color: #999999;
+  color: var(--app-texto-secundario);
 }
 
 /* BOTÓN DE FILTROS */
@@ -74,7 +74,7 @@ ion-content {
 }
 
 .boton-filtros ion-icon {
-  color: #888888;
+  color: var(--app-texto-secundario);
   font-size: 29px;
 }
 
@@ -88,8 +88,8 @@ ion-content {
   padding: 2px 5px;
   box-sizing: border-box;
 
-  background: white;
-  border: 1px solid #cccccc;
+  background: var(--app-superficie);
+  border: 1px solid var(--app-borde);
   border-radius: 2px;
   box-shadow: 0 2px 5px #00000012;
 
@@ -105,9 +105,9 @@ ion-content {
   min-height: 32px;
   padding: 5px 2px;
 
-  background: white;
+  background: var(--app-superficie);
   border: none;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid var(--app-borde);
 
   color: var(--ion-color-primary);
   font-size: 12px;
@@ -126,11 +126,11 @@ ion-content {
   height: 28px;
   margin: 5px 0;
 
-  border: 1px solid #dddddd;
+  border: 1px solid var(--app-borde);
   border-radius: 4px;
-  background: white;
+  background: var(--app-campo);
 
-  color: #555555;
+  color: var(--app-texto);
   font-size: 11px;
 }
 
@@ -141,7 +141,7 @@ ion-content {
   background: transparent;
   border: none;
 
-  color: #777777;
+  color: var(--app-texto-secundario);
   font-size: 11px;
   text-align: center;
 
@@ -161,7 +161,7 @@ ion-content {
 .filtros-activos span {
   padding: 3px 7px;
 
-  border: 1px solid #cccccc;
+  border: 1px solid var(--app-borde);
   border-radius: 3px;
 
   color: var(--ion-color-primary);
@@ -176,7 +176,7 @@ ion-content {
 .listado-recetas h1 {
   margin: 0 0 18px;
 
-  color: #222222;
+  color: var(--app-texto);
   font-size: 18px;
   font-weight: 400;
 }
@@ -185,7 +185,7 @@ ion-content {
 .sin-resultados {
   padding: 30px 10px;
 
-  color: #999999;
+  color: var(--app-texto-secundario);
   font-size: 13px;
   text-align: center;
 }
