@@ -1,13 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>colecciones</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">colecciones</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <div class="pantalla-colecciones">
+
+    <!-- CABECERA REUTILIZABLE -->
+    <app-cabecera></app-cabecera>
+
+    <!-- BUSCADOR (visual, como en el inicio) -->
+    <ion-searchbar
+      placeholder="Buscar ingrediente o receta..."
+      class="buscador">
+    </ion-searchbar>
+
+    <h1>Mis colecciones</h1>
+
+    <!-- CUADRÍCULA DE COLECCIONES -->
+    <div class="cuadricula">
+
+      @for (coleccion of colecciones; track coleccion.id) {
+
+        <div class="tarjeta-coleccion">
+          <h2>{{ coleccion.nombre }}</h2>
+          <img [src]="coleccion.imagen" [alt]="coleccion.nombre">
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
 </ion-content>

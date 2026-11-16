@@ -1,19 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { IonContent, IonSearchbar } from '@ionic/angular';
+
+import { CabeceraComponent } from '../../componentes/cabecera/cabecera.component';
+import { COLECCIONES } from '../../datos/colecciones';
 
 @Component({
   selector: 'app-colecciones',
   templateUrl: './colecciones.page.html',
   styleUrls: ['./colecciones.page.scss'],
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonContent, IonSearchbar, CabeceraComponent]
 })
-export class ColeccionesPage implements OnInit {
+export class ColeccionesPage {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  colecciones = COLECCIONES;
 
 }

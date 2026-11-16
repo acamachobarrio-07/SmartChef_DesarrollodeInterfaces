@@ -1,0 +1,64 @@
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+.pantalla-colecciones {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 25px 28px 24px;
+}
+
+/* Buscador con el mismo estilo que en el inicio */
+.buscador {
+  --background: var(--app-superficie);
+  --color: var(--app-texto);
+  --border-radius: 14px;
+  --box-shadow: 0 0 0 1px var(--app-borde);
+  --placeholder-color: var(--app-texto-secundario);
+  --icon-color: var(--app-texto-secundario);
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0 0 16px;
+  color: var(--app-texto);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* Dos columnas */
+.cuadricula {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 36px;
+  row-gap: 40px;
+}
+
+/* Cada colección */
+.tarjeta-coleccion {
+  height: 125px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+
+  background: var(--app-superficie);
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 4px;
+
+  h2 {
+    margin: 0;
+    color: var(--app-texto);
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  img {
+    width: 80px;
+    height: 65px;
+    object-fit: contain;
+  }
+}
