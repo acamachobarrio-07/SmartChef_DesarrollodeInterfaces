@@ -1,0 +1,291 @@
+/* FONDO */
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+/* CONTENEDOR PRINCIPAL */
+.pantalla-despensa {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 25px 28px 24px;
+  box-sizing: border-box;
+}
+
+/* BUSCADOR (mismo estilo que en el inicio) */
+.buscador {
+  --background: var(--app-superficie);
+  --color: var(--app-texto);
+  --border-radius: 14px;
+  --box-shadow: 0 0 0 1px var(--app-borde);
+  --placeholder-color: var(--app-texto-secundario);
+  --icon-color: var(--app-texto-secundario);
+
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+/* TÍTULO */
+.mis-ingredientes h1 {
+  margin: 0;
+
+  color: var(--app-texto);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* BOTÓN AÑADIR */
+.boton-anadir {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  margin: 4px 0 6px auto;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+
+  color: var(--ion-color-primary);
+  font-family: inherit;
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.boton-anadir ion-icon {
+  font-size: 22px;
+}
+
+/* CADA INGREDIENTE */
+.producto {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+
+  padding: 14px 0;
+  border-bottom: 1px solid var(--app-borde);
+}
+
+/* FOTO */
+.foto-producto {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  background: var(--chef-verde-suave);
+  border: 1px solid var(--app-borde);
+  border-radius: 6px;
+}
+
+.foto-producto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.foto-producto ion-icon {
+  color: var(--ion-color-primary);
+  font-size: 26px;
+}
+
+/* DATOS */
+.datos-producto {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fila-datos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.nombre {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nombre span {
+  color: var(--app-texto);
+  font-size: 13px;
+  overflow-wrap: break-word;
+}
+
+.fecha,
+.cantidad {
+  color: var(--app-texto-secundario);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* AVISO DE CADUCIDAD */
+.aviso-caducidad {
+  color: var(--chef-modificar-texto);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.aviso-caducidad.caducado {
+  color: var(--chef-eliminar-texto);
+}
+
+/* BOTONES MODIFICAR Y ELIMINAR */
+.botones-producto {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.botones-producto button {
+  min-width: 68px;
+  padding: 3px 10px;
+
+  border: none;
+  border-radius: 3px;
+
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.boton-modificar {
+  background: #b38a1d;
+}
+
+.boton-eliminar {
+  background: #c62f2f;
+}
+
+.botones-producto button:active {
+  opacity: 0.85;
+}
+
+/* SIN RESULTADOS */
+.sin-resultados {
+  padding: 30px 10px;
+
+  color: var(--app-texto-secundario);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* AVISO PARA ELIMINAR (mismo diseño que en el modo chef) */
+.aviso-eliminar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 25px 15px 30px;
+  box-sizing: border-box;
+
+  text-align: center;
+}
+
+.icono-aviso {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 75px;
+  height: 75px;
+
+  background: var(--chef-eliminar-fondo);
+  border-radius: 50%;
+
+  color: var(--chef-eliminar-texto);
+}
+
+.icono-aviso ion-icon {
+  font-size: 35px;
+}
+
+.aviso-eliminar h2 {
+  margin: 5px 0 0;
+
+  color: var(--app-texto);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.aviso-eliminar p {
+  margin: 0;
+
+  color: var(--app-texto-secundario);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.aviso-eliminar strong {
+  color: var(--app-texto);
+  font-weight: 700;
+}
+
+.acciones-eliminar {
+  display: flex;
+  gap: 10px;
+
+  width: 100%;
+  margin-top: 15px;
+}
+
+.acciones-eliminar button {
+  flex: 1;
+  min-height: 48px;
+
+  border: none;
+  border-radius: 12px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.boton-cancelar {
+  background: var(--app-campo);
+  color: var(--app-texto);
+}
+
+.boton-confirmar-eliminar {
+  background: var(--chef-eliminar-texto);
+  color: #ffffff;
+}
+
+/* PANTALLAS PEQUEÑAS */
+@media (max-width: 380px) {
+
+  .pantalla-despensa {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .fila-datos {
+    gap: 6px;
+  }
+
+  .fecha,
+  .cantidad {
+    font-size: 11px;
+  }
+
+}
