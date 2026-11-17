@@ -95,6 +95,14 @@ export const routes: Routes = [
             .then(m => m.ColeccionesPage)
       },
 
+      // DETALLE DE UNA COLECCIÓN (el :id indica qué colección se abre)
+      {
+        path: 'colecciones/:id',
+        loadComponent: () =>
+          import('./paginas/coleccion-detalle/coleccion-detalle.page')
+            .then(m => m.ColeccionDetallePage)
+      },
+
       // PERFIL
       {
         path: 'perfil',

@@ -1,0 +1,121 @@
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+.pantalla-coleccion {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 25px 28px 24px;
+}
+
+h1 {
+  margin: 0;
+  color: var(--app-texto);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.resumen {
+  margin: 4px 0 18px;
+  color: var(--app-texto-secundario);
+  font-size: 12px;
+}
+
+/* Botón "Quitar" debajo de cada tarjeta */
+.boton-quitar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: -4px 0 24px auto;
+  padding: 7px 14px;
+
+  background: var(--chef-eliminar-fondo);
+  border: 1px solid var(--chef-eliminar-borde);
+  border-radius: 20px;
+
+  color: var(--chef-eliminar-texto);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+
+  ion-icon {
+    font-size: 15px;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+/* Ventana de quitar (mismo diseño que eliminar en el modo chef) */
+.aviso-quitar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 10px;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    color: var(--app-texto);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+    color: var(--app-texto-secundario);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  strong {
+    color: var(--app-texto);
+  }
+}
+
+.icono-aviso {
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--chef-eliminar-fondo);
+  border-radius: 50%;
+  color: var(--chef-eliminar-texto);
+
+  ion-icon {
+    font-size: 35px;
+  }
+}
+
+.acciones {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+
+  button {
+    flex: 1;
+    height: 48px;
+    border: none;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+.boton-cancelar {
+  background: var(--app-campo);
+  color: var(--app-texto);
+}
+
+.boton-confirmar {
+  background: var(--chef-eliminar-texto);
+  color: #ffffff;
+}

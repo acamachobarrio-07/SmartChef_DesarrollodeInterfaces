@@ -17,12 +17,7 @@
     <div class="cuadricula">
 
       @for (coleccion of colecciones; track coleccion.id) {
-
-        <div class="tarjeta-coleccion">
-          <h2>{{ coleccion.nombre }}</h2>
-          <img [src]="coleccion.imagen" [alt]="coleccion.nombre">
-        </div>
-
+        <app-tarjeta-coleccion [coleccion]="coleccion"></app-tarjeta-coleccion>
       }
 
     </div>

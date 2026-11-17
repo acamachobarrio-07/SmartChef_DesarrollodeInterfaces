@@ -1,0 +1,16 @@
+<!-- MENSAJE CUANDO NO HAY CONTENIDO -->
+<section class="estado-vacio">
+
+  <div class="icono">
+    <ion-icon [name]="icono()"></ion-icon>
+  </div>
+
+  <h2>{{ titulo() }}</h2>
+
+  <p>{{ mensaje() }}</p>
+
+  @if (textoBoton() && enlace()) {
+    <a [routerLink]="enlace()" class="boton">{{ textoBoton() }}</a>
+  }
+
+</section>

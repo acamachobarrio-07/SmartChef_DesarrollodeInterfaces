@@ -1,0 +1,107 @@
+<ion-content [fullscreen]="true">
+
+  <div class="pantalla-coleccion">
+
+    <!-- CABECERA REUTILIZABLE (con flecha para volver) -->
+    <app-cabecera [volver]="true"></app-cabecera>
+
+    @if (coleccion; as c) {
+
+      <h1>{{ c.nombre }}</h1>
+      <p class="resumen">{{ c.recetas.length }} {{ c.recetas.length === 1 ? 'receta' : 'recetas' }}</p>
+
+      <!-- RECETAS DE LA COLECCIÓN -->
+      @for (receta of c.recetas; track receta.id) {
+
+        <app-tarjeta-receta [receta]="receta"></app-tarjeta-receta>
+
+        <button
+          type="button"
+          class="boton-quitar"
+          (click)="abrirQuitar(receta)">
+          <ion-icon name="trash-outline"></ion-icon>
+          Quitar de la colección
+        </button>
+
+      } @empty {
+
+        <app-estado-vacio
+          icono="bookmark-outline"
+          titulo="Colección vacía"
+          mensaje="Todavía no has guardado recetas aquí. Entra en una receta y pulsa «Guardar»."
+          textoBoton="Explorar recetas"
+          enlace="/app/recetas">
+        </app-estado-vacio>
+
+      }
+
+    } @else {
+
+      <app-estado-vacio
+        icono="search-outline"
+        titulo="Colección no encontrada"
+        mensaje="Puede que esta colección ya no exista."
+        textoBoton="Ver mis colecciones"
+        enlace="/app/colecciones">
+      </app-estado-vacio>
+
+    }
+
+  </div>
+
+</ion-content>
+
+
+<!-- VENTANA PARA QUITAR UNA RECETA -->
+<ion-modal
+  [isOpen]="modalAbierto"
+  (didDismiss)="modalAbierto = false"
+  [initialBreakpoint]="0.5"
+  [breakpoints]="[0, 0.5]">
+
+  <ng-template>
+
+    <ion-content class="ion-padding">
+
+      @if (!quitada) {
+
+        <!-- AVISO -->
+        <div class="aviso-quitar">
+
+          <div class="icono-aviso">
+            <ion-icon name="trash-outline"></ion-icon>
+          </div>
+
+          <h2>¿Quitar receta?</h2>
+
+          <p>
+            Se quitará <strong>{{ recetaSeleccionada?.nombre }}</strong>
+            de <strong>{{ coleccion?.nombre }}</strong>.
+          </p>
+
+          <div class="acciones">
+            <button type="button" class="boton-cancelar" (click)="modalAbierto = false">
+              Cancelar
+            </button>
+            <button type="button" class="boton-confirmar" (click)="confirmarQuitar()">
+              Quitar
+            </button>
+          </div>
+
+        </div>
+
+      } @else {
+
+        <!-- CONFIRMACIÓN (componente reutilizado del modo chef) -->
+        <app-confirmacion-receta
+          mensaje="La receta se ha quitado de la colección."
+          (aceptar)="modalAbierto = false">
+        </app-confirmacion-receta>
+
+      }
+
+    </ion-content>
+
+  </ng-template>
+
+</ion-modal>
