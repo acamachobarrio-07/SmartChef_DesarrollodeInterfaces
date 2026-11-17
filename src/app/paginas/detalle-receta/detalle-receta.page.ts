@@ -1,7 +1,7 @@
 import { Component, inject, input } from '@angular/core';
 import { Location } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { IonContent, IonIcon } from '@ionic/angular';
+import { IonContent, IonIcon, IonModal } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
 import {
@@ -18,8 +18,14 @@ import {
 } from 'ionicons/icons';
 
 import { Receta, IngredienteReceta } from '../../modelos/receta';
+import { Coleccion } from '../../modelos/coleccion';
 import { RECETAS_EJEMPLO } from '../../datos/recetas-ejemplo';
+import { COLECCIONES } from '../../datos/colecciones';
 import { SesionService } from '../../servicios/sesion.service';
+
+import { TarjetaColeccionComponent } from '../../componentes/tarjeta-coleccion/tarjeta-coleccion.component';
+import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-receta/confirmacion-receta.component';
+import { EstadoVacioComponent } from '../../componentes/estado-vacio/estado-vacio.component';
 
 @Component({
   selector: 'app-detalle-receta',
@@ -28,7 +34,11 @@ import { SesionService } from '../../servicios/sesion.service';
   imports: [
     IonContent,
     IonIcon,
-    RouterLink
+    IonModal,
+    RouterLink,
+    TarjetaColeccionComponent,
+    ConfirmacionRecetaComponent,
+    EstadoVacioComponent
   ]
 })
 export class DetalleRecetaPage {
@@ -44,6 +54,11 @@ export class DetalleRecetaPage {
   meGusta = false;
   guardada = false;
   listaGuardada = false;
+
+  // Ventana para guardar en una colección (Favoritos no se elige: se llena con "Me gusta")
+  colecciones = COLECCIONES.filter(c => c.id !== 1);
+  modalColeccionesAbierto = false;
+  coleccionElegida: Coleccion | null = null;
 
   // Textos cortos para cada unidad
   unidades = {
@@ -138,8 +153,15 @@ export class DetalleRecetaPage {
     this.meGusta = !this.meGusta;
   }
 
-  alternarGuardada(): void {
-    this.guardada = !this.guardada;
+  abrirGuardar(): void {
+    this.coleccionElegida = null;
+    this.modalColeccionesAbierto = true;
+  }
+
+  // Es una maqueta: mostramos la confirmación, pero no se añade de verdad
+  elegirColeccion(coleccion: Coleccion): void {
+    this.coleccionElegida = coleccion;
+    this.guardada = true;
   }
 
   alternarLista(): void {

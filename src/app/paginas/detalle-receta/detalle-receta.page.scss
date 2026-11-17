@@ -420,33 +420,42 @@ ion-content {
   flex-shrink: 0;
 }
 
-/* RECETA NO ENCONTRADA */
-.receta-no-encontrada {
+/* VENTANA GUARDAR EN COLECCIÓN */
+.cabecera-modal {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
 
-  padding: 24px 16px;
-  text-align: center;
+  h2 {
+    margin: 0;
+    color: var(--app-texto);
+    font-size: 20px;
+    font-weight: 700;
+  }
 }
 
-.receta-no-encontrada h1 {
-  margin: 0;
-  color: var(--app-texto);
-  font-size: 15px;
-  font-weight: 500;
+.cerrar-modal {
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--ion-color-primary);
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
 }
 
-.receta-no-encontrada p {
-  margin: 0;
+.ayuda-modal {
+  margin: 6px 0 20px;
   color: var(--app-texto-secundario);
-  font-size: 12px;
+  font-size: 13px;
 }
 
-.receta-no-encontrada .boton-lista {
-  width: auto;
-  padding: 6px 14px;
+.cuadricula-colecciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+  row-gap: 24px;
 }
 
 /* EFECTO AL PULSAR */

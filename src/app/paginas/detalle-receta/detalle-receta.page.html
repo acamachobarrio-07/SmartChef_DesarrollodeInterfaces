@@ -220,7 +220,7 @@
                 type="button"
                 class="accion"
                 [attr.aria-pressed]="guardada"
-                (click)="alternarGuardada()">
+                (click)="abrirGuardar()">
 
                 <span>{{ guardada ? 'Guardada' : 'Guardar' }}</span>
 
@@ -281,20 +281,67 @@
     } @else {
 
       <!-- EL ID NO EXISTE -->
-      <section class="tarjeta-detalle receta-no-encontrada">
-
-        <h1>Receta no encontrada</h1>
-
-        <p>Puede que la receta se haya retirado.</p>
-
-        <a routerLink="/app/recetas" class="boton-lista">
-          Ver todas las recetas
-        </a>
-
-      </section>
+      <app-estado-vacio
+        icono="search-outline"
+        titulo="Receta no encontrada"
+        mensaje="Puede que el chef la haya retirado. Echa un vistazo a las demás recetas."
+        textoBoton="Ver todas las recetas"
+        enlace="/app/recetas">
+      </app-estado-vacio>
 
     }
 
   </div>
 
 </ion-content>
+
+
+<!-- VENTANA PARA GUARDAR EN UNA COLECCIÓN -->
+<ion-modal
+  [isOpen]="modalColeccionesAbierto"
+  (didDismiss)="modalColeccionesAbierto = false"
+  [initialBreakpoint]="0.85"
+  [breakpoints]="[0, 0.85, 1]">
+
+  <ng-template>
+
+    <ion-content class="ion-padding">
+
+      @if (!coleccionElegida) {
+
+        <div class="cabecera-modal">
+          <h2>Guardar en una colección</h2>
+          <button type="button" class="cerrar-modal" (click)="modalColeccionesAbierto = false">
+            Cancelar
+          </button>
+        </div>
+
+        <p class="ayuda-modal">
+          Las recetas que te gustan se guardan solas en Favoritos.
+        </p>
+
+        <!-- MISMA TARJETA QUE EN COLECCIONES, EN MODO SELECCIONAR -->
+        <div class="cuadricula-colecciones">
+          @for (coleccion of colecciones; track coleccion.id) {
+            <app-tarjeta-coleccion
+              [coleccion]="coleccion"
+              modo="seleccionar"
+              (seleccionar)="elegirColeccion($event)">
+            </app-tarjeta-coleccion>
+          }
+        </div>
+
+      } @else {
+
+        <app-confirmacion-receta
+          [mensaje]="'Receta guardada en ' + coleccionElegida.nombre + '.'"
+          (aceptar)="modalColeccionesAbierto = false">
+        </app-confirmacion-receta>
+
+      }
+
+    </ion-content>
+
+  </ng-template>
+
+</ion-modal>
