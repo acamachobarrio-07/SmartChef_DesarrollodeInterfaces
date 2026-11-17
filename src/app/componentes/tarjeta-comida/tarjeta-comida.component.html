@@ -1,0 +1,50 @@
+<div class="tarjeta-comida">
+
+  <h3>{{ tipo() }}</h3>
+
+  @if (receta(); as comida) {
+
+    <button
+      type="button"
+      class="contenido-receta"
+      (click)="pulsar()">
+
+      <img
+        [src]="comida.imagen"
+        [alt]="comida.nombre">
+
+      <div class="informacion-receta">
+
+        <span class="nombre-receta">
+          {{ comida.nombre }}
+        </span>
+
+        <span class="tiempo-receta">
+          <ion-icon name="time-outline"></ion-icon>
+          {{ comida.tiempo }} min
+        </span>
+
+      </div>
+
+      <span class="etiqueta-receta">
+        Cambiar
+      </span>
+
+    </button>
+
+  } @else {
+
+    <button
+      type="button"
+      class="contenido-vacio"
+      (click)="pulsar()">
+
+      <span>Añadir receta</span>
+
+      <ion-icon name="add-circle"></ion-icon>
+
+    </button>
+
+  }
+
+</div>

@@ -1,0 +1,154 @@
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+.pantalla-plan {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 25px 28px 30px;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 24px 0 18px;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--app-texto);
+}
+
+.selector-semana {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+  padding: 5px;
+
+  border: 1px solid var(--app-borde);
+  border-radius: 8px;
+
+  background: var(--app-superficie);
+}
+
+.flecha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+  border: none;
+  background: transparent;
+
+  color: var(--ion-color-primary);
+  cursor: pointer;
+}
+
+.flecha ion-icon {
+  font-size: 20px;
+}
+
+.fecha-semana {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 7px 3px;
+  border: none;
+  background: transparent;
+
+  color: var(--app-texto);
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.fecha-semana ion-icon {
+  color: var(--ion-color-primary);
+  font-size: 17px;
+}
+
+.dia-semana {
+  margin-bottom: 23px;
+}
+
+.dia-semana h2 {
+  margin: 0 0 7px;
+  color: var(--app-texto-secundario);
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+ion-card {
+  margin: 0;
+  border: 1px solid var(--app-borde);
+  border-radius: 5px;
+  box-shadow: none;
+  background: var(--app-superficie);
+}
+
+ion-card-content {
+  padding: 0;
+}
+
+ion-card-content.ios {
+  padding: 0;
+}
+
+.seleccionar-receta {
+  max-width: 430px;
+  margin: 0 auto;
+}
+
+.seleccionar-receta h2 {
+  font-size: 19px;
+  color: var(--app-texto);
+}
+
+.seleccionar-receta p {
+  color: var(--app-texto-secundario);
+}
+
+.opcion-receta {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 4px;
+
+  border: none;
+  border-bottom: 1px solid var(--app-borde);
+
+  background: transparent;
+  color: var(--app-texto);
+
+  text-align: left;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.opcion-receta img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.boton-cerrar {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 25px;
+
+  border: none;
+  border-radius: 6px;
+  background: var(--ion-color-primary);
+
+  color: white;
+  font-family: inherit;
+  cursor: pointer;
+}
