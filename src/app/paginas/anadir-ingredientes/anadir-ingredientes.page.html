@@ -1,0 +1,61 @@
+<ion-content [fullscreen]="true">
+
+  <div class="pantalla-anadir">
+
+    <app-cabecera [volver]="true"></app-cabecera>
+
+    <h1>Añadir ingredientes</h1>
+
+    <div class="columnas">
+
+      <section class="columna-categorias">
+
+        <h2>Categoría</h2>
+
+        @for (categoria of categorias; track categoria.nombre) {
+
+          <app-tarjeta-categoria
+            [nombre]="categoria.nombre"
+            [imagen]="categoria.imagen"
+            [seleccionada]="categoriaSeleccionada === categoria.nombre"
+            (seleccionar)="cambiarCategoria($event)">
+          </app-tarjeta-categoria>
+
+        }
+
+      </section>
+
+      <section class="columna-ingredientes">
+
+        <h2>Ingredientes</h2>
+
+        @for (ingrediente of ingredientesCategoria; track ingrediente.id) {
+
+          <app-tarjeta-ingrediente
+            [ingrediente]="ingrediente"
+            (seleccionar)="seleccionarIngrediente($event)">
+          </app-tarjeta-ingrediente>
+
+        } @empty {
+
+          <p class="sin-ingredientes">
+            No hay ingredientes en esta categoría.
+          </p>
+
+        }
+
+      </section>
+
+    </div>
+
+    @if (ingredienteSeleccionado) {
+
+      <p class="seleccion-actual">
+        Seleccionado: {{ ingredienteSeleccionado.nombre }}
+      </p>
+
+    }
+
+  </div>
+
+</ion-content>

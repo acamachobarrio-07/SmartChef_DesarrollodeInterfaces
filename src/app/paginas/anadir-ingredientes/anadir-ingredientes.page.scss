@@ -1,0 +1,77 @@
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+.pantalla-anadir {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 20px 20px 30px;
+  box-sizing: border-box;
+}
+
+.pantalla-anadir h1 {
+  margin: 25px 0 25px;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--app-texto);
+}
+
+.columnas {
+  display: grid;
+  grid-template-columns: 105px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.columna-categorias {
+  padding-right: 10px;
+  border-right: 1px solid var(--app-borde);
+}
+
+.columna-categorias h2,
+.columna-ingredientes h2 {
+  margin: 0 0 15px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ion-color-primary);
+}
+
+.columna-ingredientes {
+  min-width: 0;
+}
+
+.sin-ingredientes {
+  padding: 20px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--app-texto-secundario);
+}
+
+.seleccion-actual {
+  margin-top: 20px;
+  padding: 12px;
+  border: 1px solid var(--app-borde);
+  border-radius: 10px;
+  background: var(--chef-verde-suave);
+  color: var(--chef-verde-texto);
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 360px) {
+  .pantalla-anadir {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .columnas {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .columna-categorias {
+    padding-right: 6px;
+  }
+}

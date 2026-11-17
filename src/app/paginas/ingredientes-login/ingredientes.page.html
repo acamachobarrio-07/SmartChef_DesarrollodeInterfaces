@@ -2,15 +2,8 @@
 
   <div class="pantalla-despensa">
 
-    <!-- CABECERA REUTILIZABLE -->
+    <!-- CABECERA -->
     <app-cabecera></app-cabecera>
-
-    <!-- BUSCADOR -->
-    <ion-searchbar
-      placeholder="Buscar ingrediente o receta..."
-      class="buscador"
-      [(ngModel)]="busqueda">
-    </ion-searchbar>
 
     <!-- TÍTULO Y AÑADIR -->
     <section class="mis-ingredientes">
@@ -28,12 +21,13 @@
       </button>
 
       <!-- LISTA DE LA DESPENSA -->
-      @for (producto of productosFiltrados; track producto.ingrediente.id) {
+      @for (producto of despensa; track producto.ingrediente.id) {
 
         <article class="producto">
 
           <!-- FOTO O ICONO -->
           <div class="foto-producto">
+
             @if (producto.ingrediente.imagen) {
               <img
                 [src]="producto.ingrediente.imagen"
@@ -41,6 +35,7 @@
             } @else {
               <ion-icon name="nutrition-outline"></ion-icon>
             }
+
           </div>
 
           <div class="datos-producto">
@@ -49,21 +44,28 @@
             <div class="fila-datos">
 
               <div class="nombre">
+
                 <span>{{ producto.ingrediente.nombre }}</span>
 
                 @if (diasParaCaducar(producto) <= 2) {
                   <small
                     class="aviso-caducidad"
                     [class.caducado]="diasParaCaducar(producto) < 0">
+
                     {{ textoCaducidad(producto) }}
+
                   </small>
                 }
+
               </div>
 
-              <span class="fecha">{{ formatearFecha(producto.caducidad) }}</span>
+              <span class="fecha">
+                {{ formatearFecha(producto.caducidad) }}
+              </span>
 
               <span class="cantidad">
-                {{ producto.cantidad }} {{ unidades[producto.ingrediente.unidad] }}
+                {{ producto.cantidad }}
+                {{ unidades[producto.ingrediente.unidad] }}
               </span>
 
             </div>
@@ -75,14 +77,18 @@
                 type="button"
                 class="boton-modificar"
                 (click)="abrirModificar(producto)">
+
                 Modificar
+
               </button>
 
               <button
                 type="button"
                 class="boton-eliminar"
                 (click)="abrirEliminar(producto)">
+
                 Eliminar
+
               </button>
 
             </div>
@@ -94,11 +100,7 @@
       } @empty {
 
         <p class="sin-resultados">
-          @if (busqueda) {
-            No tienes ningún ingrediente con ese nombre.
-          } @else {
-            Tu despensa está vacía. Pulsa «Añadir» para empezar.
-          }
+          Tu despensa está vacía. Pulsa «Añadir» para empezar.
         </p>
 
       }
@@ -135,7 +137,7 @@
 </ion-modal>
 
 
-<!-- MODAL DE ADVERTENCIA PARA ELIMINAR -->
+<!-- MODAL PARA ELIMINAR -->
 <ion-modal
   [isOpen]="modalEliminarAbierto"
   [initialBreakpoint]="0.5"
@@ -166,14 +168,18 @@
             type="button"
             class="boton-cancelar"
             (click)="modalEliminarAbierto = false">
+
             Cancelar
+
           </button>
 
           <button
             type="button"
             class="boton-confirmar-eliminar"
             (click)="confirmarEliminar()">
+
             Eliminar
+
           </button>
 
         </div>
@@ -187,7 +193,7 @@
 </ion-modal>
 
 
-<!-- MODAL DE CONFIRMACIÓN REUTILIZABLE -->
+<!-- MODAL DE CONFIRMACIÓN -->
 <ion-modal
   [isOpen]="modalConfirmacionAbierto"
   [initialBreakpoint]="0.55"

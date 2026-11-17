@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonIcon, IonSearchbar, IonModal } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { IonContent, IonIcon, IonModal } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
 import { addCircle, nutritionOutline, trashOutline } from 'ionicons/icons';
@@ -21,9 +21,7 @@ import { DESPENSA } from '../../datos/despensa';
   imports: [
     IonContent,
     IonIcon,
-    IonSearchbar,
     IonModal,
-    FormsModule,
     CabeceraComponent,
     FormularioDespensaComponent,
     ConfirmacionRecetaComponent
@@ -31,11 +29,7 @@ import { DESPENSA } from '../../datos/despensa';
 })
 export class IngredientesPage {
 
-  // Trabajamos sobre el mismo array de datos: los cambios se mantienen
-  // mientras la aplicación esté abierta (al recargar vuelven los de ejemplo)
   despensa = DESPENSA;
-
-  busqueda = '';
 
   unidades = {
     GRAMOS: 'gramos',
@@ -43,18 +37,16 @@ export class IngredientesPage {
     UNIDADES: 'unidades'
   };
 
-  // Modales
   modalFormularioAbierto = false;
   modalEliminarAbierto = false;
   modalConfirmacionAbierto = false;
 
-  // Producto que se modifica o elimina (null = añadir uno nuevo)
   productoSeleccionado: ProductoDespensa | null = null;
 
   mensajeConfirmacion = '';
   confirmacionPendiente = false;
 
-  constructor() {
+  constructor(private router: Router) {
     addIcons({
       addCircle,
       nutritionOutline,
@@ -62,39 +54,28 @@ export class IngredientesPage {
     });
   }
 
-  // Productos que coinciden con la búsqueda, los que caducan antes primero
-  get productosFiltrados(): ProductoDespensa[] {
-    const texto = this.busqueda.trim().toLowerCase();
-
-    return this.despensa
-      .filter(p => p.ingrediente.nombre.toLowerCase().includes(texto))
-      .sort((a, b) => a.caducidad.localeCompare(b.caducidad));
-  }
-
-  // Ingredientes del catálogo que todavía no están en la despensa
   get ingredientesDisponibles(): Ingrediente[] {
     return INGREDIENTES.filter(
       i => !this.despensa.some(p => p.ingrediente.id === i.id)
     );
   }
 
-  // '2026-12-12' -> '12/12/2026'
   formatearFecha(fecha: string): string {
     const [anio, mes, dia] = fecha.split('-');
     return `${dia}/${mes}/${anio}`;
   }
 
-  // Días que faltan para que caduque (negativo si ya ha caducado)
   diasParaCaducar(producto: ProductoDespensa): number {
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
 
     const caducidad = new Date(producto.caducidad + 'T00:00:00');
 
-    return Math.round((caducidad.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24));
+    return Math.round(
+      (caducidad.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24)
+    );
   }
 
-  // Texto del aviso según los días que faltan
   textoCaducidad(producto: ProductoDespensa): string {
     const dias = this.diasParaCaducar(producto);
 
@@ -105,12 +86,12 @@ export class IngredientesPage {
     } else if (dias === 1) {
       return 'Caduca mañana';
     }
+
     return `Caduca en ${dias} días`;
   }
 
   abrirAnadir(): void {
-    this.productoSeleccionado = null;
-    this.modalFormularioAbierto = true;
+    this.router.navigate(['/app/anadir-ingredientes']);
   }
 
   abrirModificar(producto: ProductoDespensa): void {
@@ -118,12 +99,12 @@ export class IngredientesPage {
     this.modalFormularioAbierto = true;
   }
 
-  // Recibe los datos del formulario
   guardarProducto(datos: ProductoDespensa): void {
 
     if (this.productoSeleccionado) {
       this.productoSeleccionado.cantidad = datos.cantidad;
       this.productoSeleccionado.caducidad = datos.caducidad;
+
       this.mensajeConfirmacion = 'Ingrediente modificado correctamente.';
     } else {
       this.despensa.push(datos);
@@ -141,22 +122,15 @@ export class IngredientesPage {
 
   confirmarEliminar(): void {
 
-    if (this.productoSeleccionado) {
-      const posicion = this.despensa.indexOf(this.productoSeleccionado);
+    this.mensajeConfirmacion =
+      'Ingrediente eliminado de tu despensa.';
 
-      if (posicion !== -1) {
-        this.despensa.splice(posicion, 1);
-      }
-
-      this.mensajeConfirmacion = 'Ingrediente eliminado de tu despensa.';
-      this.confirmacionPendiente = true;
-    }
-
+    this.confirmacionPendiente = true;
     this.modalEliminarAbierto = false;
   }
 
-  // La confirmación se abre cuando el modal anterior ha terminado de cerrarse
   alCerrarModal(): void {
+
     this.modalFormularioAbierto = false;
     this.modalEliminarAbierto = false;
 

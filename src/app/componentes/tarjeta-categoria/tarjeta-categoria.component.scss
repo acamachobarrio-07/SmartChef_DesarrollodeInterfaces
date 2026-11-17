@@ -1,0 +1,58 @@
+.tarjeta-categoria {
+  width: 100%;
+  padding: 8px 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 10px;
+
+  color: var(--app-texto);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.tarjeta-categoria img {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+}
+
+.nombre-categoria {
+  font-size: 12px;
+  text-align: center;
+}
+
+.tarjeta-categoria.activa {
+  border-color: var(--ion-color-primary);
+  background: var(--chef-verde-suave);
+}
+
+.sin-imagen {
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--app-campo);
+  border: 1px solid var(--app-borde);
+  border-radius: 10px;
+
+  color: var(--chef-verde-texto);
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.tarjeta-categoria:hover {
+  background: var(--app-campo);
+}
+
+.tarjeta-categoria.activa:hover {
+  background: var(--chef-verde-suave);
+}

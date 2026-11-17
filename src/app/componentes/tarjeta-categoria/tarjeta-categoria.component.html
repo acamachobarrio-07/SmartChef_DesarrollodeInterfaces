@@ -1,0 +1,21 @@
+<button
+  type="button"
+  class="tarjeta-categoria"
+  [class.activa]="seleccionada()"
+  (click)="pulsarCategoria()">
+
+  @if (imagen()) {
+    <img
+      [src]="imagen()"
+      [alt]="nombre()">
+  } @else {
+    <div class="sin-imagen">
+      <span>{{ nombre().charAt(0) }}</span>
+    </div>
+  }
+
+  <span class="nombre-categoria">
+    {{ nombre() }}
+  </span>
+
+</button>
