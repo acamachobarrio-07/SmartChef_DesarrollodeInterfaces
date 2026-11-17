@@ -1,13 +1,83 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>lista-compra</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">lista-compra</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <div class="pantalla-lista">
+
+    <!-- CABECERA REUTILIZABLE -->
+    <app-cabecera></app-cabecera>
+
+    <!-- BUSCADOR (visual, como en el inicio) -->
+    <ion-searchbar
+      placeholder="Buscar ingrediente o receta..."
+      class="buscador">
+    </ion-searchbar>
+
+    <h1>Mi lista de la compra</h1>
+
+    <!-- INGREDIENTES DE LA LISTA -->
+    @for (linea of lista; track linea.ingrediente.id) {
+
+      <div class="linea">
+
+        <div class="foto">
+          @if (linea.ingrediente.imagen) {
+            <img [src]="linea.ingrediente.imagen" [alt]="linea.ingrediente.nombre">
+          } @else {
+            <ion-icon name="nutrition-outline"></ion-icon>
+          }
+        </div>
+
+        <span class="nombre">{{ linea.ingrediente.nombre }}</span>
+
+        <span class="cantidad">
+          {{ linea.cantidad }} {{ unidades[linea.ingrediente.unidad] }}
+        </span>
+
+      </div>
+
+    } @empty {
+
+      <app-estado-vacio
+        icono="clipboard-outline"
+        titulo="Tu lista está vacía"
+        mensaje="Entra en una receta y pulsa «Guardar lista» para añadir sus ingredientes."
+        textoBoton="Explorar recetas"
+        enlace="/app/recetas">
+      </app-estado-vacio>
+
+    }
+
+    <!-- ENVIAR (solo si hay algo en la lista) -->
+    @if (lista.length > 0) {
+      <button type="button" class="boton-verde" (click)="modalEnviadaAbierto = true">
+        Enviar por email
+      </button>
+    }
+
+  </div>
+
 </ion-content>
+
+
+<!-- MODAL CONFIRMACIÓN DEL ENVÍO -->
+<ion-modal
+  [isOpen]="modalEnviadaAbierto"
+  (didDismiss)="modalEnviadaAbierto = false"
+  [initialBreakpoint]="0.55"
+  [breakpoints]="[0, 0.55]">
+
+  <ng-template>
+
+    <ion-content class="ion-padding">
+
+      <app-confirmacion-receta
+        titulo="¡Lista enviada!"
+        [mensaje]="'Tu lista de la compra se ha enviado a ' + correo"
+        textoBoton="Volver a la página principal"
+        (aceptar)="volverAlInicio()">
+      </app-confirmacion-receta>
+
+    </ion-content>
+
+  </ng-template>
+
+</ion-modal>

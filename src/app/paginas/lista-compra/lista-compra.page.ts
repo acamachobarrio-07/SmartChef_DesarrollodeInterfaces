@@ -1,19 +1,53 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { IonContent, IonIcon, IonSearchbar, IonModal } from '@ionic/angular';
+
+import { addIcons } from 'ionicons';
+import { clipboardOutline, nutritionOutline } from 'ionicons/icons';
+
+import { CabeceraComponent } from '../../componentes/cabecera/cabecera.component';
+import { EstadoVacioComponent } from '../../componentes/estado-vacio/estado-vacio.component';
+import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-receta/confirmacion-receta.component';
+import { LISTA_COMPRA } from '../../datos/lista-compra';
 
 @Component({
   selector: 'app-lista-compra',
   templateUrl: './lista-compra.page.html',
   styleUrls: ['./lista-compra.page.scss'],
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [
+    IonContent,
+    IonIcon,
+    IonSearchbar,
+    IonModal,
+    CabeceraComponent,
+    EstadoVacioComponent,
+    ConfirmacionRecetaComponent
+  ]
 })
-export class ListaCompraPage implements OnInit {
+export class ListaCompraPage {
 
-  constructor() { }
+  router = inject(Router);
 
-  ngOnInit() {
+  lista = LISTA_COMPRA;
+
+  // Textos de cada unidad
+  unidades = {
+    GRAMOS: 'gramos',
+    MILILITROS: 'mililitros',
+    UNIDADES: 'unidades'
+  };
+
+  // Es una maqueta: no se envía ningún correo, solo se muestra la confirmación
+  modalEnviadaAbierto = false;
+  correo = 'correoprueba@smartchef.es';
+
+  constructor() {
+    addIcons({ clipboardOutline, nutritionOutline });
+  }
+
+  volverAlInicio(): void {
+    this.modalEnviadaAbierto = false;
+    this.router.navigate(['/app/inicio-login']);
   }
 
 }

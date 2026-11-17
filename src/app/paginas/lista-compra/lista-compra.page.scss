@@ -1,0 +1,99 @@
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+/* Columna que ocupa toda la altura para dejar el botón abajo */
+.pantalla-lista {
+  max-width: 430px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 25px 28px 24px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Buscador con el mismo estilo que en el inicio */
+.buscador {
+  --background: var(--app-superficie);
+  --color: var(--app-texto);
+  --border-radius: 14px;
+  --box-shadow: 0 0 0 1px var(--app-borde);
+  --placeholder-color: var(--app-texto-secundario);
+  --icon-color: var(--app-texto-secundario);
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+h1 {
+  margin: 0 0 24px;
+  color: var(--app-texto);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* Cada ingrediente de la lista */
+.linea {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+
+.foto {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  background: var(--app-superficie);
+  border: 1px solid var(--app-borde);
+  border-radius: 6px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  ion-icon {
+    color: var(--ion-color-primary);
+    font-size: 28px;
+  }
+}
+
+.nombre {
+  flex: 1;
+  color: var(--app-texto);
+  font-size: 13px;
+}
+
+.cantidad {
+  color: var(--app-texto-secundario);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* Botón verde, abajo del todo */
+.boton-verde {
+  width: 100%;
+  margin-top: auto;
+  padding: 13px;
+
+  background: var(--ion-color-primary);
+  border: none;
+  border-radius: 12px;
+
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.85;
+  }
+}

@@ -1,4 +1,4 @@
-<!-- CONFIRMACIÓN DE RECETA -->
+<!-- CONFIRMACIÓN REUTILIZABLE -->
 <section class="confirmacion">
 
   <!-- ICONO DE CONFIRMACIÓN -->
@@ -7,17 +7,17 @@
   </div>
 
   <!-- TÍTULO -->
-  <h2>¡Operación realizada!</h2>
+  <h2>{{ titulo() }}</h2>
 
   <!-- MENSAJE RECIBIDO DEL PADRE -->
   <p>{{ mensaje() }}</p>
 
-  <!-- BOTÓN ACEPTAR -->
+  <!-- BOTÓN -->
   <button
     type="button"
     class="boton-aceptar"
     (click)="aceptar.emit()">
-    Aceptar
+    {{ textoBoton() }}
   </button>
 
 </section>
