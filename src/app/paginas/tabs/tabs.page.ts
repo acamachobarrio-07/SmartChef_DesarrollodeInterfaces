@@ -8,12 +8,8 @@ import {
   IonIcon,
   IonLabel,
   IonModal,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
-  IonButton,
-  IonButtons
+  IonButton
 } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
@@ -40,12 +36,8 @@ import { SesionService } from '../../servicios/sesion.service';
     IonIcon,
     IonLabel,
     IonModal,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     IonButton,
-    IonButtons,
     RouterLink
   ]
 })

@@ -1,0 +1,60 @@
+<div class="cabecera-modal">
+  <h2>{{ titulo() }}</h2>
+  <ion-button fill="clear" (click)="cancelar.emit()">Cancelar</ion-button>
+</div>
+
+<!-- FOTO Y NOMBRE DEL INGREDIENTE -->
+<div class="ingrediente">
+
+  <div class="foto">
+    @if (ingrediente().imagen) {
+      <img [src]="ingrediente().imagen" [alt]="ingrediente().nombre">
+    } @else {
+      <ion-icon name="nutrition-outline"></ion-icon>
+    }
+  </div>
+
+  <span class="nombre">{{ ingrediente().nombre }}</span>
+
+</div>
+
+<!-- CANTIDAD Y COSTE -->
+<div class="dos-columnas">
+  <ion-input mode="md" fill="outline" label="Cantidad" labelPlacement="floating" type="number"></ion-input>
+  <ion-input mode="md" fill="outline" label="Coste (€)" labelPlacement="floating" type="number"></ion-input>
+</div>
+
+<!-- TIPO DE CANTIDAD Y CADUCIDAD -->
+<ion-list [inset]="true">
+
+  <ion-item>
+    <ion-select label="Tipo de cantidad" interface="action-sheet" placeholder="Elige">
+      <ion-select-option value="GRAMOS">Gramos</ion-select-option>
+      <ion-select-option value="MILILITROS">Mililitros</ion-select-option>
+      <ion-select-option value="UNIDADES">Unidades</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Caducidad</ion-label>
+    <ion-datetime-button datetime="fecha-caducidad" slot="end"></ion-datetime-button>
+  </ion-item>
+
+</ion-list>
+
+<ion-button expand="block" (click)="guardar.emit()">{{ textoBoton() }}</ion-button>
+
+<!-- El calendario vive dentro de una ventana que se abre al tocar la fecha -->
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime
+      id="fecha-caducidad"
+      presentation="date"
+      locale="es-ES"
+      [firstDayOfWeek]="1"
+      [showDefaultButtons]="true"
+      doneText="Aceptar"
+      cancelText="Cancelar">
+    </ion-datetime>
+  </ng-template>
+</ion-modal>
