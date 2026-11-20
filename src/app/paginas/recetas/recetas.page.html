@@ -14,7 +14,6 @@
 
         <input
           type="text"
-          [(ngModel)]="busqueda"
           placeholder="Buscar ingrediente o receta..."
           aria-label="Buscar ingrediente o receta">
 
@@ -104,9 +103,7 @@
 
           @if (mostrarDificultad) {
 
-            <select
-              [(ngModel)]="dificultad"
-              aria-label="Dificultad">
+            <select aria-label="Dificultad">
 
               <option value="Todas">Todas</option>
               <option value="Fácil">Fácil</option>
@@ -129,16 +126,14 @@
 
           @if (mostrarTiempo) {
 
-            <select
-              [(ngModel)]="tiempoMaximo"
-              aria-label="Tiempo máximo">
+            <select aria-label="Tiempo máximo">
 
-              <option [ngValue]="null">Sin límite</option>
-              <option [ngValue]="5">5 minutos</option>
-              <option [ngValue]="10">10 minutos</option>
-              <option [ngValue]="20">20 minutos</option>
-              <option [ngValue]="30">30 minutos</option>
-              <option [ngValue]="60">60 minutos</option>
+              <option>Sin límite</option>
+              <option>5 minutos</option>
+              <option>10 minutos</option>
+              <option>20 minutos</option>
+              <option>30 minutos</option>
+              <option>60 minutos</option>
 
             </select>
 
@@ -160,28 +155,13 @@
 
     </div>
 
-    <!-- FILTROS ACTIVOS -->
-    @if (filtrosActivos.length > 0) {
-
-      <div class="filtros-activos">
-
-        @for (filtro of filtrosActivos; track filtro) {
-
-          <span>{{ filtro }}</span>
-
-        }
-
-      </div>
-
-    }
-
     <!-- LISTADO DE RECETAS -->
     <section class="listado-recetas">
 
       <h1>Todas las recetas</h1>
 
       <!-- COMPONENTE REUTILIZABLE -->
-      @for (receta of recetasFiltradas; track receta.id) {
+      @for (receta of recetas; track receta.id) {
 
         <app-tarjeta-receta
           [receta]="receta">

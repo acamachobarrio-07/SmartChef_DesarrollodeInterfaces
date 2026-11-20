@@ -17,7 +17,7 @@ import {
   bookmark
 } from 'ionicons/icons';
 
-import { Receta, IngredienteReceta } from '../../modelos/receta';
+import { Receta } from '../../modelos/receta';
 import { Coleccion } from '../../modelos/coleccion';
 import { RECETAS_EJEMPLO } from '../../datos/recetas-ejemplo';
 import { COLECCIONES } from '../../datos/colecciones';
@@ -55,8 +55,8 @@ export class DetalleRecetaPage {
   guardada = false;
   listaGuardada = false;
 
-  // Ventana para guardar en una colección (Favoritos no se elige: se llena con "Me gusta")
-  colecciones = COLECCIONES.filter(c => c.id !== 1);
+  // Ventana para guardar en una colección
+  colecciones = COLECCIONES;
   modalColeccionesAbierto = false;
   coleccionElegida: Coleccion | null = null;
 
@@ -87,62 +87,13 @@ export class DetalleRecetaPage {
     return RECETAS_EJEMPLO.find(r => r.id === Number(this.id()));
   }
 
-  // Pasos de la receta, o un aviso si todavía no tiene
-  get pasos(): string[] {
-    return this.receta?.pasos ?? ['El chef todavía está preparando los pasos de esta receta.'];
-  }
-
-  // Coste por ración a partir del precio de los ingredientes
-  get coste(): number | null {
-    const receta = this.receta;
-
-    if (!receta?.ingredientesReceta) {
-      return null;
-    }
-
-    let total = 0;
-    for (const item of receta.ingredientesReceta) {
-      total += this.cantidadReferencia(item) * item.ingrediente.precio;
-    }
-
-    return total / (receta.raciones ?? 1);
-  }
-
-  // Calorías por ración a partir de las calorías de los ingredientes
-  get calorias(): number | null {
-    const receta = this.receta;
-
-    if (!receta?.ingredientesReceta) {
-      return null;
-    }
-
-    let total = 0;
-    for (const item of receta.ingredientesReceta) {
-      total += this.cantidadReferencia(item) * item.ingrediente.calorias;
-    }
-
-    return Math.round(total / (receta.raciones ?? 1));
-  }
-
-  // El precio y las calorías van por 100 g / 100 ml o por unidad
-  cantidadReferencia(item: IngredienteReceta): number {
-    if (item.ingrediente.unidad === 'UNIDADES') {
-      return item.cantidad;
-    }
-    return item.cantidad / 100;
-  }
-
-  // 1.0625 -> "1,06 €"
-  formatearEuros(valor: number): string {
-    return valor.toFixed(2).replace('.', ',') + ' €';
-  }
-
   volver(): void {
     this.location.back();
   }
 
-  avanzarPaso(): void {
-    if (this.pasoActual < this.pasos.length - 1) {
+  // Pasa al siguiente paso; al llegar al último vuelve al primero
+  avanzarPaso(totalPasos: number): void {
+    if (this.pasoActual < totalPasos - 1) {
       this.pasoActual++;
     } else {
       this.pasoActual = 0;

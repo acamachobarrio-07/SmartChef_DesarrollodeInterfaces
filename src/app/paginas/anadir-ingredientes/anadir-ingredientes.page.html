@@ -33,7 +33,7 @@
 
           <app-tarjeta-ingrediente
             [ingrediente]="ingrediente"
-            (seleccionar)="seleccionarIngrediente($event)">
+            (seleccionar)="abrirAnadir($event)">
           </app-tarjeta-ingrediente>
 
         } @empty {
@@ -48,14 +48,46 @@
 
     </div>
 
-    @if (ingredienteSeleccionado) {
-
-      <p class="seleccion-actual">
-        Seleccionado: {{ ingredienteSeleccionado.nombre }}
-      </p>
-
-    }
-
   </div>
 
 </ion-content>
+
+
+<!-- VENTANA PARA AÑADIR UN INGREDIENTE A MI DESPENSA -->
+<ion-modal
+  [isOpen]="modalAbierto"
+  (didDismiss)="modalAbierto = false"
+  [initialBreakpoint]="0.75"
+  [breakpoints]="[0, 0.75, 1]">
+
+  <ng-template>
+
+    <ion-content class="ion-padding">
+
+      @if (ingredienteSeleccionado; as i) {
+
+        @if (!anadido) {
+
+          <app-formulario-ingrediente
+            [ingrediente]="i"
+            (guardar)="anadido = true"
+            (cancelar)="modalAbierto = false">
+          </app-formulario-ingrediente>
+
+        } @else {
+
+          <app-confirmacion-receta
+            titulo="¡Ingrediente añadido!"
+            [mensaje]="i.nombre + ' se ha añadido a tu despensa.'"
+            (aceptar)="modalAbierto = false">
+          </app-confirmacion-receta>
+
+        }
+
+      }
+
+    </ion-content>
+
+  </ng-template>
+
+</ion-modal>

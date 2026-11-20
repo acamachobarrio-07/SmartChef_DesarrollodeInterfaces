@@ -8,7 +8,7 @@
     <!-- TÍTULO Y AÑADIR -->
     <section class="mis-ingredientes">
 
-      <h1>Mis ingredientes</h1>
+      <h1>Mi despensa</h1>
 
       <button
         type="button"
@@ -44,24 +44,10 @@
             <div class="fila-datos">
 
               <div class="nombre">
-
                 <span>{{ producto.ingrediente.nombre }}</span>
-
-                @if (diasParaCaducar(producto) <= 2) {
-                  <small
-                    class="aviso-caducidad"
-                    [class.caducado]="diasParaCaducar(producto) < 0">
-
-                    {{ textoCaducidad(producto) }}
-
-                  </small>
-                }
-
               </div>
 
-              <span class="fecha">
-                {{ formatearFecha(producto.caducidad) }}
-              </span>
+              <span class="fecha">{{ producto.caducidad }}</span>
 
               <span class="cantidad">
                 {{ producto.cantidad }}
@@ -112,23 +98,39 @@
 </ion-content>
 
 
-<!-- MODAL PARA AÑADIR O MODIFICAR -->
+<!-- VENTANA PARA MODIFICAR (mismo formulario que al añadir) -->
 <ion-modal
-  [isOpen]="modalFormularioAbierto"
+  [isOpen]="modalModificarAbierto"
+  (didDismiss)="modalModificarAbierto = false"
   [initialBreakpoint]="0.75"
-  [breakpoints]="[0, 0.75, 1]"
-  (didDismiss)="alCerrarModal()">
+  [breakpoints]="[0, 0.75, 1]">
 
   <ng-template>
 
     <ion-content class="ion-padding">
 
-      <app-formulario-despensa
-        [producto]="productoSeleccionado"
-        [ingredientes]="ingredientesDisponibles"
-        (guardar)="guardarProducto($event)"
-        (cerrar)="modalFormularioAbierto = false">
-      </app-formulario-despensa>
+      @if (productoSeleccionado; as p) {
+
+        @if (!hecho) {
+
+          <app-formulario-ingrediente
+            [ingrediente]="p.ingrediente"
+            titulo="Modificar ingrediente"
+            textoBoton="Guardar cambios"
+            (guardar)="hecho = true"
+            (cancelar)="modalModificarAbierto = false">
+          </app-formulario-ingrediente>
+
+        } @else {
+
+          <app-confirmacion-receta
+            mensaje="Ingrediente modificado correctamente."
+            (aceptar)="modalModificarAbierto = false">
+          </app-confirmacion-receta>
+
+        }
+
+      }
 
     </ion-content>
 
@@ -137,77 +139,65 @@
 </ion-modal>
 
 
-<!-- MODAL PARA ELIMINAR -->
+<!-- VENTANA PARA ELIMINAR -->
 <ion-modal
   [isOpen]="modalEliminarAbierto"
+  (didDismiss)="modalEliminarAbierto = false"
   [initialBreakpoint]="0.5"
-  [breakpoints]="[0, 0.5, 1]"
-  (didDismiss)="alCerrarModal()">
+  [breakpoints]="[0, 0.5, 1]">
 
   <ng-template>
 
     <ion-content class="ion-padding">
 
-      <div class="aviso-eliminar">
+      @if (!hecho) {
 
-        <div class="icono-aviso">
-          <ion-icon name="trash-outline"></ion-icon>
+        <div class="aviso-eliminar">
+
+          <div class="icono-aviso">
+            <ion-icon name="trash-outline"></ion-icon>
+          </div>
+
+          <h2>¿Eliminar ingrediente?</h2>
+
+          <p>
+            ¿Seguro que quieres quitar
+            <strong>{{ productoSeleccionado?.ingrediente.nombre }}</strong>
+            de tu despensa?
+          </p>
+
+          <div class="acciones-eliminar">
+
+            <button
+              type="button"
+              class="boton-cancelar"
+              (click)="modalEliminarAbierto = false">
+
+              Cancelar
+
+            </button>
+
+            <button
+              type="button"
+              class="boton-confirmar-eliminar"
+              (click)="hecho = true">
+
+              Eliminar
+
+            </button>
+
+          </div>
+
         </div>
 
-        <h2>¿Eliminar ingrediente?</h2>
+      } @else {
 
-        <p>
-          ¿Seguro que quieres quitar
-          <strong>{{ productoSeleccionado?.ingrediente.nombre }}</strong>
-          de tu despensa?
-        </p>
+        <app-confirmacion-receta
+          mensaje="Ingrediente eliminado de tu despensa."
+          (aceptar)="modalEliminarAbierto = false">
+        </app-confirmacion-receta>
 
-        <div class="acciones-eliminar">
-
-          <button
-            type="button"
-            class="boton-cancelar"
-            (click)="modalEliminarAbierto = false">
-
-            Cancelar
-
-          </button>
-
-          <button
-            type="button"
-            class="boton-confirmar-eliminar"
-            (click)="confirmarEliminar()">
-
-            Eliminar
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </ion-content>
-
-  </ng-template>
-
-</ion-modal>
-
-
-<!-- MODAL DE CONFIRMACIÓN -->
-<ion-modal
-  [isOpen]="modalConfirmacionAbierto"
-  [initialBreakpoint]="0.55"
-  [breakpoints]="[0, 0.55, 1]"
-  (didDismiss)="modalConfirmacionAbierto = false">
-
-  <ng-template>
-
-    <ion-content class="ion-padding">
-
-      <app-confirmacion-receta
-        [mensaje]="mensajeConfirmacion"
-        (aceptar)="modalConfirmacionAbierto = false">
-      </app-confirmacion-receta>
+      }
 
     </ion-content>
 

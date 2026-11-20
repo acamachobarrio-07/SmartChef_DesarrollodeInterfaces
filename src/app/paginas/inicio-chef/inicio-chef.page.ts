@@ -1,4 +1,3 @@
-
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent, IonIcon, IonModal, IonPopover } from '@ionic/angular';
@@ -67,10 +66,7 @@ export class InicioChefPage {
   modalEliminarAbierto = false;
 
   // RECETAS FICTICIAS PARA EL CHEF
-  recetasChef: Receta[] = RECETAS_EJEMPLO.map(receta => ({
-    ...receta,
-    ingredientes: [...receta.ingredientes]
-  }));
+  recetasChef: Receta[] = RECETAS_EJEMPLO;
 
   // RECETA SELECCIONADA
   recetaSeleccionada: Receta | null = null;
@@ -182,35 +178,9 @@ export class InicioChefPage {
   }
 
 
-  // SIMULAR LA MODIFICACIÓN DE UNA RECETA
+  // SIMULAR LA MODIFICACIÓN DE UNA RECETA (maqueta: no cambia los datos)
 
-  guardarModificacion(datos: DatosFormularioReceta): void {
-
-    if (!this.recetaSeleccionada) {
-      return;
-    }
-
-    const idSeleccionado = this.recetaSeleccionada.id;
-
-    this.recetasChef = this.recetasChef.map(receta => {
-
-      if (receta.id !== idSeleccionado) {
-        return receta;
-      }
-
-      return {
-        ...receta,
-        nombre: datos.titulo,
-        tiempo: datos.tiempo ?? receta.tiempo,
-        dificultad: datos.dificultad === 'facil' ? 'Fácil' as const
-          : datos.dificultad === 'media' ? 'Media' as const
-            : 'Difícil' as const,
-        ingredientes: datos.ingredientes.map(i => i.nombre),
-        disponibles: datos.ingredientes.length
-      };
-
-    });
-
+  guardarModificacion(): void {
     this.mensajeConfirmacion = 'Receta modificada correctamente.';
     this.confirmacionPendiente = true;
     this.modalModificarAbierto = false;
@@ -238,19 +208,9 @@ export class InicioChefPage {
   }
 
 
-  // CONFIRMAR LA ELIMINACIÓN
+  // CONFIRMAR LA ELIMINACIÓN (maqueta: la receta no se borra)
 
   confirmarEliminar(): void {
-    if (!this.recetaSeleccionada) {
-      return;
-    }
-
-    // ELIMINAR LA RECETA DEL LISTADO FICTICIO
-    const id = this.recetaSeleccionada.id;
-
-    this.recetasChef = this.recetasChef.filter(
-      receta => receta.id !== id
-    );
 
     // PREPARAR EL MENSAJE DE ÉXITO
     this.mensajeConfirmacion = 'Receta eliminada correctamente.';
@@ -301,4 +261,3 @@ export class InicioChefPage {
   }
 
 }
-

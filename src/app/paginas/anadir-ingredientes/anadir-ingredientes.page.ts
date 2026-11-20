@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonContent } from '@ionic/angular';
+import { IonContent, IonModal } from '@ionic/angular';
 
 import { CabeceraComponent } from '../../componentes/cabecera/cabecera.component';
 import { TarjetaCategoriaComponent } from '../../componentes/tarjeta-categoria/tarjeta-categoria.component';
 import { TarjetaIngredienteComponent } from '../../componentes/tarjeta-ingrediente/tarjeta-ingrediente.component';
+import { FormularioIngredienteComponent } from '../../componentes/formulario-ingrediente/formulario-ingrediente.component';
+import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-receta/confirmacion-receta.component';
 
 import { Ingrediente } from '../../modelos/ingrediente';
 import { INGREDIENTES } from '../../datos/ingredientes';
@@ -14,9 +16,12 @@ import { INGREDIENTES } from '../../datos/ingredientes';
   styleUrls: ['./anadir-ingredientes.page.scss'],
   imports: [
     IonContent,
+    IonModal,
     CabeceraComponent,
     TarjetaCategoriaComponent,
-    TarjetaIngredienteComponent
+    TarjetaIngredienteComponent,
+    FormularioIngredienteComponent,
+    ConfirmacionRecetaComponent
   ]
 })
 export class AnadirIngredientesPage {
@@ -52,7 +57,10 @@ export class AnadirIngredientesPage {
     }
   ];
 
+  // Ventana para añadir (maqueta: no se guarda nada)
+  modalAbierto = false;
   ingredienteSeleccionado: Ingrediente | null = null;
+  anadido = false;
 
   get ingredientesCategoria(): Ingrediente[] {
     return this.ingredientes.filter(
@@ -63,11 +71,12 @@ export class AnadirIngredientesPage {
 
   cambiarCategoria(nombre: string): void {
     this.categoriaSeleccionada = nombre;
-    this.ingredienteSeleccionado = null;
   }
 
-  seleccionarIngrediente(ingrediente: Ingrediente): void {
+  abrirAnadir(ingrediente: Ingrediente): void {
     this.ingredienteSeleccionado = ingrediente;
+    this.anadido = false;
+    this.modalAbierto = true;
   }
 
 }

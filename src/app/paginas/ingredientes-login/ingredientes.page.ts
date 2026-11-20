@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent, IonIcon, IonModal } from '@ionic/angular';
 
@@ -6,12 +6,10 @@ import { addIcons } from 'ionicons';
 import { addCircle, nutritionOutline, trashOutline } from 'ionicons/icons';
 
 import { CabeceraComponent } from '../../componentes/cabecera/cabecera.component';
-import { FormularioDespensaComponent } from '../../componentes/formulario-despensa/formulario-despensa.component';
+import { FormularioIngredienteComponent } from '../../componentes/formulario-ingrediente/formulario-ingrediente.component';
 import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-receta/confirmacion-receta.component';
 
-import { Ingrediente } from '../../modelos/ingrediente';
 import { ProductoDespensa } from '../../modelos/despensa';
-import { INGREDIENTES } from '../../datos/ingredientes';
 import { DESPENSA } from '../../datos/despensa';
 
 @Component({
@@ -23,11 +21,13 @@ import { DESPENSA } from '../../datos/despensa';
     IonIcon,
     IonModal,
     CabeceraComponent,
-    FormularioDespensaComponent,
+    FormularioIngredienteComponent,
     ConfirmacionRecetaComponent
   ]
 })
 export class IngredientesPage {
+
+  router = inject(Router);
 
   despensa = DESPENSA;
 
@@ -37,57 +37,14 @@ export class IngredientesPage {
     UNIDADES: 'unidades'
   };
 
-  modalFormularioAbierto = false;
+  // Es una maqueta: las ventanas muestran el aviso y la confirmación, pero no cambian los datos
+  modalModificarAbierto = false;
   modalEliminarAbierto = false;
-  modalConfirmacionAbierto = false;
-
   productoSeleccionado: ProductoDespensa | null = null;
+  hecho = false;
 
-  mensajeConfirmacion = '';
-  confirmacionPendiente = false;
-
-  constructor(private router: Router) {
-    addIcons({
-      addCircle,
-      nutritionOutline,
-      trashOutline
-    });
-  }
-
-  get ingredientesDisponibles(): Ingrediente[] {
-    return INGREDIENTES.filter(
-      i => !this.despensa.some(p => p.ingrediente.id === i.id)
-    );
-  }
-
-  formatearFecha(fecha: string): string {
-    const [anio, mes, dia] = fecha.split('-');
-    return `${dia}/${mes}/${anio}`;
-  }
-
-  diasParaCaducar(producto: ProductoDespensa): number {
-    const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0);
-
-    const caducidad = new Date(producto.caducidad + 'T00:00:00');
-
-    return Math.round(
-      (caducidad.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24)
-    );
-  }
-
-  textoCaducidad(producto: ProductoDespensa): string {
-    const dias = this.diasParaCaducar(producto);
-
-    if (dias < 0) {
-      return 'Caducado';
-    } else if (dias === 0) {
-      return 'Caduca hoy';
-    } else if (dias === 1) {
-      return 'Caduca mañana';
-    }
-
-    return `Caduca en ${dias} días`;
+  constructor() {
+    addIcons({ addCircle, nutritionOutline, trashOutline });
   }
 
   abrirAnadir(): void {
@@ -96,48 +53,14 @@ export class IngredientesPage {
 
   abrirModificar(producto: ProductoDespensa): void {
     this.productoSeleccionado = producto;
-    this.modalFormularioAbierto = true;
-  }
-
-  guardarProducto(datos: ProductoDespensa): void {
-
-    if (this.productoSeleccionado) {
-      this.productoSeleccionado.cantidad = datos.cantidad;
-      this.productoSeleccionado.caducidad = datos.caducidad;
-
-      this.mensajeConfirmacion = 'Ingrediente modificado correctamente.';
-    } else {
-      this.despensa.push(datos);
-      this.mensajeConfirmacion = 'Ingrediente añadido a tu despensa.';
-    }
-
-    this.confirmacionPendiente = true;
-    this.modalFormularioAbierto = false;
+    this.hecho = false;
+    this.modalModificarAbierto = true;
   }
 
   abrirEliminar(producto: ProductoDespensa): void {
     this.productoSeleccionado = producto;
+    this.hecho = false;
     this.modalEliminarAbierto = true;
-  }
-
-  confirmarEliminar(): void {
-
-    this.mensajeConfirmacion =
-      'Ingrediente eliminado de tu despensa.';
-
-    this.confirmacionPendiente = true;
-    this.modalEliminarAbierto = false;
-  }
-
-  alCerrarModal(): void {
-
-    this.modalFormularioAbierto = false;
-    this.modalEliminarAbierto = false;
-
-    if (this.confirmacionPendiente) {
-      this.confirmacionPendiente = false;
-      this.modalConfirmacionAbierto = true;
-    }
   }
 
 }

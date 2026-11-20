@@ -59,13 +59,19 @@
 
               <span>
                 <ion-icon name="nutrition-outline"></ion-icon>
-                {{ r.raciones ?? 1 }} {{ (r.raciones ?? 1) === 1 ? 'ración' : 'raciones' }}
+                @if (r.raciones === 1) {
+                  1 ración
+                } @else if (r.raciones) {
+                  {{ r.raciones }} raciones
+                } @else {
+                  —
+                }
               </span>
 
               <span>
                 <span class="icono-euro">€</span>
-                @if (coste !== null) {
-                  {{ formatearEuros(coste) }}
+                @if (r.coste) {
+                  {{ r.coste }} €
                 } @else {
                   —
                 }
@@ -83,8 +89,8 @@
 
               <span class="calorias">
                 <ion-icon name="flame-outline"></ion-icon>
-                @if (calorias !== null) {
-                  {{ calorias }} kcal por ración
+                @if (r.calorias) {
+                  {{ r.calorias }} kcal por ración
                 } @else {
                   — kcal
                 }
@@ -154,34 +160,47 @@
           <!-- PASO A PASO -->
           <div class="columna-pasos">
 
-            <div class="bloque-pasos">
+            @if (r.pasos) {
 
-              <h2>
-                Paso a paso
-                <span class="contador-pasos">
-                  {{ pasoActual + 1 }}/{{ pasos.length }}
-                </span>
-              </h2>
+              <div class="bloque-pasos">
 
-              <ul aria-live="polite">
-                <li>{{ pasos[pasoActual] }}</li>
-              </ul>
+                <h2>
+                  Paso a paso
+                  <span class="contador-pasos">
+                    {{ pasoActual + 1 }}/{{ r.pasos.length }}
+                  </span>
+                </h2>
 
-            </div>
+                <ul aria-live="polite">
+                  <li>{{ r.pasos[pasoActual] }}</li>
+                </ul>
 
-            <!-- SIGUIENTE PASO -->
-            <button
-              type="button"
-              class="boton-paso"
-              (click)="avanzarPaso()">
+              </div>
 
-              @if (pasoActual === pasos.length - 1) {
-                Inicio de la receta
-              } @else {
-                Siguiente paso
-              }
+              <!-- SIGUIENTE PASO -->
+              <button
+                type="button"
+                class="boton-paso"
+                (click)="avanzarPaso(r.pasos.length)">
 
-            </button>
+                @if (pasoActual === r.pasos.length - 1) {
+                  Inicio de la receta
+                } @else {
+                  Siguiente paso
+                }
+
+              </button>
+
+            } @else {
+
+              <div class="bloque-pasos">
+                <h2>Paso a paso</h2>
+                <ul>
+                  <li>El chef todavía está preparando los pasos de esta receta.</li>
+                </ul>
+              </div>
+
+            }
 
           </div>
 
@@ -317,7 +336,7 @@
         </div>
 
         <p class="ayuda-modal">
-          Las recetas que te gustan se guardan solas en Favoritos.
+          Elige en qué colección quieres guardar esta receta.
         </p>
 
         <!-- MISMA TARJETA QUE EN COLECCIONES, EN MODO SELECCIONAR -->

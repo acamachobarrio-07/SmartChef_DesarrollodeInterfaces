@@ -21,12 +21,14 @@ export const RECETAS_EJEMPLO: Receta[] = [
     // Detalle completo (receta modelo)
     descripcion: 'Una tortilla jugosa rellena de espinacas frescas y queso. Perfecta para una cena rápida y ligera.',
     raciones: 1,
+    coste: 1.06,
+    calorias: 269,
     ingredientesReceta: [
-      { ingrediente: INGREDIENTES[0], cantidad: 2 },    // huevo
-      { ingrediente: INGREDIENTES[1], cantidad: 50 },   // espinacas
-      { ingrediente: INGREDIENTES[2], cantidad: 30 },   // queso fresco
-      { ingrediente: INGREDIENTES[3], cantidad: 10 },   // aceite de oliva
-      { ingrediente: INGREDIENTES[16], cantidad: 2 }    // sal
+      { ingrediente: INGREDIENTES[37], cantidad: 2 },   // huevos
+      { ingrediente: INGREDIENTES[0], cantidad: 50 },   // espinacas
+      { ingrediente: INGREDIENTES[38], cantidad: 30 },  // queso fresco
+      { ingrediente: INGREDIENTES[39], cantidad: 10 },  // aceite de oliva
+      { ingrediente: INGREDIENTES[41], cantidad: 2 }    // sal
     ],
     pasos: [
       'Lava las espinacas, sécalas bien y trocéalas.',

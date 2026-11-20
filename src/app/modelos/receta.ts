@@ -24,4 +24,6 @@ export interface Receta {
   raciones?: number;
   ingredientesReceta?: IngredienteReceta[];
   pasos?: string[];
+  coste?: number;
+  calorias?: number;
 }

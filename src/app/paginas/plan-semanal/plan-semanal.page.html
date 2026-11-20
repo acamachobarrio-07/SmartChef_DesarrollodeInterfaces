@@ -6,61 +6,52 @@
 
     <h1>Plan semanal</h1>
 
+    <!-- SEMANA (visual) -->
     <div class="selector-semana">
 
-      <button
-        type="button"
-        class="flecha"
-        (click)="cambiarSemana(-1)">
-
+      <button type="button" class="flecha" aria-label="Semana anterior">
         <ion-icon name="arrow-back"></ion-icon>
-
       </button>
 
-      <button
-        type="button"
-        class="fecha-semana"
-        (click)="abrirCalendario()">
-
+      <button type="button" class="fecha-semana">
         <ion-icon name="calendar-outline"></ion-icon>
-
-        {{ tituloSemana }}
-
+        {{ semana }}
       </button>
 
-      <button
-        type="button"
-        class="flecha"
-        (click)="cambiarSemana(1)">
-
+      <button type="button" class="flecha" aria-label="Semana siguiente">
         <ion-icon name="arrow-forward"></ion-icon>
-
       </button>
 
     </div>
 
-    @for (dia of dias; track formatoFecha(dia)) {
+    <!-- DÍAS DE LA SEMANA -->
+    @for (dia of dias; track dia.nombre) {
 
       <section class="dia-semana">
 
-        <h2>
-          {{ nombreDia(dia) }}
-          {{ dia.getDate() }}
-        </h2>
+        <h2>{{ dia.nombre }}</h2>
 
         <ion-card>
 
           <ion-card-content>
 
-            @for (comida of comidas; track comida) {
+            <app-tarjeta-comida
+              tipo="Desayuno"
+              [receta]="dia.desayuno"
+              (anadir)="abrirRecetas(dia.nombre, 'Desayuno')">
+            </app-tarjeta-comida>
 
-              <app-tarjeta-comida
-                [tipo]="comida"
-                [receta]="obtenerReceta(dia, comida)"
-                (anadir)="abrirRecetas(dia, comida)">
-              </app-tarjeta-comida>
+            <app-tarjeta-comida
+              tipo="Comida"
+              [receta]="dia.comida"
+              (anadir)="abrirRecetas(dia.nombre, 'Comida')">
+            </app-tarjeta-comida>
 
-            }
+            <app-tarjeta-comida
+              tipo="Cena"
+              [receta]="dia.cena"
+              (anadir)="abrirRecetas(dia.nombre, 'Cena')">
+            </app-tarjeta-comida>
 
           </ion-card-content>
 
@@ -75,110 +66,60 @@
 </ion-content>
 
 
-<!-- CALENDARIO -->
-<ion-modal
-  [isOpen]="calendarioAbierto"
-  (didDismiss)="calendarioAbierto = false">
-
-  <ng-template>
-
-    <ion-content class="ion-padding">
-
-      <h2>Seleccionar fecha</h2>
-
-      <ion-datetime
-        presentation="date"
-        locale="es-ES"
-        [firstDayOfWeek]="1"
-        [value]="fechaCalendario"
-        (ionChange)="elegirFecha($event.detail.value)">
-      </ion-datetime>
-
-      <button
-        type="button"
-        class="boton-cerrar"
-        (click)="calendarioAbierto = false">
-
-        Cerrar
-
-      </button>
-
-    </ion-content>
-
-  </ng-template>
-
-</ion-modal>
-
-
 <!-- SELECCIONAR RECETA -->
 <ion-modal
   [isOpen]="modalRecetasAbierto"
+  (didDismiss)="modalRecetasAbierto = false"
   [initialBreakpoint]="0.75"
-  [breakpoints]="[0, 0.75, 1]"
-  (didDismiss)="alCerrarRecetas()">
+  [breakpoints]="[0, 0.75, 1]">
 
   <ng-template>
 
     <ion-content class="ion-padding">
 
-      <div class="seleccionar-receta">
+      @if (!recetaElegida) {
 
-        <h2>Seleccionar receta</h2>
+        <div class="seleccionar-receta">
 
-        <p>{{ comidaSeleccionada }}</p>
+          <h2>Seleccionar receta</h2>
 
-        @for (receta of recetas; track receta.id) {
+          <p>{{ comidaSeleccionada }}</p>
+
+          @for (receta of recetas; track receta.id) {
+
+            <button
+              type="button"
+              class="opcion-receta"
+              (click)="recetaElegida = receta">
+
+              <img [src]="receta.imagen" [alt]="receta.nombre">
+
+              <span>{{ receta.nombre }}</span>
+
+            </button>
+
+          }
 
           <button
             type="button"
-            class="opcion-receta"
-            (click)="elegirReceta(receta)">
+            class="boton-cerrar"
+            (click)="modalRecetasAbierto = false">
 
-            <img
-              [src]="receta.imagen"
-              [alt]="receta.nombre">
-
-            <span>
-              {{ receta.nombre }}
-            </span>
+            Cancelar
 
           </button>
 
-        }
+        </div>
 
-        <button
-          type="button"
-          class="boton-cerrar"
-          (click)="modalRecetasAbierto = false">
+      } @else {
 
-          Cancelar
+        <app-confirmacion-receta
+          titulo="¡Añadida al plan!"
+          [mensaje]="recetaElegida.nombre + ' se ha añadido a ' + comidaSeleccionada + '.'"
+          (aceptar)="modalRecetasAbierto = false">
+        </app-confirmacion-receta>
 
-        </button>
-
-      </div>
-
-    </ion-content>
-
-  </ng-template>
-
-</ion-modal>
-
-
-<!-- CONFIRMACIÓN -->
-<ion-modal
-  [isOpen]="modalConfirmacionAbierto"
-  [initialBreakpoint]="0.55"
-  [breakpoints]="[0, 0.55, 1]"
-  (didDismiss)="modalConfirmacionAbierto = false">
-
-  <ng-template>
-
-    <ion-content class="ion-padding">
-
-      <app-confirmacion-receta
-        [mensaje]="mensajeConfirmacion"
-        (aceptar)="modalConfirmacionAbierto = false">
-      </app-confirmacion-receta>
+      }
 
     </ion-content>
 
