@@ -1,7 +1,6 @@
 import { Component, inject, input } from '@angular/core';
-import { Location } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import {IonButton, IonContent, IonIcon, IonModal} from '@ionic/angular';
+import { IonBackButton, IonContent, IonIcon, IonModal, IonButton } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
 import {
@@ -32,10 +31,11 @@ import { EstadoVacioComponent } from '../../componentes/estado-vacio/estado-vaci
   templateUrl: './detalle-receta.page.html',
   styleUrls: ['./detalle-receta.page.scss'],
   imports: [
+    IonButton,
+    IonBackButton,
     IonContent,
     IonIcon,
     IonModal,
-    IonButton,
     RouterLink,
     TarjetaColeccionComponent,
     ConfirmacionRecetaComponent,
@@ -48,7 +48,6 @@ export class DetalleRecetaPage {
   id = input<string>();
 
   sesion = inject(SesionService);
-  location = inject(Location);
 
   pasoActual = 0;
 
@@ -86,10 +85,6 @@ export class DetalleRecetaPage {
   // Busca la receta que corresponde al id de la dirección
   get receta(): Receta | undefined {
     return RECETAS_EJEMPLO.find(r => r.id === Number(this.id()));
-  }
-
-  volver(): void {
-    this.location.back();
   }
 
   // Pasa al siguiente paso; al llegar al último vuelve al primero

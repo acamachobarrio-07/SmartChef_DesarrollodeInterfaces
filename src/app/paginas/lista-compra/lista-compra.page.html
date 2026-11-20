@@ -69,14 +69,18 @@
 
     <ion-content class="ion-padding">
 
-      <ion-button
-        class="boton-ventana"
-        expand="block"
-        routerLink="/app/inicio-login"
-        routerDirection="root"
-        (click)="modalEnviadaAbierto = false">
-        Volver a la página principal
-      </ion-button>
+      <app-confirmacion-receta
+        titulo="¡Lista enviada!"
+        [mensaje]="'Tu lista de la compra se ha enviado a ' + correo">
+        <ion-button
+          class="boton-ventana"
+          expand="block"
+          routerLink="/app/inicio-login"
+          routerDirection="root"
+          (click)="modalEnviadaAbierto = false">
+          Volver a la página principal
+        </ion-button>
+      </app-confirmacion-receta>
 
     </ion-content>
 

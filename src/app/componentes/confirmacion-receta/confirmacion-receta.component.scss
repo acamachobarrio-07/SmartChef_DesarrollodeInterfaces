@@ -55,25 +55,3 @@
   font-size: 15px;
   line-height: 1.6;
 }
-
-/* BOTÓN ACEPTAR */
-
-.boton-aceptar {
-  width: 100%;
-  min-height: 49px;
-
-  background: var(--ion-color-primary);
-  border: none;
-  border-radius: 12px;
-
-  color: var(--ion-color-primary-contrast);
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 600;
-
-  cursor: pointer;
-}
-
-.boton-aceptar:active {
-  opacity: 0.85;
-}

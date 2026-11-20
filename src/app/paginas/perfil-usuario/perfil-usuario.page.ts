@@ -37,11 +37,9 @@ import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-rece
 })
 export class PerfilUsuarioPage {
 
-  // Datos ficticios del usuario (es una maqueta: no se guardan)
   nombre = 'Ana';
   correo = 'ana@smartchef.es';
 
-  // El interruptor sale encendido si el modo oscuro ya está activo
   modoOscuro = document.documentElement.classList.contains('ion-palette-dark');
 
   modalConfirmacionAbierto = false;
@@ -53,7 +51,6 @@ export class PerfilUsuarioPage {
     });
   }
 
-  // Activar o desactivar el modo oscuro (igual que en el paso 11 del manual)
   cambiarModoOscuro(evento: ToggleCustomEvent): void {
     const activado = evento.detail.checked;
     document.documentElement.classList.toggle('ion-palette-dark', activado);

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 import {
   IonContent,
@@ -29,15 +29,10 @@ export class LoginPage {
   // Servicio para controlar la sesión
   private sesion = inject(SesionService);
 
-  // Navegación entre páginas
-  private router = inject(Router);
-
-  // Simular el inicio de sesión
+  // Simular el inicio de sesión (la navegación la hace el routerLink del botón)
   iniciarSesion(): void {
 
     this.sesion.iniciarSesion();
-
-    this.router.navigate(['/app/inicio-login']);
 
   }
 

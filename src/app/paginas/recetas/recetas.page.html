@@ -34,6 +34,7 @@
 
         <div class="panel-filtros">
 
+          <!-- FILTROS (se marcan y desmarcan, pero no filtran: es una maqueta) -->
           @for (filtro of filtros; track filtro.nombre) {
 
             <button
@@ -50,6 +51,40 @@
             </button>
 
           }
+
+          <!-- DIFICULTAD -->
+          <button
+            type="button"
+            class="opcion-filtro"
+            (click)="mostrarDificultad = !mostrarDificultad">
+
+            dificultad
+
+          </button>
+
+          @if (mostrarDificultad) {
+
+            <select aria-label="Dificultad">
+
+              <option value="Todas">Todas</option>
+              <option value="Fácil">Fácil</option>
+              <option value="Media">Media</option>
+              <option value="Difícil">Difícil</option>
+
+            </select>
+
+          }
+
+          <!-- TIEMPO MÁXIMO -->
+          <button
+            type="button"
+            class="opcion-filtro"
+            (click)="mostrarTiempo = !mostrarTiempo">
+
+            tiempo máximo
+
+          </button>
+
           @if (mostrarTiempo) {
 
             <select aria-label="Tiempo máximo">
