@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
+  IonButton,
   IonContent,
   IonIcon,
   IonLabel,
@@ -11,14 +11,13 @@ import {
   IonSegmentButton
 } from '@ionic/angular';
 
-import { FormularioRecetaComponent, DatosFormularioReceta } from '../../componentes/formulario-receta/formulario-receta.component';
+import { FormularioRecetaComponent } from '../../componentes/formulario-receta/formulario-receta.component';
 import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-receta/confirmacion-receta.component';
 import { TarjetaRecetaComponent } from '../../componentes/tarjeta-receta/tarjeta-receta.component';
 import { MenuPerfilComponent } from '../../componentes/menu-perfil/menu-perfil.component';
 import { RankingRecetasComponent } from '../../componentes/ranking-recetas/ranking-recetas.component';
 
 import { Receta } from '../../modelos/receta';
-import { DatosPerfil } from '../../modelos/perfil';
 
 import { RECETAS_EJEMPLO } from '../../datos/recetas-ejemplo';
 import { PERFIL_CHEF } from '../../datos/perfiles';
@@ -38,6 +37,8 @@ import {
   templateUrl: './inicio-chef.page.html',
   styleUrls: ['./inicio-chef.page.scss'],
   imports: [
+    FormsModule,
+    IonButton,
     IonContent,
     IonIcon,
     IonLabel,
@@ -45,9 +46,8 @@ import {
     IonPopover,
     IonSegment,
     IonSegmentButton,
-    FormsModule,
-    ConfirmacionRecetaComponent,
     FormularioRecetaComponent,
+    ConfirmacionRecetaComponent,
     TarjetaRecetaComponent,
     MenuPerfilComponent,
     RankingRecetasComponent
@@ -55,59 +55,22 @@ import {
 })
 export class InicioChefPage {
 
-  // NAVEGACIÓN ENTRE PÁGINAS
-  private router = inject(Router);
+  nombreChef = PERFIL_CHEF.nombre;
+  recetasChef = RECETAS_EJEMPLO;
 
-  // DATOS FICTICIOS DEL CHEF
-  datosPerfil: DatosPerfil = { ...PERFIL_CHEF };
-
-  // ACCIONES PENDIENTES DEL MENÚ
-  abrirPerfilPendiente = false;
-  cerrarSesionPendiente = false;
-
-  // MODAL PARA AÑADIR RECETAS
   modalAnadirAbierto = false;
+  anadida = false;
 
-  // MODAL DE CONFIRMACIÓN
-  modalConfirmacionAbierto = false;
-
-  // MENSAJE DE CONFIRMACIÓN
-  mensajeConfirmacion = 'Receta añadida correctamente.';
-
-  // INDICA SI DEBEMOS MOSTRAR LA CONFIRMACIÓN
-  confirmacionPendiente = false;
-
-  // MODALES PARA MODIFICAR Y ELIMINAR
-  modalSeleccionAbierto = false;
-  modalModificarAbierto = false;
-  modalEliminarAbierto = false;
-
-  // RECETAS FICTICIAS PARA EL CHEF
-  recetasChef: Receta[] = RECETAS_EJEMPLO;
-
-  // RECETA SELECCIONADA
+  modalRecetasAbierto = false;
+  accion: 'modificar' | 'eliminar' = 'modificar';
+  pantalla = 'lista';                    // 'lista', 'formulario', 'aviso' o 'hecho'
   recetaSeleccionada: Receta | null = null;
-  datosModificar: DatosFormularioReceta | null = null;
 
-  // ESPERAR A QUE SE CIERRE EL LISTADO
-  abrirModificarPendiente = false;
-
-  // INDICA QUÉ QUEREMOS HACER EN EL LISTADO
-  modoSeleccion: 'modificar' | 'eliminar' = 'modificar';
-
-  // ESPERAR PARA ABRIR EL AVISO DE ELIMINACIÓN
-  abrirEliminarPendiente = false;
-
-  // ESPERAR PARA MOSTRAR EL MENSAJE DE ÉXITO
-  confirmacionEliminacionPendiente = false;
-
-  // INFORMES
   modalInformesAbierto = false;
   vistaInforme = 'cocinadas';
   periodoInforme = PERIODO_INFORME;
   recetasMasCocinadas = RECETAS_MAS_COCINADAS;
   recetasMasGuardadas = RECETAS_MAS_GUARDADAS;
-
 
   constructor() {
     addIcons({
@@ -119,163 +82,29 @@ export class InicioChefPage {
     });
   }
 
-
-  // AÑADIR RECETA
-
-  guardarReceta(): void {
-    this.mensajeConfirmacion = 'Receta añadida correctamente.';
-    this.confirmacionPendiente = true;
-    this.modalAnadirAbierto = false;
+  // ventana de añadir recetas
+  abrirAnadir(): void {
+    this.anadida = false;
+    this.modalAnadirAbierto = true;
   }
 
-  alCerrarModalAnadir(): void {
-    this.modalAnadirAbierto = false;
-
-    if (this.confirmacionPendiente) {
-      this.confirmacionPendiente = false;
-      this.modalConfirmacionAbierto = true;
-    }
+  // abrimos la lista de las recetas para modificar o eliminar
+  abrirRecetas(accion: 'modificar' | 'eliminar'): void {
+    this.accion = accion;
+    this.pantalla = 'lista';
+    this.recetaSeleccionada = null;
+    this.modalRecetasAbierto = true;
   }
 
+  // cuando pulsamos una receta pasamos a su formulario o a su aviso
+  seleccionarReceta(receta: Receta): void {
+    this.recetaSeleccionada = receta;
 
-  // ABRIR EL LISTADO PARA MODIFICAR O ELIMINAR
-
-  abrirSeleccion(modo: 'modificar' | 'eliminar'): void {
-    this.modoSeleccion = modo;
-    this.modalSeleccionAbierto = true;
-  }
-
-
-  // DECIDIR QUÉ HACER CON LA RECETA SELECCIONADA
-
-  manejarSeleccionReceta(receta: Receta): void {
-    if (this.modoSeleccion === 'modificar') {
-      this.seleccionarRecetaParaModificar(receta);
+    if (this.accion === 'modificar') {
+      this.pantalla = 'formulario';
     } else {
-      this.seleccionarRecetaParaEliminar(receta);
+      this.pantalla = 'aviso';
     }
-  }
-
-
-  // SELECCIONAR UNA RECETA PARA MODIFICAR
-
-  seleccionarRecetaParaModificar(receta: Receta): void {
-
-    this.recetaSeleccionada = receta;
-
-    // PREPARAR LOS DATOS DEL FORMULARIO
-    this.datosModificar = {
-      titulo: receta.nombre,
-      tiempo: receta.tiempo,
-      raciones: 2,
-      dificultad: receta.dificultad === 'Fácil' ? 'facil'
-        : receta.dificultad === 'Media' ? 'media' : 'dificil',
-
-      ingredientes: receta.ingredientes.map(nombre => ({
-        nombre: nombre,
-        cantidad: 1,
-        unidad: 'ud'
-      })),
-
-      pasos: [
-        { descripcion: 'Preparación de ejemplo.' }
-      ]
-    };
-
-    this.abrirModificarPendiente = true;
-    this.modalSeleccionAbierto = false;
-  }
-
-
-  // CUANDO TERMINA DE CERRARSE EL LISTADO
-
-  alCerrarSeleccion(): void {
-    this.modalSeleccionAbierto = false;
-
-    if (this.abrirModificarPendiente) {
-      this.abrirModificarPendiente = false;
-      this.modalModificarAbierto = true;
-
-    } else if (this.abrirEliminarPendiente) {
-      this.abrirEliminarPendiente = false;
-      this.modalEliminarAbierto = true;
-    }
-  }
-
-
-  // SIMULAR LA MODIFICACIÓN DE UNA RECETA
-
-  guardarModificacion(): void {
-    this.mensajeConfirmacion = 'Receta modificada correctamente.';
-    this.confirmacionPendiente = true;
-    this.modalModificarAbierto = false;
-  }
-
-
-  // MOSTRAR CONFIRMACIÓN AL CERRAR EL FORMULARIO
-
-  alCerrarModalModificar(): void {
-    this.modalModificarAbierto = false;
-
-    if (this.confirmacionPendiente) {
-      this.confirmacionPendiente = false;
-      this.modalConfirmacionAbierto = true;
-    }
-  }
-
-
-  // SELECCIONAR UNA RECETA PARA ELIMINAR
-
-  seleccionarRecetaParaEliminar(receta: Receta): void {
-    this.recetaSeleccionada = receta;
-    this.abrirEliminarPendiente = true;
-    this.modalSeleccionAbierto = false;
-  }
-
-
-  // CONFIRMAR LA ELIMINACIÓN (la receta no se borra)
-
-  confirmarEliminar(): void {
-    this.mensajeConfirmacion = 'Receta eliminada correctamente.';
-    this.confirmacionEliminacionPendiente = true;
-    this.modalEliminarAbierto = false;
-  }
-
-
-  // MOSTRAR CONFIRMACIÓN AL CERRAR EL AVISO
-
-  alCerrarModalEliminar(): void {
-    this.modalEliminarAbierto = false;
-
-    if (this.confirmacionEliminacionPendiente) {
-      this.confirmacionEliminacionPendiente = false;
-      this.modalConfirmacionAbierto = true;
-    }
-  }
-
-
-  // MENÚ DEL PERFIL DEL CHEF
-
-  abrirEdicionPerfil(): void {
-    this.abrirPerfilPendiente = true;
-  }
-
-  cerrarSesion(): void {
-    this.cerrarSesionPendiente = true;
-  }
-
-  alCerrarMenuPerfil(): void {
-
-    if (this.abrirPerfilPendiente) {
-      this.abrirPerfilPendiente = false;
-      this.router.navigate(['/perfil-chef']);
-    }
-
-    if (this.cerrarSesionPendiente) {
-      this.cerrarSesionPendiente = false;
-      this.router.navigate(['/login-chef']);
-    }
-
   }
 
 }

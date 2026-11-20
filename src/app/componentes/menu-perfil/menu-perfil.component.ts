@@ -1,20 +1,21 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { IonRouterLink } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu-perfil',
   templateUrl: './menu-perfil.component.html',
   styleUrls: ['./menu-perfil.component.scss'],
-  imports: []
+  imports: [RouterLink, IonRouterLink]
 })
 export class MenuPerfilComponent {
 
-  // Nombre del usuario o chef
   nombre = input<string>('Usuario');
 
-  // Avisar al padre cuando pulse Editar perfil
-  editarPerfil = output<void>();
+  // página para editar el perfil
+  rutaPerfil = input.required<string>();
 
-  // Avisar al padre cuando pulse Cerrar sesión
-  cerrarSesion = output<void>();
+  // al cerrar sesión
+  rutaSalir = input.required<string>();
 
 }

@@ -40,19 +40,19 @@
             <app-tarjeta-comida
               tipo="Desayuno"
               [receta]="dia.desayuno"
-              (anadir)="abrirRecetas(dia.nombre, 'Desayuno')">
+              (click)="abrirRecetas(dia.nombre, 'Desayuno')">
             </app-tarjeta-comida>
 
             <app-tarjeta-comida
               tipo="Comida"
               [receta]="dia.comida"
-              (anadir)="abrirRecetas(dia.nombre, 'Comida')">
+              (click)="abrirRecetas(dia.nombre, 'Comida')">
             </app-tarjeta-comida>
 
             <app-tarjeta-comida
               tipo="Cena"
               [receta]="dia.cena"
-              (anadir)="abrirRecetas(dia.nombre, 'Cena')">
+              (click)="abrirRecetas(dia.nombre, 'Cena')">
             </app-tarjeta-comida>
 
           </ion-card-content>
@@ -117,8 +117,10 @@
 
         <app-confirmacion-receta
           titulo="¡Añadida al plan!"
-          [mensaje]="recetaElegida.nombre + ' se ha añadido a ' + comidaSeleccionada + '.'"
-          (aceptar)="modalRecetasAbierto = false">
+          [mensaje]="recetaElegida.nombre + ' se ha añadido a ' + comidaSeleccionada + '.'">
+          <ion-button class="boton-ventana" expand="block" (click)="modalRecetasAbierto = false">
+            Aceptar
+          </ion-button>
         </app-confirmacion-receta>
 
       }

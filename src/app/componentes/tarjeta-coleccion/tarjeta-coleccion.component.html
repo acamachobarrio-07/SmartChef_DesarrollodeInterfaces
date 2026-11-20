@@ -4,28 +4,20 @@
   <a
     [routerLink]="['/app/colecciones', coleccion().id]"
     class="tarjeta-coleccion">
-
     <h2>{{ coleccion().nombre }}</h2>
     <img [src]="coleccion().imagen" [alt]="coleccion().nombre">
-
   </a>
 
 } @else {
-
-  <!-- MODO SELECCIONAR: AVISA AL PADRE -->
   <button
     type="button"
-    class="tarjeta-coleccion seleccionable"
-    (click)="seleccionar.emit(coleccion())">
-
+    class="tarjeta-coleccion seleccionable">
     <h2>{{ coleccion().nombre }}</h2>
     <img [src]="coleccion().imagen" [alt]="coleccion().nombre">
-
     <span class="texto-seleccionar">
       Seleccionar
       <ion-icon name="chevron-forward-circle"></ion-icon>
     </span>
-
   </button>
 
 }

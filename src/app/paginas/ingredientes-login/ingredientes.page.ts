@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { IonContent, IonIcon, IonModal } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { IonContent, IonIcon, IonModal, IonButton } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
 import { addCircle, nutritionOutline, trashOutline } from 'ionicons/icons';
@@ -17,17 +17,17 @@ import { DESPENSA } from '../../datos/despensa';
   templateUrl: './ingredientes.page.html',
   styleUrls: ['./ingredientes.page.scss'],
   imports: [
+    IonButton,
     IonContent,
     IonIcon,
     IonModal,
+    RouterLink,
     CabeceraComponent,
     FormularioIngredienteComponent,
     ConfirmacionRecetaComponent
   ]
 })
 export class IngredientesPage {
-
-  router = inject(Router);
 
   despensa = DESPENSA;
 
@@ -37,7 +37,6 @@ export class IngredientesPage {
     UNIDADES: 'unidades'
   };
 
-  // Es una maqueta: las ventanas muestran el aviso y la confirmación, pero no cambian los datos
   modalModificarAbierto = false;
   modalEliminarAbierto = false;
   productoSeleccionado: ProductoDespensa | null = null;
@@ -45,10 +44,6 @@ export class IngredientesPage {
 
   constructor() {
     addIcons({ addCircle, nutritionOutline, trashOutline });
-  }
-
-  abrirAnadir(): void {
-    this.router.navigate(['/app/anadir-ingredientes']);
   }
 
   abrirModificar(producto: ProductoDespensa): void {

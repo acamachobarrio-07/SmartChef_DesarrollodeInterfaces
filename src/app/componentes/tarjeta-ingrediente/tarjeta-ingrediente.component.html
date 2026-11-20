@@ -1,19 +1,13 @@
 <div class="tarjeta-ingrediente">
 
   <div class="foto-ingrediente">
-
     @if (ingrediente().imagen) {
-
       <img
         [src]="ingrediente().imagen"
         [alt]="ingrediente().nombre">
-
     } @else {
-
       <ion-icon name="nutrition-outline"></ion-icon>
-
     }
-
   </div>
 
   <span class="nombre-ingrediente">
@@ -22,12 +16,9 @@
 
   <button
     type="button"
-    class="boton-anadir"
-    (click)="pulsarAnadir()">
-
+    class="boton-anadir">
     Añadir
     <ion-icon name="add-circle"></ion-icon>
-
   </button>
 
 </div>

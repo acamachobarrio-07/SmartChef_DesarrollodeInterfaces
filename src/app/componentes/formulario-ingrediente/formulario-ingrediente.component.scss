@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
 
-  h2 {
+  .titulo-formulario {
     margin: 0;
     color: var(--app-texto);
   }
@@ -60,4 +60,10 @@ ion-input {
 
 ion-list {
   margin: 0 0 20px;
+}
+
+.botones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }

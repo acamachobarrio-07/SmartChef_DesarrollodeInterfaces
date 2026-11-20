@@ -345,7 +345,7 @@
             <app-tarjeta-coleccion
               [coleccion]="coleccion"
               modo="seleccionar"
-              (seleccionar)="elegirColeccion($event)">
+              (click)="elegirColeccion(coleccion)">
             </app-tarjeta-coleccion>
           }
         </div>
@@ -353,8 +353,10 @@
       } @else {
 
         <app-confirmacion-receta
-          [mensaje]="'Receta guardada en ' + coleccionElegida.nombre + '.'"
-          (aceptar)="modalColeccionesAbierto = false">
+          [mensaje]="'Receta guardada en ' + coleccionElegida.nombre + '.'">
+          <ion-button class="boton-ventana" expand="block" (click)="modalColeccionesAbierto = false">
+            Aceptar
+          </ion-button>
         </app-confirmacion-receta>
 
       }

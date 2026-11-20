@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonContent, IonIcon, IonCard, IonCardContent, IonModal } from '@ionic/angular';
+import { IonContent, IonIcon, IonCard, IonCardContent, IonModal, IonButton } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
 import { arrowBack, arrowForward, calendarOutline } from 'ionicons/icons';
@@ -20,6 +20,7 @@ import { ResumenCaloriasComponent } from '../../componentes/resumen-calorias/res
   imports: [
     IonContent,
     IonIcon,
+    IonButton,
     IonCard,
     IonCardContent,
     IonModal,

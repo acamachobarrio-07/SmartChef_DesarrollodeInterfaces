@@ -1,15 +1,11 @@
-<!-- MENÚ DE PERFIL REUTILIZABLE -->
 <div class="menu-perfil">
 
-  <!-- INFORMACIÓN DEL USUARIO -->
   <div class="informacion-usuario">
 
-    <!-- AVATAR CON INICIAL -->
     <div class="avatar-menu">
       {{ nombre().charAt(0).toUpperCase() }}
     </div>
 
-    <!-- NOMBRE -->
     <div class="datos-usuario">
       <h3>{{ nombre() }}</h3>
       <p>Mi cuenta</p>
@@ -17,14 +13,12 @@
 
   </div>
 
-  <!-- SEPARADOR -->
   <div class="separador"></div>
 
-  <!-- EDITAR PERFIL -->
   <button
     type="button"
     class="opcion-menu"
-    (click)="editarPerfil.emit()">
+    [routerLink]="rutaPerfil()">
 
     <span class="icono-menu" aria-hidden="true">
       ✎
@@ -34,15 +28,13 @@
 
   </button>
 
-  <!-- CERRAR SESIÓN -->
   <button
     type="button"
     class="opcion-menu opcion-salir"
-    (click)="cerrarSesion.emit()">
+    [routerLink]="rutaSalir()"
+    routerDirection="root">
 
-    <span class="icono-menu" aria-hidden="true">
-      ↪
-    </span>
+    <span class="icono-menu" aria-hidden="true"></span>
 
     <span>Cerrar sesión</span>
 

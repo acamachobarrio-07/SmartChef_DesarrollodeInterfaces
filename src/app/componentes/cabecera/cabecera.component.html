@@ -4,15 +4,12 @@
   <!-- VOLVER (solo si la página lo pide) -->
   @if (volver()) {
 
-    <button
-      type="button"
+    <ion-back-button
       class="boton-volver"
-      aria-label="Volver"
-      (click)="irAtras()">
-
-      <ion-icon name="arrow-back-outline"></ion-icon>
-
-    </button>
+      [defaultHref]="volver()"
+      icon="arrow-back-outline"
+      text="">
+    </ion-back-button>
 
   }
 

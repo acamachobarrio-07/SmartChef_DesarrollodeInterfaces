@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-confirmacion-receta',
@@ -8,14 +8,10 @@ import { Component, input, output } from '@angular/core';
 })
 export class ConfirmacionRecetaComponent {
 
-  // Mensaje que recibimos desde la página padre
+  // lo recibimos desde la página padre
   mensaje = input.required<string>();
 
-  // Textos opcionales: si la página no los pasa, se usan estos
+  // opcional: si la página no lo pasa, se usa este
   titulo = input<string>('¡Operación realizada!');
-  textoBoton = input<string>('Aceptar');
-
-  // Avisamos a la página padre cuando pulsa el botón
-  aceptar = output<void>();
 
 }

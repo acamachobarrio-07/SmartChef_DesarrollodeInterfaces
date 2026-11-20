@@ -6,13 +6,12 @@
     [alt]="receta().nombre"
     class="foto-receta">
 
-  <!-- INFORMACIÓN -->
   <div class="informacion">
 
-    <!-- NOMBRE -->
+
     <h2>{{ receta().nombre }}</h2>
 
-    <!-- TIEMPO Y DIFICULTAD -->
+
     <div class="datos">
 
       <span>
@@ -27,12 +26,12 @@
 
     </div>
 
-    <!-- INGREDIENTES DISPONIBLES -->
+
     <p class="ingredientes">
       {{ receta().disponibles }} ingredientes disponibles
     </p>
 
-    <!-- ETIQUETAS -->
+
     <div class="etiquetas">
 
       @if (receta().rapido) {
@@ -47,11 +46,8 @@
 
     </div>
 
-    <!-- ACCIÓN SEGÚN EL MODO -->
-
     @if (modo() === 'ver') {
 
-      <!-- ABRIR EL DETALLE DE ESTA RECETA -->
       <a
         [routerLink]="['/app/recetas', receta().id]"
         class="ir-receta">
@@ -63,31 +59,24 @@
 
     } @else if (modo() === 'modificar') {
 
-      <!-- MODIFICAR RECETA -->
-      <button
-        type="button"
-        class="ir-receta accion-chef"
-        (click)="seleccionar.emit(receta())">
 
-        Modificar receta
-        <ion-icon name="chevron-forward-circle"></ion-icon>
+        <button
+          type="button"
+          class="ir-receta accion-chef">
+          Modificar receta
+          <ion-icon name="chevron-forward-circle"></ion-icon>
+        </button>
 
-      </button>
+      } @else if (modo() === 'eliminar') {
 
-    } @else if (modo() === 'eliminar') {
+        <button
+          type="button"
+          class="ir-receta accion-chef accion-eliminar">
+          Eliminar receta
+          <ion-icon name="chevron-forward-circle"></ion-icon>
+        </button>
 
-      <!-- ELIMINAR RECETA -->
-      <button
-        type="button"
-        class="ir-receta accion-chef accion-eliminar"
-        (click)="seleccionar.emit(receta())">
-
-        Eliminar receta
-        <ion-icon name="chevron-forward-circle"></ion-icon>
-
-      </button>
-
-    }
+      }
 
   </div>
 

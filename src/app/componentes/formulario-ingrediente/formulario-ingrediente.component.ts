@@ -1,6 +1,5 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
 import {
-  IonButton,
   IonDatetime,
   IonDatetimeButton,
   IonIcon,
@@ -23,7 +22,6 @@ import { Ingrediente } from '../../modelos/ingrediente';
   templateUrl: './formulario-ingrediente.component.html',
   styleUrls: ['./formulario-ingrediente.component.scss'],
   imports: [
-    IonButton,
     IonDatetime,
     IonDatetimeButton,
     IonIcon,
@@ -38,16 +36,11 @@ import { Ingrediente } from '../../modelos/ingrediente';
 })
 export class FormularioIngredienteComponent {
 
-  // Ingrediente que se añade o se modifica
+  // ingrediente que añadimos o modificamos
   ingrediente = input.required<Ingrediente>();
 
-  // Textos opcionales (por defecto, para añadir)
+  // opcional, por defecto será añadir
   titulo = input<string>('Añadir ingrediente');
-  textoBoton = input<string>('Añadir');
-
-  // Avisamos a la página padre
-  guardar = output<void>();
-  cancelar = output<void>();
 
   constructor() {
     addIcons({ nutritionOutline });

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonContent, IonModal } from '@ionic/angular';
+import { IonContent, IonModal, IonButton } from '@ionic/angular';
 
 import { FormularioPerfilComponent } from '../../componentes/formulario-perfil/formulario-perfil.component';
 import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-receta/confirmacion-receta.component';
@@ -15,6 +15,7 @@ import { PERFIL_CHEF } from '../../datos/perfiles';
   imports: [
     IonContent,
     IonModal,
+    IonButton,
     FormularioPerfilComponent,
     ConfirmacionRecetaComponent
   ]

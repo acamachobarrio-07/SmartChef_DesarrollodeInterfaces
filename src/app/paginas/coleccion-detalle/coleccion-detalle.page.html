@@ -3,7 +3,7 @@
   <div class="pantalla-coleccion">
 
     <!-- CABECERA REUTILIZABLE (con flecha para volver) -->
-    <app-cabecera [volver]="true"></app-cabecera>
+    <app-cabecera volver="/app/colecciones"></app-cabecera>
 
     @if (coleccion; as c) {
 
@@ -94,8 +94,10 @@
 
         <!-- CONFIRMACIÓN (componente reutilizado del modo chef) -->
         <app-confirmacion-receta
-          mensaje="La receta se ha quitado de la colección."
-          (aceptar)="modalAbierto = false">
+          mensaje="La receta se ha quitado de la colección.">
+          <ion-button class="boton-ventana" expand="block" (click)="modalAbierto = false">
+            Aceptar
+          </ion-button>
         </app-confirmacion-receta>
 
       }

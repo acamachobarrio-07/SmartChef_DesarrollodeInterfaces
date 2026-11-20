@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IonIcon } from '@ionic/angular';
 
@@ -12,13 +12,10 @@ import { Coleccion } from '../../modelos/coleccion';
 })
 export class TarjetaColeccionComponent {
 
-  // Colección que se muestra en la tarjeta
+  // coleccion que mostramos en la tarjeta
   coleccion = input.required<Coleccion>();
 
-  // 'ver': abre la colección / 'seleccionar': avisa al padre
+  // ver abre la coleccion
   modo = input<'ver' | 'seleccionar'>('ver');
-
-  // Avisar al componente padre de la colección elegida
-  seleccionar = output<Coleccion>();
 
 }

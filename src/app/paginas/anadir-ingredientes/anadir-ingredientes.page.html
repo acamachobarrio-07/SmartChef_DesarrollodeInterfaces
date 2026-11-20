@@ -2,7 +2,7 @@
 
   <div class="pantalla-anadir">
 
-    <app-cabecera [volver]="true"></app-cabecera>
+    <app-cabecera volver="/app/ingredientes"></app-cabecera>
 
     <h1>Añadir ingredientes</h1>
 
@@ -18,7 +18,7 @@
             [nombre]="categoria.nombre"
             [imagen]="categoria.imagen"
             [seleccionada]="categoriaSeleccionada === categoria.nombre"
-            (seleccionar)="cambiarCategoria($event)">
+            (click)="cambiarCategoria(categoria.nombre)">
           </app-tarjeta-categoria>
 
         }
@@ -33,7 +33,7 @@
 
           <app-tarjeta-ingrediente
             [ingrediente]="ingrediente"
-            (seleccionar)="abrirAnadir($event)">
+            (click)="abrirAnadir(ingrediente)">
           </app-tarjeta-ingrediente>
 
         } @empty {
@@ -69,17 +69,19 @@
         @if (!anadido) {
 
           <app-formulario-ingrediente
-            [ingrediente]="i"
-            (guardar)="anadido = true"
-            (cancelar)="modalAbierto = false">
+            [ingrediente]="i">
+            <ion-button class="boton-ventana" expand="block" (click)="anadido = true">Añadir</ion-button>
+            <ion-button class="boton-ventana" expand="block" fill="clear" (click)="modalAbierto = false">Cancelar</ion-button>
           </app-formulario-ingrediente>
 
         } @else {
 
           <app-confirmacion-receta
             titulo="¡Ingrediente añadido!"
-            [mensaje]="i.nombre + ' se ha añadido a tu despensa.'"
-            (aceptar)="modalAbierto = false">
+            [mensaje]="i.nombre + ' se ha añadido a tu despensa.'">
+            <ion-button class="boton-ventana" expand="block" (click)="modalAbierto = false">
+              Aceptar
+            </ion-button>
           </app-confirmacion-receta>
 
         }

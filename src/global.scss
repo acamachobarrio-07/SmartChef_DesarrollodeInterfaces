@@ -77,3 +77,16 @@ ion-popover.menu-perfil-popover::part(content) {
 .menu-perfil-usuario .cerrar-sesion {
   color: #ff4545;
 }
+
+/* BOTONES DE LAS VENTANAS */
+ion-button.boton-ventana {
+  width: 100%;
+  min-height: 49px;
+  margin: 0;
+
+  --border-radius: 12px;
+  text-transform: none;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+}

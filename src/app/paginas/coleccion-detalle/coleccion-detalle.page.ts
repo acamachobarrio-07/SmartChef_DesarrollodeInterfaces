@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { IonContent, IonIcon, IonModal } from '@ionic/angular';
+import {IonContent, IonIcon, IonModal, IonButton} from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
 import { trashOutline, bookmarkOutline, searchOutline } from 'ionicons/icons';
@@ -21,6 +21,7 @@ import { COLECCIONES } from '../../datos/colecciones';
     IonContent,
     IonIcon,
     IonModal,
+    IonButton,
     CabeceraComponent,
     TarjetaRecetaComponent,
     ConfirmacionRecetaComponent,
@@ -29,7 +30,6 @@ import { COLECCIONES } from '../../datos/colecciones';
 })
 export class ColeccionDetallePage {
 
-  // Recibe el ":id" de la dirección (/app/colecciones/1)
   id = input<string>();
 
   modalAbierto = false;
@@ -50,7 +50,6 @@ export class ColeccionDetallePage {
     this.modalAbierto = true;
   }
 
-  // Es una maqueta: solo mostramos la confirmación, no se borra nada
   confirmarQuitar(): void {
     this.quitada = true;
   }

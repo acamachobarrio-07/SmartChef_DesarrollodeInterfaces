@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { IonIcon } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
@@ -18,17 +18,10 @@ export class TarjetaIngredienteComponent {
 
   ingrediente = input.required<Ingrediente>();
 
-  seleccionar = output<Ingrediente>();
-
   constructor() {
     addIcons({
       addCircle
     });
   }
 
-  pulsarAnadir(): void {
-    this.seleccionar.emit(this.ingrediente());
-  }
-
 }
-

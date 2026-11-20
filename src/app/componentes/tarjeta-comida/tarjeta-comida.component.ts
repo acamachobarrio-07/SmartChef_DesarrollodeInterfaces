@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { IonIcon } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
@@ -17,8 +17,6 @@ export class TarjetaComidaComponent {
   tipo = input.required<string>();
   receta = input<Receta | null>(null);
 
-  anadir = output<void>();
-
   constructor() {
     addIcons({
       addCircle,
@@ -26,8 +24,4 @@ export class TarjetaComidaComponent {
     });
   }
 
-  pulsar(): void {
-    this.anadir.emit();
-  }
 }
-

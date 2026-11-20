@@ -6,7 +6,8 @@ import {
   IonContent,
   IonIcon,
   IonToggle,
-  IonModal
+  IonModal,
+  IonButton
 } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
@@ -27,6 +28,7 @@ import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-rece
     IonIcon,
     IonToggle,
     IonModal,
+    IonButton,
     FormsModule,
     ConfirmacionRecetaComponent
   ]

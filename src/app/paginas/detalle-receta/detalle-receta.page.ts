@@ -1,7 +1,7 @@
 import { Component, inject, input } from '@angular/core';
 import { Location } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { IonContent, IonIcon, IonModal } from '@ionic/angular';
+import {IonButton, IonContent, IonIcon, IonModal} from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
 import {
@@ -35,6 +35,7 @@ import { EstadoVacioComponent } from '../../componentes/estado-vacio/estado-vaci
     IonContent,
     IonIcon,
     IonModal,
+    IonButton,
     RouterLink,
     TarjetaColeccionComponent,
     ConfirmacionRecetaComponent,

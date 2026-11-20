@@ -43,7 +43,7 @@
       <button
         type="button"
         class="opcion opcion-anadir"
-        (click)="modalAnadirAbierto = true">
+        (click)="abrirAnadir()">
 
         <div class="icono-opcion">
           <ion-icon name="add-outline"></ion-icon>
@@ -54,10 +54,7 @@
           <p>Crea una nueva receta</p>
         </div>
 
-        <ion-icon
-          name="chevron-forward-outline"
-          class="flecha">
-        </ion-icon>
+        <ion-icon name="chevron-forward-outline" class="flecha"></ion-icon>
 
       </button>
 
@@ -65,7 +62,7 @@
       <button
         type="button"
         class="opcion opcion-modificar"
-        (click)="abrirSeleccion('modificar')">
+        (click)="abrirRecetas('modificar')">
 
         <div class="icono-opcion">
           <ion-icon name="create-outline"></ion-icon>
@@ -76,10 +73,7 @@
           <p>Edita una receta existente</p>
         </div>
 
-        <ion-icon
-          name="chevron-forward-outline"
-          class="flecha">
-        </ion-icon>
+        <ion-icon name="chevron-forward-outline" class="flecha"></ion-icon>
 
       </button>
 
@@ -87,7 +81,7 @@
       <button
         type="button"
         class="opcion opcion-eliminar"
-        (click)="abrirSeleccion('eliminar')">
+        (click)="abrirRecetas('eliminar')">
 
         <div class="icono-opcion">
           <ion-icon name="trash-outline"></ion-icon>
@@ -98,10 +92,7 @@
           <p>Elimina recetas del catálogo</p>
         </div>
 
-        <ion-icon
-          name="chevron-forward-outline"
-          class="flecha">
-        </ion-icon>
+        <ion-icon name="chevron-forward-outline" class="flecha"></ion-icon>
 
       </button>
 
@@ -131,145 +122,50 @@
 </ion-content>
 
 
-<!-- MENÚ DESPLEGABLE DEL PERFIL -->
+<!-- MENÚ DESPLEGABLE DEL PERFIL (se cierra solo al pulsar una opción) -->
 <ion-popover
-  #popoverPerfil
   trigger="boton-perfil-chef"
   triggerAction="click"
   side="bottom"
   alignment="end"
-  (didDismiss)="alCerrarMenuPerfil()">
+  [dismissOnSelect]="true">
 
   <ng-template>
-
     <app-menu-perfil
-      [nombre]="datosPerfil.nombre"
-      (editarPerfil)="abrirEdicionPerfil(); popoverPerfil.dismiss()"
-      (cerrarSesion)="cerrarSesion(); popoverPerfil.dismiss()">
+      [nombre]="nombreChef"
+      rutaPerfil="/perfil-chef"
+      rutaSalir="/login-chef">
     </app-menu-perfil>
-
   </ng-template>
 
 </ion-popover>
 
 
-<!-- MODAL PARA AÑADIR RECETAS -->
+<!-- VENTANA PARA AÑADIR RECETAS -->
 <ion-modal
   [isOpen]="modalAnadirAbierto"
   [initialBreakpoint]="0.85"
   [breakpoints]="[0, 0.85, 1]"
-  (didDismiss)="alCerrarModalAnadir()">
+  (didDismiss)="modalAnadirAbierto = false">
 
   <ng-template>
 
     <ion-content class="ion-padding">
 
-      <app-formulario-receta
-        modo="anadir"
-        (guardar)="guardarReceta()"
-        (cerrar)="modalAnadirAbierto = false">
-      </app-formulario-receta>
+      @if (!anadida) {
 
-    </ion-content>
-
-  </ng-template>
-
-</ion-modal>
-
-
-<!-- MODAL DE CONFIRMACIÓN REUTILIZABLE -->
-<ion-modal
-  [isOpen]="modalConfirmacionAbierto"
-  [initialBreakpoint]="0.55"
-  [breakpoints]="[0, 0.55, 1]"
-  (didDismiss)="modalConfirmacionAbierto = false">
-
-  <ng-template>
-
-    <ion-content class="ion-padding">
-
-      <app-confirmacion-receta
-        [mensaje]="mensajeConfirmacion"
-        (aceptar)="modalConfirmacionAbierto = false">
-      </app-confirmacion-receta>
-
-    </ion-content>
-
-  </ng-template>
-
-</ion-modal>
-
-
-<!-- MODAL PARA SELECCIONAR RECETA -->
-<ion-modal
-  [isOpen]="modalSeleccionAbierto"
-  [initialBreakpoint]="0.9"
-  [breakpoints]="[0, 0.9, 1]"
-  (didDismiss)="alCerrarSeleccion()">
-
-  <ng-template>
-
-    <ion-content class="ion-padding">
-
-      <div class="lista-recetas-chef">
-
-        <!-- TÍTULO SEGÚN EL MODO -->
-        <h2>
-          {{ modoSeleccion === 'modificar'
-          ? 'Modificar receta'
-          : 'Eliminar receta' }}
-        </h2>
-
-        <!-- DESCRIPCIÓN SEGÚN EL MODO -->
-        <p>
-          {{ modoSeleccion === 'modificar'
-          ? 'Selecciona la receta que quieres modificar.'
-          : 'Selecciona la receta que quieres eliminar.' }}
-        </p>
-
-        <!-- TARJETAS DE RECETAS -->
-        @for (receta of recetasChef; track receta.id) {
-
-          <app-tarjeta-receta
-            [receta]="receta"
-            [modo]="modoSeleccion"
-            (seleccionar)="manejarSeleccionReceta($event)">
-          </app-tarjeta-receta>
-
-        } @empty {
-
-          <p>No hay recetas disponibles.</p>
-
-        }
-
-      </div>
-
-    </ion-content>
-
-  </ng-template>
-
-</ion-modal>
-
-
-<!-- MODAL PARA MODIFICAR RECETA -->
-<ion-modal
-  [isOpen]="modalModificarAbierto"
-  [initialBreakpoint]="0.85"
-  [breakpoints]="[0, 0.85, 1]"
-  (didDismiss)="alCerrarModalModificar()">
-
-  <ng-template>
-
-    <ion-content class="ion-padding">
-
-      @if (datosModificar) {
-
-        <app-formulario-receta
-          modo="modificar"
-          [receta]="datosModificar"
-          (guardar)="guardarModificacion()"
-          (cerrar)="modalModificarAbierto = false">
+        <app-formulario-receta>
+          <ion-button class="boton-ventana" expand="block" (click)="anadida = true">Guardar receta</ion-button>
+          <ion-button class="boton-ventana" expand="block" fill="clear" (click)="modalAnadirAbierto = false">Cancelar</ion-button>
         </app-formulario-receta>
+
+      } @else {
+
+        <app-confirmacion-receta mensaje="Receta añadida correctamente.">
+          <ion-button class="boton-ventana" expand="block" (click)="modalAnadirAbierto = false">
+            Aceptar
+          </ion-button>
+        </app-confirmacion-receta>
 
       }
 
@@ -280,57 +176,113 @@
 </ion-modal>
 
 
-<!-- MODAL DE ADVERTENCIA PARA ELIMINAR -->
+<!-- VENTANA PARA MODIFICAR O ELIMINAR (lista → formulario o aviso → confirmación) -->
 <ion-modal
-  [isOpen]="modalEliminarAbierto"
-  [initialBreakpoint]="0.5"
-  [breakpoints]="[0, 0.5, 1]"
-  (didDismiss)="alCerrarModalEliminar()">
+  [isOpen]="modalRecetasAbierto"
+  [initialBreakpoint]="0.9"
+  [breakpoints]="[0, 0.9, 1]"
+  (didDismiss)="modalRecetasAbierto = false">
 
   <ng-template>
 
     <ion-content class="ion-padding">
 
-      <div class="aviso-eliminar">
+      @switch (pantalla) {
 
-        <!-- ICONO DE ELIMINAR -->
-        <div class="icono-aviso">
-          <ion-icon name="trash-outline"></ion-icon>
-        </div>
+        @case ('lista') {
 
-        <!-- TÍTULO -->
-        <h2>¿Eliminar receta?</h2>
+          <!-- 1. LISTA DE RECETAS -->
 
-        <!-- MENSAJE -->
-        <p>
-          ¿Seguro que quieres eliminar
-          <strong>{{ recetaSeleccionada?.nombre }}</strong>?
-        </p>
+          <div class="lista-recetas-chef">
 
-        <p>Esta acción no se puede deshacer.</p>
+            <h2>{{ accion === 'modificar' ? 'Modificar receta' : 'Eliminar receta' }}</h2>
 
-        <!-- BOTONES -->
-        <div class="acciones-eliminar">
+            <p>
+              {{ accion === 'modificar'
+              ? 'Selecciona la receta que quieres modificar.'
+              : 'Selecciona la receta que quieres eliminar.' }}
+            </p>
 
-          <!-- CANCELAR -->
-          <button
-            type="button"
-            class="boton-cancelar"
-            (click)="modalEliminarAbierto = false">
-            Cancelar
-          </button>
+            @for (receta of recetasChef; track receta.id) {
+              <app-tarjeta-receta
+                [receta]="receta"
+                [modo]="accion"
+                (click)="seleccionarReceta(receta)">
+              </app-tarjeta-receta>
+            } @empty {
+              <p>No hay recetas disponibles.</p>
+            }
 
-          <!-- CONFIRMAR -->
-          <button
-            type="button"
-            class="boton-confirmar-eliminar"
-            (click)="confirmarEliminar()">
-            Eliminar receta
-          </button>
+          </div>
 
-        </div>
+        }
 
-      </div>
+        @case ('formulario') {
+
+          <!-- 2A. FORMULARIO PARA MODIFICAR -->
+
+          <app-formulario-receta [receta]="recetaSeleccionada">
+            <ion-button class="boton-ventana" expand="block" (click)="pantalla = 'hecho'">Guardar cambios</ion-button>
+            <ion-button class="boton-ventana" expand="block" fill="clear" (click)="pantalla = 'lista'">Volver a la lista</ion-button>
+          </app-formulario-receta>
+
+        }
+
+        @case ('aviso') {
+
+          <!-- 2B. AVISO ANTES DE ELIMINAR -->
+
+          <div class="aviso-eliminar">
+
+            <div class="icono-aviso">
+              <ion-icon name="trash-outline"></ion-icon>
+            </div>
+
+            <h2>¿Eliminar receta?</h2>
+
+            <p>
+              ¿Seguro que quieres eliminar
+              <strong>{{ recetaSeleccionada?.nombre }}</strong>?
+            </p>
+
+            <p>Esta acción no se puede deshacer.</p>
+
+            <div class="acciones-eliminar">
+
+              <button
+                type="button"
+                class="boton-cancelar"
+                (click)="pantalla = 'lista'">
+                Cancelar
+              </button>
+
+              <button
+                type="button"
+                class="boton-confirmar-eliminar"
+                (click)="pantalla = 'hecho'">
+                Eliminar receta
+              </button>
+
+            </div>
+
+          </div>
+
+        }
+
+        @case ('hecho') {
+
+          <!-- 3. CONFIRMACIÓN (es una maqueta: la receta no cambia ni se borra) -->
+
+          <app-confirmacion-receta
+            [mensaje]="accion === 'modificar' ? 'Receta modificada correctamente.' : 'Receta eliminada correctamente.'">
+            <ion-button class="boton-ventana" expand="block" (click)="modalRecetasAbierto = false">
+              Aceptar
+            </ion-button>
+          </app-confirmacion-receta>
+
+        }
+
+      }
 
     </ion-content>
 

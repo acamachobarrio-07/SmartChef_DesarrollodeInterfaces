@@ -1,9 +1,5 @@
-<div class="cabecera-modal">
-  <h2>{{ titulo() }}</h2>
-  <ion-button fill="clear" (click)="cancelar.emit()">Cancelar</ion-button>
-</div>
+<h2 class="titulo-formulario">{{ titulo() }}</h2>
 
-<!-- FOTO Y NOMBRE DEL INGREDIENTE -->
 <div class="ingrediente">
 
   <div class="foto">
@@ -18,13 +14,11 @@
 
 </div>
 
-<!-- CANTIDAD Y COSTE -->
 <div class="dos-columnas">
   <ion-input mode="md" fill="outline" label="Cantidad" labelPlacement="floating" type="number"></ion-input>
   <ion-input mode="md" fill="outline" label="Coste (€)" labelPlacement="floating" type="number"></ion-input>
 </div>
 
-<!-- TIPO DE CANTIDAD Y CADUCIDAD -->
 <ion-list [inset]="true">
 
   <ion-item>
@@ -42,9 +36,11 @@
 
 </ion-list>
 
-<ion-button expand="block" (click)="guardar.emit()">{{ textoBoton() }}</ion-button>
+<div class="botones">
+  <ng-content />
+</div>
 
-<!-- El calendario vive dentro de una ventana que se abre al tocar la fecha -->
+<!-- abrimos el calendario al abrir la flecha-->
 <ion-modal [keepContentsMounted]="true">
   <ng-template>
     <ion-datetime

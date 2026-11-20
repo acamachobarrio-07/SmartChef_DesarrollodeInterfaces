@@ -1,7 +1,7 @@
-
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IonIcon } from '@ionic/angular';
+
 import { Receta } from '../../modelos/receta';
 
 @Component({
@@ -12,13 +12,10 @@ import { Receta } from '../../modelos/receta';
 })
 export class TarjetaRecetaComponent {
 
-  // Receta que se muestra en la tarjeta
+  // receta que mostramos en la página
   receta = input.required<Receta>();
 
-  // Modo de funcionamiento de la tarjeta
+  // ver abre el detalle
   modo = input<'ver' | 'modificar' | 'eliminar'>('ver');
-
-  // Avisar al componente padre de la receta seleccionada
-  seleccionar = output<Receta>();
 
 }

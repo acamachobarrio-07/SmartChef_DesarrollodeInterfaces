@@ -13,7 +13,7 @@
       <button
         type="button"
         class="boton-anadir"
-        (click)="abrirAnadir()">
+        routerLink="/app/anadir-ingredientes">
 
         Añadir
         <ion-icon name="add-circle"></ion-icon>
@@ -115,17 +115,18 @@
 
           <app-formulario-ingrediente
             [ingrediente]="p.ingrediente"
-            titulo="Modificar ingrediente"
-            textoBoton="Guardar cambios"
-            (guardar)="hecho = true"
-            (cancelar)="modalModificarAbierto = false">
+            titulo="Modificar ingrediente">
+            <ion-button class="boton-ventana" expand="block" (click)="hecho = true">Guardar cambios</ion-button>
+            <ion-button class="boton-ventana" expand="block" fill="clear" (click)="modalModificarAbierto = false">Cancelar</ion-button>
           </app-formulario-ingrediente>
 
         } @else {
 
           <app-confirmacion-receta
-            mensaje="Ingrediente modificado correctamente."
-            (aceptar)="modalModificarAbierto = false">
+            mensaje="Ingrediente modificado correctamente.">
+            <ion-button class="boton-ventana" expand="block" (click)="modalModificarAbierto = false">
+              Aceptar
+            </ion-button>
           </app-confirmacion-receta>
 
         }
@@ -162,7 +163,9 @@
 
           <p>
             ¿Seguro que quieres quitar
-            <strong>{{ productoSeleccionado?.ingrediente.nombre }}</strong>
+            @if (productoSeleccionado; as p) {
+              <strong>{{ p.ingrediente.nombre }}</strong>
+            }
             de tu despensa?
           </p>
 
@@ -193,8 +196,10 @@
       } @else {
 
         <app-confirmacion-receta
-          mensaje="Ingrediente eliminado de tu despensa."
-          (aceptar)="modalEliminarAbierto = false">
+          mensaje="Ingrediente eliminado de tu despensa.">
+          <ion-button class="boton-ventana" expand="block" (click)="modalEliminarAbierto = false">
+            Aceptar
+          </ion-button>
         </app-confirmacion-receta>
 
       }

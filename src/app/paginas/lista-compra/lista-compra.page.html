@@ -71,9 +71,10 @@
 
       <app-confirmacion-receta
         titulo="¡Lista enviada!"
-        [mensaje]="'Tu lista de la compra se ha enviado a ' + correo"
-        textoBoton="Volver a la página principal"
-        (aceptar)="volverAlInicio()">
+        [mensaje]="'Tu lista de la compra se ha enviado a ' + correo">
+        <ion-button class="boton-ventana" expand="block" (click)="volverAlInicio()">
+          Volver a la página principal
+        </ion-button>
       </app-confirmacion-receta>
 
     </ion-content>

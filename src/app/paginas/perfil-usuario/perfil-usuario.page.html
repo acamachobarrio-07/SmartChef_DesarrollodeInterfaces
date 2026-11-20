@@ -165,8 +165,10 @@
     <ion-content class="ion-padding">
 
       <app-confirmacion-receta
-        mensaje="Perfil actualizado correctamente."
-        (aceptar)="aceptarConfirmacion()">
+        mensaje="Perfil actualizado correctamente.">
+        <ion-button class="boton-ventana" expand="block" (click)="aceptarConfirmacion()">
+          Aceptar
+        </ion-button>
       </app-confirmacion-receta>
 
     </ion-content>

@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-tarjeta-categoria',
@@ -8,15 +8,7 @@ import { Component, input, output } from '@angular/core';
 export class TarjetaCategoriaComponent {
 
   nombre = input.required<string>();
-
   imagen = input<string>('');
-
   seleccionada = input<boolean>(false);
-
-  seleccionar = output<string>();
-
-  pulsarCategoria(): void {
-    this.seleccionar.emit(this.nombre());
-  }
 
 }

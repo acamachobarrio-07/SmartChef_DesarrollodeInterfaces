@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonContent, IonIcon, IonSearchbar, IonModal } from '@ionic/angular';
+import { IonContent, IonIcon, IonSearchbar, IonModal,IonButton } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
 import { clipboardOutline, nutritionOutline } from 'ionicons/icons';
@@ -17,6 +17,7 @@ import { LISTA_COMPRA } from '../../datos/lista-compra';
   imports: [
     IonContent,
     IonIcon,
+    IonButton,
     IonSearchbar,
     IonModal,
     CabeceraComponent,

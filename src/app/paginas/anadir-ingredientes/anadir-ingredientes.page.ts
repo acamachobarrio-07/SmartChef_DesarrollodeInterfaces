@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonContent, IonModal } from '@ionic/angular';
+import { IonContent, IonModal, IonButton } from '@ionic/angular';
 
 import { CabeceraComponent } from '../../componentes/cabecera/cabecera.component';
 import { TarjetaCategoriaComponent } from '../../componentes/tarjeta-categoria/tarjeta-categoria.component';
@@ -17,6 +17,7 @@ import { INGREDIENTES } from '../../datos/ingredientes';
   imports: [
     IonContent,
     IonModal,
+    IonButton,
     CabeceraComponent,
     TarjetaCategoriaComponent,
     TarjetaIngredienteComponent,
