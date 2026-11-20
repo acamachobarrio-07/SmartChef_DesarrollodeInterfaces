@@ -1,0 +1,31 @@
+.resumen-calorias {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 25px;
+  padding: 14px 16px;
+
+  background: var(--chef-verde-suave);
+  border-radius: 12px;
+
+  ion-icon {
+    color: var(--ion-color-primary);
+    font-size: 30px;
+  }
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    color: var(--app-texto-secundario);
+    font-size: 12px;
+  }
+
+  strong {
+    color: var(--chef-verde-texto);
+    font-size: 22px;
+  }
+}

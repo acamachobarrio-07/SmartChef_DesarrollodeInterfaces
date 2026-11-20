@@ -1,0 +1,25 @@
+<ion-list [inset]="true">
+
+  @for (fila of recetas(); track fila.receta.id) {
+
+    <ion-item>
+
+      <ion-avatar slot="start">
+        <img [src]="fila.receta.imagen" [alt]="fila.receta.nombre">
+      </ion-avatar>
+
+      <ion-label>
+        <h3>{{ fila.receta.nombre }}</h3>
+        <p>{{ fila.receta.tiempo }} min · {{ fila.receta.dificultad }}</p>
+      </ion-label>
+
+      <ion-note slot="end">
+        <strong>{{ fila.total }}</strong>
+        <span>{{ texto() }}</span>
+      </ion-note>
+
+    </ion-item>
+
+  }
+
+</ion-list>

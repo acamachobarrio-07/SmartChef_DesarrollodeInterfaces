@@ -1,24 +1,36 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonContent, IonIcon, IonModal, IonPopover } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+import {
+  IonContent,
+  IonIcon,
+  IonLabel,
+  IonModal,
+  IonPopover,
+  IonSegment,
+  IonSegmentButton
+} from '@ionic/angular';
 
 import { FormularioRecetaComponent, DatosFormularioReceta } from '../../componentes/formulario-receta/formulario-receta.component';
 import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-receta/confirmacion-receta.component';
 import { TarjetaRecetaComponent } from '../../componentes/tarjeta-receta/tarjeta-receta.component';
 import { MenuPerfilComponent } from '../../componentes/menu-perfil/menu-perfil.component';
+import { RankingRecetasComponent } from '../../componentes/ranking-recetas/ranking-recetas.component';
 
 import { Receta } from '../../modelos/receta';
 import { DatosPerfil } from '../../modelos/perfil';
 
 import { RECETAS_EJEMPLO } from '../../datos/recetas-ejemplo';
 import { PERFIL_CHEF } from '../../datos/perfiles';
+import { PERIODO_INFORME, RECETAS_MAS_COCINADAS, RECETAS_MAS_GUARDADAS } from '../../datos/informes';
 
 import { addIcons } from 'ionicons';
 import {
   addOutline,
   createOutline,
   trashOutline,
-  chevronForwardOutline
+  chevronForwardOutline,
+  barChartOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -28,12 +40,17 @@ import {
   imports: [
     IonContent,
     IonIcon,
+    IonLabel,
     IonModal,
     IonPopover,
+    IonSegment,
+    IonSegmentButton,
+    FormsModule,
     ConfirmacionRecetaComponent,
     FormularioRecetaComponent,
     TarjetaRecetaComponent,
-    MenuPerfilComponent
+    MenuPerfilComponent,
+    RankingRecetasComponent
   ]
 })
 export class InicioChefPage {
@@ -84,13 +101,21 @@ export class InicioChefPage {
   // ESPERAR PARA MOSTRAR EL MENSAJE DE ÉXITO
   confirmacionEliminacionPendiente = false;
 
+  // INFORMES
+  modalInformesAbierto = false;
+  vistaInforme = 'cocinadas';
+  periodoInforme = PERIODO_INFORME;
+  recetasMasCocinadas = RECETAS_MAS_COCINADAS;
+  recetasMasGuardadas = RECETAS_MAS_GUARDADAS;
+
 
   constructor() {
     addIcons({
       addOutline,
       createOutline,
       trashOutline,
-      chevronForwardOutline
+      chevronForwardOutline,
+      barChartOutline
     });
   }
 
@@ -178,7 +203,7 @@ export class InicioChefPage {
   }
 
 
-  // SIMULAR LA MODIFICACIÓN DE UNA RECETA (maqueta: no cambia los datos)
+  // SIMULAR LA MODIFICACIÓN DE UNA RECETA
 
   guardarModificacion(): void {
     this.mensajeConfirmacion = 'Receta modificada correctamente.';
@@ -208,15 +233,11 @@ export class InicioChefPage {
   }
 
 
-  // CONFIRMAR LA ELIMINACIÓN (maqueta: la receta no se borra)
+  // CONFIRMAR LA ELIMINACIÓN (la receta no se borra)
 
   confirmarEliminar(): void {
-
-    // PREPARAR EL MENSAJE DE ÉXITO
     this.mensajeConfirmacion = 'Receta eliminada correctamente.';
     this.confirmacionEliminacionPendiente = true;
-
-    // CERRAR EL AVISO
     this.modalEliminarAbierto = false;
   }
 
@@ -235,17 +256,14 @@ export class InicioChefPage {
 
   // MENÚ DEL PERFIL DEL CHEF
 
-  // PREPARAR LA APERTURA DEL PERFIL
   abrirEdicionPerfil(): void {
     this.abrirPerfilPendiente = true;
   }
 
-  // PREPARAR EL CIERRE DE SESIÓN
   cerrarSesion(): void {
     this.cerrarSesionPendiente = true;
   }
 
-  // NAVEGAR CUANDO SE CIERRE EL MENÚ
   alCerrarMenuPerfil(): void {
 
     if (this.abrirPerfilPendiente) {

@@ -105,6 +105,25 @@
 
       </button>
 
+      <!-- INFORMES -->
+      <button
+        type="button"
+        class="opcion opcion-informes"
+        (click)="modalInformesAbierto = true">
+
+        <div class="icono-opcion">
+          <ion-icon name="bar-chart-outline"></ion-icon>
+        </div>
+
+        <div class="texto-opcion">
+          <h3>Informes</h3>
+          <p>Recetas más cocinadas y más guardadas</p>
+        </div>
+
+        <ion-icon name="chevron-forward-outline" class="flecha"></ion-icon>
+
+      </button>
+
     </section>
 
   </div>
@@ -310,6 +329,55 @@
           </button>
 
         </div>
+
+      </div>
+
+    </ion-content>
+
+  </ng-template>
+
+</ion-modal>
+
+
+<!-- MODAL DE INFORMES -->
+<ion-modal
+  [isOpen]="modalInformesAbierto"
+  [initialBreakpoint]="0.85"
+  [breakpoints]="[0, 0.85, 1]"
+  (didDismiss)="modalInformesAbierto = false">
+
+  <ng-template>
+
+    <ion-content class="ion-padding">
+
+      <div class="informes">
+
+        <div class="cabecera-informes">
+          <h2>Informes</h2>
+          <button type="button" class="cerrar-informes" (click)="modalInformesAbierto = false">
+            Cerrar
+          </button>
+        </div>
+
+        <p class="periodo">Periodo: {{ periodoInforme }}</p>
+
+        <ion-segment [(ngModel)]="vistaInforme">
+          <ion-segment-button value="cocinadas">
+            <ion-label>Más cocinadas</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="guardadas">
+            <ion-label>Más guardadas</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+
+        @switch (vistaInforme) {
+          @case ('cocinadas') {
+            <app-ranking-recetas [recetas]="recetasMasCocinadas" texto="veces cocinada"></app-ranking-recetas>
+          }
+          @case ('guardadas') {
+            <app-ranking-recetas [recetas]="recetasMasGuardadas" texto="veces guardada"></app-ranking-recetas>
+          }
+        }
 
       </div>
 

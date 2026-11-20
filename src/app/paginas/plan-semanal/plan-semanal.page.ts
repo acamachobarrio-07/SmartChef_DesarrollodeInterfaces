@@ -11,6 +11,7 @@ import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-rece
 import { Receta } from '../../modelos/receta';
 import { RECETAS_EJEMPLO } from '../../datos/recetas-ejemplo';
 import { PLAN_SEMANAL } from '../../datos/plan-semanal';
+import { ResumenCaloriasComponent } from '../../componentes/resumen-calorias/resumen-calorias.component';
 
 @Component({
   selector: 'app-plan-semanal',
@@ -24,7 +25,8 @@ import { PLAN_SEMANAL } from '../../datos/plan-semanal';
     IonModal,
     CabeceraComponent,
     TarjetaComidaComponent,
-    ConfirmacionRecetaComponent
+    ConfirmacionRecetaComponent,
+    ResumenCaloriasComponent
   ]
 })
 export class PlanSemanalPage {
