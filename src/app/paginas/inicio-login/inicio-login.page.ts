@@ -1,11 +1,12 @@
-import { Component, ViewChild, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import {
   IonContent,
   IonIcon,
   IonSearchbar,
-  IonPopover
+  IonPopover,
+  IonRouterLink
 } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
@@ -31,15 +32,13 @@ import { SesionService } from '../../servicios/sesion.service';
     IonSearchbar,
     IonPopover,
     RouterLink,
+    IonRouterLink,
     TarjetaRecetaComponent
   ]
 })
 export class InicioLoginPage {
 
-  @ViewChild('popoverPerfil') popoverPerfil!: IonPopover;
-
   sesion = inject(SesionService);
-  router = inject(Router);
 
   recetas = RECETAS_RECOMENDADAS;
 
@@ -52,23 +51,4 @@ export class InicioLoginPage {
     });
   }
 
-  async abrirEdicionPerfil(): Promise<void> {
-
-    await this.popoverPerfil.dismiss();
-
-    await this.router.navigate(['/perfil-usuario']);
-
-  }
-
-  async cerrarSesion(): Promise<void> {
-
-    await this.popoverPerfil.dismiss();
-
-    this.sesion.cerrarSesion();
-
-    await this.router.navigate(['/app/inicio']);
-
-  }
-
 }
-

@@ -52,11 +52,11 @@
 </ion-content>
 
 <ion-popover
-  #popoverPerfil
   trigger="boton-perfil-usuario"
   triggerAction="click"
   side="bottom"
   alignment="end"
+  [dismissOnSelect]="true"
   cssClass="popover-perfil-usuario"
   style="--width: 235px; --background: var(--app-superficie); --color: var(--app-texto);">
 
@@ -80,7 +80,7 @@
       <button
         type="button"
         class="opcion-menu"
-        (click)="abrirEdicionPerfil()">
+        routerLink="/perfil-usuario">
 
         <ion-icon name="create-outline"></ion-icon>
         <span>Editar perfil</span>
@@ -90,7 +90,9 @@
       <button
         type="button"
         class="opcion-menu cerrar-sesion"
-        (click)="cerrarSesion()">
+        routerLink="/app/inicio"
+        routerDirection="root"
+        (click)="sesion.cerrarSesion()">
 
         <ion-icon name="log-out-outline"></ion-icon>
         <span>Cerrar sesión</span>
