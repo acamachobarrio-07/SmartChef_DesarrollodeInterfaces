@@ -1,26 +1,26 @@
-
 <!-- PÁGINA DEL PERFIL DEL CHEF -->
-
 <ion-content>
 
   <!-- FORMULARIO REUTILIZABLE -->
   <app-formulario-perfil
     [datos]="datosPerfil"
-    (guardar)="guardarPerfil($event)"
-    (cerrar)="cerrarPerfil()"
-    (cambiarTema)="cambiarTema($event)">
+    volver="/inicio-chef">
+
+    <ion-button class="boton-ventana" expand="block" (click)="modalConfirmacionAbierto = true">
+      Guardar cambios
+    </ion-button>
+
   </app-formulario-perfil>
 
 </ion-content>
 
 
 <!-- MODAL DE CONFIRMACIÓN -->
-
 <ion-modal
   [isOpen]="modalConfirmacionAbierto"
   [initialBreakpoint]="0.55"
   [breakpoints]="[0, 0.55, 1]"
-  (didDismiss)="alCerrarConfirmacion()">
+  (didDismiss)="modalConfirmacionAbierto = false">
 
   <ng-template>
 
@@ -28,7 +28,12 @@
 
       <app-confirmacion-receta
         mensaje="Perfil actualizado correctamente.">
-        <ion-button class="boton-ventana" expand="block" (click)="aceptarConfirmacion()">
+        <ion-button
+          class="boton-ventana"
+          expand="block"
+          routerLink="/inicio-chef"
+          routerDirection="back"
+          (click)="modalConfirmacionAbierto = false">
           Aceptar
         </ion-button>
       </app-confirmacion-receta>

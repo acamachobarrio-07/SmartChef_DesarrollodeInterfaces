@@ -19,31 +19,25 @@ export class RecetasPage {
 
   recetas = RECETAS_EJEMPLO;
 
-  // Es una maqueta: el panel de filtros se abre y se marca, pero no filtra
   panelFiltrosAbierto = false;
   mostrarDificultad = false;
   mostrarTiempo = false;
 
-  filtros = {
-    vegetariano: false,
-    sinGluten: false,
-    rapido: false,
-    economico: false
-  };
+  filtros = [
+    { nombre: 'vegetariano', marcado: false },
+    { nombre: 'sin gluten', marcado: false },
+    { nombre: 'rápido', marcado: false },
+    { nombre: 'económico', marcado: false }
+  ];
 
-  alternarFiltro(
-    filtro: 'vegetariano' | 'sinGluten' | 'rapido' | 'economico'
-  ): void {
-    this.filtros[filtro] = !this.filtros[filtro];
+  alternar(filtro: { nombre: string; marcado: boolean }): void {
+    filtro.marcado = !filtro.marcado;
   }
 
   limpiarFiltros(): void {
-    this.filtros = {
-      vegetariano: false,
-      sinGluten: false,
-      rapido: false,
-      economico: false
-    };
+    for (const filtro of this.filtros) {
+      filtro.marcado = false;
+    }
   }
 
 }

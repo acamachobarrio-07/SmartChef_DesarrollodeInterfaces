@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { IonContent, IonIcon, IonSearchbar, IonModal,IonButton } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { IonContent, IonIcon, IonSearchbar, IonModal, IonButton, IonRouterLink } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
 import { clipboardOutline, nutritionOutline } from 'ionicons/icons';
@@ -15,9 +15,11 @@ import { LISTA_COMPRA } from '../../datos/lista-compra';
   templateUrl: './lista-compra.page.html',
   styleUrls: ['./lista-compra.page.scss'],
   imports: [
+    IonRouterLink,
+    RouterLink,
+    IonButton,
     IonContent,
     IonIcon,
-    IonButton,
     IonSearchbar,
     IonModal,
     CabeceraComponent,
@@ -26,8 +28,6 @@ import { LISTA_COMPRA } from '../../datos/lista-compra';
   ]
 })
 export class ListaCompraPage {
-
-  router = inject(Router);
 
   lista = LISTA_COMPRA;
 
@@ -44,11 +44,6 @@ export class ListaCompraPage {
 
   constructor() {
     addIcons({ clipboardOutline, nutritionOutline });
-  }
-
-  volverAlInicio(): void {
-    this.modalEnviadaAbierto = false;
-    this.router.navigate(['/app/inicio-login']);
   }
 
 }

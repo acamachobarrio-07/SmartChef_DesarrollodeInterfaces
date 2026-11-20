@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 import {
+  IonButton,
   IonContent,
   IonIcon,
-  IonToggle,
   IonModal,
-  IonButton
+  IonRouterLink,
+  IonToggle,
+  ToggleCustomEvent
 } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
@@ -24,104 +25,38 @@ import { ConfirmacionRecetaComponent } from '../../componentes/confirmacion-rece
   templateUrl: './perfil-usuario.page.html',
   styleUrls: ['./perfil-usuario.page.scss'],
   imports: [
+    IonButton,
     IonContent,
     IonIcon,
-    IonToggle,
     IonModal,
-    IonButton,
-    FormsModule,
+    IonRouterLink,
+    IonToggle,
+    RouterLink,
     ConfirmacionRecetaComponent
   ]
 })
 export class PerfilUsuarioPage {
 
+  // Datos ficticios del usuario (es una maqueta: no se guardan)
   nombre = 'Ana';
-  correo = '';
-  fotoPerfil = '';
+  correo = 'ana@smartchef.es';
 
-  modoOscuro = false;
+  // El interruptor sale encendido si el modo oscuro ya está activo
+  modoOscuro = document.documentElement.classList.contains('ion-palette-dark');
 
   modalConfirmacionAbierto = false;
 
-  preferencias = {
-    sinGluten: false,
-    vegetariano: false,
-    economico: false,
-    rapidas: false
-  };
-
-  constructor(private router: Router) {
-
+  constructor() {
     addIcons({
       arrowBackOutline,
       cameraOutline
     });
-
-    this.modoOscuro =
-      document.documentElement.classList.contains('ion-palette-dark');
-
   }
 
-  cambiarFoto(event: Event): void {
-
-    const archivo = (event.target as HTMLInputElement).files?.[0];
-
-    if (!archivo || !archivo.type.startsWith('image/')) {
-      return;
-    }
-
-    const lector = new FileReader();
-
-    lector.onload = () => {
-      this.fotoPerfil = lector.result as string;
-    };
-
-    lector.readAsDataURL(archivo);
-
-  }
-
-  cambiarModoOscuro(event: any): void {
-
-    this.modoOscuro = event.detail.checked;
-
-    this.aplicarModoOscuro();
-
-  }
-
-  aplicarModoOscuro(): void {
-
-    document.documentElement.classList.toggle(
-      'ion-palette-dark',
-      this.modoOscuro
-    );
-
-  }
-
-  guardarCambios(): void {
-
-    this.modalConfirmacionAbierto = true;
-
-  }
-
-  aceptarConfirmacion(): void {
-
-    this.modalConfirmacionAbierto = false;
-
-    this.router.navigate(['/app/inicio-login']);
-
-  }
-
-  alCerrarConfirmacion(): void {
-
-    this.modalConfirmacionAbierto = false;
-
-  }
-
-  volver(): void {
-
-    this.router.navigate(['/app/inicio-login']);
-
+  // Activar o desactivar el modo oscuro (igual que en el paso 11 del manual)
+  cambiarModoOscuro(evento: ToggleCustomEvent): void {
+    const activado = evento.detail.checked;
+    document.documentElement.classList.toggle('ion-palette-dark', activado);
   }
 
 }
-

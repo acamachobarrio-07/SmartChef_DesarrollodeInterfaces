@@ -1,4 +1,4 @@
-<!-- FORMULARIO REUTILIZABLE DEL PERFIL -->
+<!-- FORMULARIO REUTILIZABLE DEL PERFIL (de escaparate: muestra los datos, no los guarda) -->
 <div class="formulario-perfil">
 
   <!-- CABECERA -->
@@ -10,88 +10,56 @@
       type="button"
       class="cerrar-perfil"
       aria-label="Cerrar formulario"
-      (click)="cerrar.emit()">
+      [routerLink]="volver()"
+      routerDirection="back">
       ✕
     </button>
 
   </div>
 
   <!-- AVATAR DEL USUARIO -->
-
-  <!-- AVATAR DEL USUARIO -->
   <div class="informacion-perfil">
 
     <div class="avatar-perfil">
-
-      @if (imagenPerfil) {
-
-        <img
-          [src]="imagenPerfil"
-          alt="Imagen de perfil"
-          class="imagen-perfil">
-
+      @if (datos().imagenPerfil; as imagen) {
+        <img [src]="imagen" alt="Imagen de perfil" class="imagen-perfil">
       } @else {
-
-        {{ nombre.charAt(0).toUpperCase() || 'U' }}
-
+        {{ datos().nombre.charAt(0).toUpperCase() }}
       }
-
     </div>
 
-    <h3>{{ nombre || 'Usuario' }}</h3>
-
+    <h3>{{ datos().nombre }}</h3>
     <p>Personaliza tu cuenta de SmartChef</p>
 
-    <!-- CAMBIAR IMAGEN DE PERFIL -->
-    <input
-      type="file"
-      id="imagen-perfil"
-      accept="image/*"
-      (change)="seleccionarImagen($event)"
-      hidden>
-
+    <!-- CAMBIAR IMAGEN (en la maqueta abre el selector, pero no cambia la foto) -->
+    <input type="file" id="imagen-perfil" accept="image/*" hidden>
     <label for="imagen-perfil" class="cambiar-imagen">
       Cambiar foto de perfil
     </label>
 
   </div>
 
-
   <!-- DATOS PERSONALES -->
   <section class="seccion-perfil">
 
     <h3>Datos personales</h3>
 
-    <!-- NOMBRE -->
     <div class="campo-perfil">
-
-      <label for="nombre-perfil">
-        Nombre
-      </label>
-
+      <label for="nombre-perfil">Nombre</label>
       <input
         id="nombre-perfil"
         type="text"
-        name="nombre"
-        [(ngModel)]="nombre"
+        [value]="datos().nombre"
         placeholder="Introduce tu nombre">
-
     </div>
 
-    <!-- CORREO ELECTRÓNICO -->
     <div class="campo-perfil">
-
-      <label for="correo-perfil">
-        Correo electrónico
-      </label>
-
+      <label for="correo-perfil">Correo electrónico</label>
       <input
         id="correo-perfil"
         type="email"
-        name="correo"
-        [(ngModel)]="correo"
+        [value]="datos().correo"
         placeholder="Introduce tu correo">
-
     </div>
 
   </section>
@@ -101,23 +69,16 @@
 
     <h3>Preferencias</h3>
 
-    <!-- MODO OSCURO -->
     <div class="preferencia">
 
       <div class="texto-preferencia">
-
         <strong>Modo oscuro</strong>
-
-        <p>
-          Cambia la apariencia de SmartChef
-          a un tema oscuro.
-        </p>
-
+        <p>Cambia la apariencia de SmartChef a un tema oscuro.</p>
       </div>
 
       <ion-toggle
         [checked]="modoOscuro"
-        (ionChange)="alCambiarTema($event)"
+        (ionChange)="cambiarTema($event)"
         aria-label="Activar modo oscuro">
       </ion-toggle>
 
@@ -125,12 +86,7 @@
 
   </section>
 
-  <!-- GUARDAR CAMBIOS -->
-  <button
-    type="button"
-    class="guardar-perfil"
-    (click)="guardarPerfil()">
-    Guardar cambios
-  </button>
+  <!-- HUECO: el botón de guardar lo pone la página -->
+  <ng-content />
 
 </div>

@@ -226,7 +226,6 @@
               <button
                 type="button"
                 class="accion"
-                [attr.aria-pressed]="meGusta"
                 (click)="alternarMeGusta()">
 
                 <span>Me gusta</span>
@@ -238,7 +237,6 @@
               <button
                 type="button"
                 class="accion"
-                [attr.aria-pressed]="guardada"
                 (click)="abrirGuardar()">
 
                 <span>{{ guardada ? 'Guardada' : 'Guardar' }}</span>

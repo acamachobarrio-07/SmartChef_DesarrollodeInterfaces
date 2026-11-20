@@ -21,7 +21,6 @@
           type="button"
           class="boton-filtros"
           aria-label="Abrir filtros"
-          [attr.aria-expanded]="panelFiltrosAbierto"
           (click)="panelFiltrosAbierto = !panelFiltrosAbierto">
 
           <ion-icon name="menu-outline"></ion-icon>
@@ -35,95 +34,22 @@
 
         <div class="panel-filtros">
 
-          <!-- VEGETARIANO -->
-          <button
-            type="button"
-            class="opcion-filtro"
-            (click)="alternarFiltro('vegetariano')">
+          @for (filtro of filtros; track filtro.nombre) {
 
-            vegetariano
+            <button
+              type="button"
+              class="opcion-filtro"
+              (click)="alternar(filtro)">
 
-            @if (filtros.vegetariano) {
-              <span>✓</span>
-            }
+              {{ filtro.nombre }}
 
-          </button>
+              @if (filtro.marcado) {
+                <span>✓</span>
+              }
 
-          <!-- SIN GLUTEN -->
-          <button
-            type="button"
-            class="opcion-filtro"
-            (click)="alternarFiltro('sinGluten')">
-
-            sin gluten
-
-            @if (filtros.sinGluten) {
-              <span>✓</span>
-            }
-
-          </button>
-
-          <!-- RÁPIDO -->
-          <button
-            type="button"
-            class="opcion-filtro"
-            (click)="alternarFiltro('rapido')">
-
-            rápido
-
-            @if (filtros.rapido) {
-              <span>✓</span>
-            }
-
-          </button>
-
-          <!-- ECONÓMICO -->
-          <button
-            type="button"
-            class="opcion-filtro"
-            (click)="alternarFiltro('economico')">
-
-            económico
-
-            @if (filtros.economico) {
-              <span>✓</span>
-            }
-
-          </button>
-
-          <!-- DIFICULTAD -->
-          <button
-            type="button"
-            class="opcion-filtro"
-            (click)="mostrarDificultad = !mostrarDificultad">
-
-            dificultad
-
-          </button>
-
-          @if (mostrarDificultad) {
-
-            <select aria-label="Dificultad">
-
-              <option value="Todas">Todas</option>
-              <option value="Fácil">Fácil</option>
-              <option value="Media">Media</option>
-              <option value="Difícil">Difícil</option>
-
-            </select>
+            </button>
 
           }
-
-          <!-- TIEMPO MÁXIMO -->
-          <button
-            type="button"
-            class="opcion-filtro"
-            (click)="mostrarTiempo = !mostrarTiempo">
-
-            tiempo máximo
-
-          </button>
-
           @if (mostrarTiempo) {
 
             <select aria-label="Tiempo máximo">
