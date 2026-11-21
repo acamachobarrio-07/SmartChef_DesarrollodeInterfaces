@@ -2,15 +2,13 @@
 
   <div class="principal">
 
-    <!-- CABECERA REUTILIZABLE -->
     <app-cabecera></app-cabecera>
 
-    <!-- Buscador -->
     <ion-searchbar
       placeholder="Buscar ingrediente o receta...">
     </ion-searchbar>
 
-    <!-- Recomendaciones -->
+    <!-- recomendaciones de recetas -->
     <section class="recomendaciones">
 
       <h1>Recomendaciones de recetas</h1>
@@ -20,7 +18,7 @@
         <ion-icon name="chevron-forward-circle"></ion-icon>
       </a>
 
-      <!-- Tarjetas reutilizables -->
+      <!-- tarjeta-receta componente reutilizable -->
       @for (receta of recetas; track receta.id) {
 
         <app-tarjeta-receta

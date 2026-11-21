@@ -31,14 +31,14 @@ export class ListaCompraPage {
 
   lista = LISTA_COMPRA;
 
-  // Textos de cada unidad
+  // unidades
   unidades = {
     GRAMOS: 'gramos',
     MILILITROS: 'mililitros',
     UNIDADES: 'unidades'
   };
 
-  // Es una maqueta: no se envía ningún correo, solo se muestra la confirmación
+  // modal mostrando la confirmación
   modalEnviadaAbierto = false;
   correo = 'correoprueba@smartchef.es';
 

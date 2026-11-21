@@ -2,10 +2,8 @@
 
   <div class="pantalla-lista">
 
-    <!-- CABECERA REUTILIZABLE -->
     <app-cabecera></app-cabecera>
 
-    <!-- BUSCADOR (visual, como en el inicio) -->
     <ion-searchbar
       placeholder="Buscar ingrediente o receta..."
       class="buscador">
@@ -13,7 +11,7 @@
 
     <h1>Mi lista de la compra</h1>
 
-    <!-- INGREDIENTES DE LA LISTA -->
+    <!-- ingredientes de la lista -->
     @for (linea of lista; track linea.ingrediente.id) {
 
       <div class="linea">
@@ -46,7 +44,7 @@
 
     }
 
-    <!-- ENVIAR (solo si hay algo en la lista) -->
+    <!-- enviar cuando hay algo en la lista -->
     @if (lista.length > 0) {
       <button type="button" class="boton-verde" (click)="modalEnviadaAbierto = true">
         Enviar por email
@@ -58,7 +56,7 @@
 </ion-content>
 
 
-<!-- MODAL CONFIRMACIÓN DEL ENVÍO -->
+<!-- modal confirmación envio -->
 <ion-modal
   [isOpen]="modalEnviadaAbierto"
   (didDismiss)="modalEnviadaAbierto = false"

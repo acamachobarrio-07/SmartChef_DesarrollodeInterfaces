@@ -44,7 +44,7 @@ import { EstadoVacioComponent } from '../../componentes/estado-vacio/estado-vaci
 })
 export class DetalleRecetaPage {
 
-  // Recibe el ":id" de la dirección (/app/recetas/1)
+  // recibimos el id de la dirección
   id = input<string>();
 
   sesion = inject(SesionService);
@@ -55,12 +55,12 @@ export class DetalleRecetaPage {
   guardada = false;
   listaGuardada = false;
 
-  // Ventana para guardar en una colección
+  // modal para guardar en una colección
   colecciones = COLECCIONES;
   modalColeccionesAbierto = false;
   coleccionElegida: Coleccion | null = null;
 
-  // Textos cortos para cada unidad
+  // unidades
   unidades = {
     GRAMOS: 'g',
     MILILITROS: 'ml',
@@ -82,12 +82,12 @@ export class DetalleRecetaPage {
     });
   }
 
-  // Busca la receta que corresponde al id de la dirección
+  // busca la receta que le corresponde al id de la dirección
   get receta(): Receta | undefined {
     return RECETAS_EJEMPLO.find(r => r.id === Number(this.id()));
   }
 
-  // Pasa al siguiente paso; al llegar al último vuelve al primero
+  // pasamos al siguiente paso, al llegar al último volvemos al inicio
   avanzarPaso(totalPasos: number): void {
     if (this.pasoActual < totalPasos - 1) {
       this.pasoActual++;
@@ -105,7 +105,7 @@ export class DetalleRecetaPage {
     this.modalColeccionesAbierto = true;
   }
 
-  // Es una maqueta: mostramos la confirmación, pero no se añade de verdad
+  // mostramos la confirmación
   elegirColeccion(coleccion: Coleccion): void {
     this.coleccionElegida = coleccion;
     this.guardada = true;

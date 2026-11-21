@@ -58,7 +58,6 @@ export class AnadirIngredientesPage {
     }
   ];
 
-  // Ventana para añadir (maqueta: no se guarda nada)
   modalAbierto = false;
   ingredienteSeleccionado: Ingrediente | null = null;
   anadido = false;

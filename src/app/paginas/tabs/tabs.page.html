@@ -2,7 +2,6 @@
 
   <ion-tab-bar slot="bottom">
 
-    <!-- INICIO -->
     <ion-tab-button
       [tab]="sesion.comprobarSesion() ? 'inicio-login' : 'inicio'">
 
@@ -11,7 +10,6 @@
 
     </ion-tab-button>
 
-    <!-- INGREDIENTES -->
     <ion-tab-button
       [tab]="sesion.comprobarSesion() ? 'ingredientes' : undefined"
       (click)="comprobarAcceso('Ingredientes')">
@@ -21,7 +19,6 @@
 
     </ion-tab-button>
 
-    <!-- LISTA DE COMPRA -->
     <ion-tab-button
       [tab]="sesion.comprobarSesion() ? 'lista-compra' : undefined"
       (click)="comprobarAcceso('Lista de compra')">
@@ -31,7 +28,6 @@
 
     </ion-tab-button>
 
-    <!-- PLAN SEMANAL -->
     <ion-tab-button
       [tab]="sesion.comprobarSesion() ? 'plan-semanal' : undefined"
       (click)="comprobarAcceso('Plan semanal')">
@@ -41,7 +37,6 @@
 
     </ion-tab-button>
 
-    <!-- COLECCIONES -->
     <ion-tab-button
       [tab]="sesion.comprobarSesion() ? 'colecciones' : undefined"
       (click)="comprobarAcceso('Colecciones')">
@@ -55,7 +50,7 @@
 
 </ion-tabs>
 
-<!-- MODAL DE ACCESO RESTRINGIDO -->
+<!-- modal para acceso restringido  -->
 <ion-modal
   [isOpen]="modalAbierto"
   [initialBreakpoint]="0.5"

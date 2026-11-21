@@ -1,7 +1,5 @@
-<!-- FORMULARIO REUTILIZABLE DEL PERFIL (de escaparate: muestra los datos, no los guarda) -->
 <div class="formulario-perfil">
 
-  <!-- CABECERA -->
   <div class="cabecera-perfil">
 
     <h2>Editar perfil</h2>
@@ -17,7 +15,7 @@
 
   </div>
 
-  <!-- AVATAR DEL USUARIO -->
+  <!-- avatar de usuario -->
   <div class="informacion-perfil">
 
     <div class="avatar-perfil">
@@ -31,7 +29,7 @@
     <h3>{{ datos().nombre }}</h3>
     <p>Personaliza tu cuenta de SmartChef</p>
 
-    <!-- CAMBIAR IMAGEN (en la maqueta abre el selector, pero no cambia la foto) -->
+    <!-- cambiar la imagen -->
     <input type="file" id="imagen-perfil" accept="image/*" hidden>
     <label for="imagen-perfil" class="cambiar-imagen">
       Cambiar foto de perfil
@@ -39,7 +37,7 @@
 
   </div>
 
-  <!-- DATOS PERSONALES -->
+  <!-- datos personales del perfil -->
   <section class="seccion-perfil">
 
     <h3>Datos personales</h3>
@@ -64,7 +62,7 @@
 
   </section>
 
-  <!-- PREFERENCIAS -->
+  <!-- preferencias formulario -->
   <section class="seccion-perfil">
 
     <h3>Preferencias</h3>
@@ -86,7 +84,6 @@
 
   </section>
 
-  <!-- HUECO: el botón de guardar lo pone la página -->
   <ng-content />
 
 </div>

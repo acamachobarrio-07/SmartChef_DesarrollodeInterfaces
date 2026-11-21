@@ -63,7 +63,7 @@ export class InicioChefPage {
 
   modalRecetasAbierto = false;
   accion: 'modificar' | 'eliminar' = 'modificar';
-  pantalla = 'lista';                    // 'lista', 'formulario', 'aviso' o 'hecho'
+  pantalla = 'lista';
   recetaSeleccionada: Receta | null = null;
 
   modalInformesAbierto = false;
@@ -82,7 +82,7 @@ export class InicioChefPage {
     });
   }
 
-  // ventana de añadir recetas
+  // modal de añadir recetas
   abrirAnadir(): void {
     this.anadida = false;
     this.modalAnadirAbierto = true;
@@ -106,5 +106,4 @@ export class InicioChefPage {
       this.pantalla = 'aviso';
     }
   }
-
 }

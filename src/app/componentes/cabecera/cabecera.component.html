@@ -1,7 +1,7 @@
-<!-- CABECERA REUTILIZABLE -->
+<!-- componente cabecera reutilizable -->
 <div class="cabecera">
 
-  <!-- VOLVER (solo si la página lo pide) -->
+  <!-- volvemos si la página nos lo pide -->
   @if (volver()) {
 
     <ion-back-button
@@ -13,13 +13,13 @@
 
   }
 
-  <!-- LOGO SMARTCHEF -->
+
   <img
     src="assets/fotos/logo-smartchef.png"
     alt="SmartChef"
     class="logo">
 
-  <!-- USUARIO: AVATAR CON SESIÓN, ICONO SIN SESIÓN -->
+  <!-- usuario: icono sin login, avatar con login -->
   @if (sesion.comprobarSesion()) {
 
     <a

@@ -2,10 +2,8 @@
 
   <div class="pantalla-despensa">
 
-    <!-- CABECERA -->
     <app-cabecera></app-cabecera>
 
-    <!-- TÍTULO Y AÑADIR -->
     <section class="mis-ingredientes">
 
       <h1>Mi despensa</h1>
@@ -20,12 +18,10 @@
 
       </button>
 
-      <!-- LISTA DE LA DESPENSA -->
       @for (producto of despensa; track producto.ingrediente.id) {
 
         <article class="producto">
 
-          <!-- FOTO O ICONO -->
           <div class="foto-producto">
 
             @if (producto.ingrediente.imagen) {
@@ -40,7 +36,6 @@
 
           <div class="datos-producto">
 
-            <!-- NOMBRE, FECHA Y CANTIDAD -->
             <div class="fila-datos">
 
               <div class="nombre">
@@ -56,7 +51,6 @@
 
             </div>
 
-            <!-- BOTONES -->
             <div class="botones-producto">
 
               <button
@@ -98,7 +92,7 @@
 </ion-content>
 
 
-<!-- VENTANA PARA MODIFICAR (mismo formulario que al añadir) -->
+<!-- modal confirmación, mismo que añadir -->
 <ion-modal
   [isOpen]="modalModificarAbierto"
   (didDismiss)="modalModificarAbierto = false"
@@ -140,7 +134,7 @@
 </ion-modal>
 
 
-<!-- VENTANA PARA ELIMINAR -->
+<!-- modal para eliminar-->
 <ion-modal
   [isOpen]="modalEliminarAbierto"
   (didDismiss)="modalEliminarAbierto = false"

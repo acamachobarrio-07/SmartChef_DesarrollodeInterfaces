@@ -10,12 +10,12 @@ import { IonIcon } from '@ionic/angular';
 })
 export class EstadoVacioComponent {
 
-  // Datos que recibimos de la página padre
+  // estos datos lo recibimos desde la página padre
   icono = input.required<string>();
   titulo = input.required<string>();
   mensaje = input.required<string>();
 
-  // Botón opcional: solo aparece si la página le pasa un texto y un enlace
+  // opcional, solo aparece si la página le pasa un texto o un enlace
   textoBoton = input<string>('');
   enlace = input<string>('');
 

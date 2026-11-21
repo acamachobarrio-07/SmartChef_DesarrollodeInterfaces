@@ -2,10 +2,9 @@
 
   <div class="pantalla-recetas">
 
-    <!-- CABECERA REUTILIZABLE (con flecha para volver) -->
+    <!-- cabecera reutilizable -->
     <app-cabecera volver="/app/inicio"></app-cabecera>
 
-    <!-- BUSCADOR Y FILTROS -->
     <div class="zona-busqueda">
 
       <div class="barra-busqueda">
@@ -29,12 +28,12 @@
 
       </div>
 
-      <!-- PANEL DE FILTROS -->
+      <!-- panel de filtros -->
       @if (panelFiltrosAbierto) {
 
         <div class="panel-filtros">
 
-          <!-- FILTROS (se marcan y desmarcan, pero no filtran: es una maqueta) -->
+          <!-- ahora mismo no filtra, es una maqueta -->
           @for (filtro of filtros; track filtro.nombre) {
 
             <button
@@ -52,7 +51,7 @@
 
           }
 
-          <!-- DIFICULTAD -->
+
           <button
             type="button"
             class="opcion-filtro"
@@ -75,7 +74,6 @@
 
           }
 
-          <!-- TIEMPO MÁXIMO -->
           <button
             type="button"
             class="opcion-filtro"
@@ -100,7 +98,6 @@
 
           }
 
-          <!-- LIMPIAR FILTROS -->
           <button
             type="button"
             class="limpiar"
@@ -116,12 +113,11 @@
 
     </div>
 
-    <!-- LISTADO DE RECETAS -->
+    <!-- listado de recetas -->
     <section class="listado-recetas">
 
       <h1>Todas las recetas</h1>
 
-      <!-- COMPONENTE REUTILIZABLE -->
       @for (receta of recetas; track receta.id) {
 
         <app-tarjeta-receta

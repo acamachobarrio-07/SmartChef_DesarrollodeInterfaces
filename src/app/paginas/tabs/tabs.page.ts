@@ -45,10 +45,8 @@ export class TabsPage {
 
   sesion = inject(SesionService);
 
-  // Control del modal
   modalAbierto = false;
 
-  // Nombre de la sección bloqueada
   seccion = '';
 
   constructor() {
@@ -62,7 +60,6 @@ export class TabsPage {
     });
   }
 
-  // Comprobar si podemos acceder
   comprobarAcceso(nombre: string): void {
 
     if (!this.sesion.comprobarSesion()) {
@@ -72,7 +69,6 @@ export class TabsPage {
 
   }
 
-  // Cerrar el modal
   cerrarModal(): void {
     this.modalAbierto = false;
   }

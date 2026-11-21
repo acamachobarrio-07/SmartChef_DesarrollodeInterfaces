@@ -15,7 +15,7 @@ import { SesionService } from '../../servicios/sesion.service';
 })
 export class CabeceraComponent {
 
-  // Dirección a la que vuelve si no hay pantalla anterior (vacía = sin botón)
+  // dirección a la que volvemos si no hay pestaña anterior
   volver = input('');
 
   sesion = inject(SesionService);

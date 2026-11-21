@@ -2,10 +2,9 @@
 
   <div class="pantalla-colecciones">
 
-    <!-- CABECERA REUTILIZABLE -->
+    <!-- cabecera reutilizable -->
     <app-cabecera></app-cabecera>
 
-    <!-- BUSCADOR (visual, como en el inicio) -->
     <ion-searchbar
       placeholder="Buscar ingrediente o receta..."
       class="buscador">
@@ -13,7 +12,6 @@
 
     <h1>Mis colecciones</h1>
 
-    <!-- CUADRÍCULA DE COLECCIONES -->
     <div class="cuadricula">
 
       @for (coleccion of colecciones; track coleccion.id) {

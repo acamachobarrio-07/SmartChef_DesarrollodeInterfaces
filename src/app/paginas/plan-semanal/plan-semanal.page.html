@@ -6,7 +6,6 @@
 
     <h1>Plan semanal</h1>
 
-    <!-- SEMANA (visual) -->
     <div class="selector-semana">
 
       <button type="button" class="flecha" aria-label="Semana anterior">
@@ -26,7 +25,7 @@
 
     <app-resumen-calorias [calorias]="1978"></app-resumen-calorias>
 
-    <!-- DÍAS DE LA SEMANA -->
+    <!-- dias de la semana -->
     @for (dia of dias; track dia.nombre) {
 
       <section class="dia-semana">
@@ -68,7 +67,7 @@
 </ion-content>
 
 
-<!-- SELECCIONAR RECETA -->
+<!-- modal para seleccionar la receta -->
 <ion-modal
   [isOpen]="modalRecetasAbierto"
   (didDismiss)="modalRecetasAbierto = false"

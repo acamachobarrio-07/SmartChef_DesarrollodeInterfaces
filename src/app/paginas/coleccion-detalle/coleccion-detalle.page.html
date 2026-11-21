@@ -2,7 +2,7 @@
 
   <div class="pantalla-coleccion">
 
-    <!-- CABECERA REUTILIZABLE (con flecha para volver) -->
+    <!-- reutilizamos la cabecera -->
     <app-cabecera volver="/app/colecciones"></app-cabecera>
 
     @if (coleccion; as c) {
@@ -10,7 +10,7 @@
       <h1>{{ c.nombre }}</h1>
       <p class="resumen">{{ c.recetas.length }} {{ c.recetas.length === 1 ? 'receta' : 'recetas' }}</p>
 
-      <!-- RECETAS DE LA COLECCIÓN -->
+      <!-- recetas de la colección -->
       @for (receta of c.recetas; track receta.id) {
 
         <app-tarjeta-receta [receta]="receta"></app-tarjeta-receta>
@@ -52,7 +52,7 @@
 </ion-content>
 
 
-<!-- VENTANA PARA QUITAR UNA RECETA -->
+<!-- modal para quitar una receta -->
 <ion-modal
   [isOpen]="modalAbierto"
   (didDismiss)="modalAbierto = false"
@@ -65,7 +65,6 @@
 
       @if (!quitada) {
 
-        <!-- AVISO -->
         <div class="aviso-quitar">
 
           <div class="icono-aviso">
@@ -92,7 +91,7 @@
 
       } @else {
 
-        <!-- CONFIRMACIÓN (componente reutilizado del modo chef) -->
+        <!-- componente reutilizable para indicar que la receta se ha añadido a la colección -->
         <app-confirmacion-receta
           mensaje="La receta se ha quitado de la colección.">
           <ion-button class="boton-ventana" expand="block" (click)="modalAbierto = false">

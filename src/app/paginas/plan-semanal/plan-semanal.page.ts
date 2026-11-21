@@ -35,7 +35,6 @@ export class PlanSemanalPage {
   dias = PLAN_SEMANAL;
   recetas = RECETAS_EJEMPLO;
 
-  // Es una maqueta: la semana es fija y elegir receta solo muestra la confirmación
   semana = '16 - 22 de noviembre';
 
   modalRecetasAbierto = false;

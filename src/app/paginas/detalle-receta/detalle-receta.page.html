@@ -310,7 +310,7 @@
 </ion-content>
 
 
-<!-- VENTANA PARA GUARDAR EN UNA COLECCIÓN -->
+<!-- modal para guardar la receta en la colección -->
 <ion-modal
   [isOpen]="modalColeccionesAbierto"
   (didDismiss)="modalColeccionesAbierto = false"
@@ -334,7 +334,7 @@
           Elige en qué colección quieres guardar esta receta.
         </p>
 
-        <!-- MISMA TARJETA QUE EN COLECCIONES, EN MODO SELECCIONAR -->
+        <!-- misma tarjeta que en colecciones en modo seleccionar -->
         <div class="cuadricula-colecciones">
           @for (coleccion of colecciones; track coleccion.id) {
             <app-tarjeta-coleccion
